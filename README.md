@@ -6,7 +6,7 @@ La página presentada a continuación plantea una herramienta de comodidad para 
 Cabe mencionar que toda esta página tiene ligado internamente un mercado donde los jugadores pueden comprar, vender e intercambiar cartas.
 
 # Link del prototipo en Figma
-https://www.figma.com/design/vPIwCS4UVkBSA0jyPAZ2ST/MyL-Showcase?node-id=0-1&t=5f48BVlt4qQ0ItNi-1
+https://www.figma.com/proto/vPIwCS4UVkBSA0jyPAZ2ST/MyL-Showcase?node-id=320-7430&t=PNCwAIvAz9hMquiE-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=320%3A7430&show-proto-sidebar=1
 
 # Integrantes del equipo y funcionalidades
 

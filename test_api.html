@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas desde MyL API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex; /* Usar flexbox para alinear imagen y texto */
+            align-items: center; /* Centrar verticalmente */
+        }
+
+        .card img {
+            width: 100px; /* Ancho de la imagen */
+            height: auto; /* Mantener el aspecto */
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Uso de MyL API</h1>
+
+    <label for="edition-select">Selecciona una edición:</label>
+    <select id="edition-select">
+        <option value="chile_oscuro">Chile Oscuro</option>
+        <option value="espiritu_samurai">Espíritu Samurái</option>
+        <option value="extension_valhalla">Extensión Valhalla</option>
+        <option value="giger">Giger</option>
+        <option value="la_venganza_de_horus">La Venganza de Horus</option>
+        <option value="napoleon">Napoleón</option>
+        <option value="neo_midgard">Neo Midgard</option>
+        <option value="raciales_imp_2024">Raciales Imp 2024</option>
+        <option value="relatos_del_despertar_gotico">Relatos del Despertar Gótico</option>
+        <option value="valhalla">Valhalla</option>
+        <option value="visiones_de_kemet">Visiones de Kemet</option>
+        <option value="zodiaco">Zodiaco</option>
+    </select>
+    <button id="load-edition">Cargar Cartas de Edición</button>
+
+    <div id="results"></div>
+
+    <script>
+        const apiBaseUrl = 'https://api.myl.cl/cards/edition/';
+
+        async function fetchEditionCards(edition) {
+            const response = await fetch(`${apiBaseUrl}${edition}`);
+            if (!response.ok) {
+                throw new Error(`Error al cargar cartas de la edición ${edition}: ${response.statusText}`);
+            }
+            return await response.json();
+        }
+
+        function displayCards(cards, editionId) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Limpiar resultados anteriores
+
+            if (cards.length === 0) {
+                resultsDiv.innerHTML = '<p>No se encontraron cartas.</p>';
+            } else {
+                cards.forEach(card => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.classList.add('card');
+
+                    // Construir la URL de la imagen
+                    const imageUrl = `https://api.myl.cl/static/cards/${editionId}/${card.edid}.png`;
+
+                    cardDiv.innerHTML = `
+                        <img src="${imageUrl}" alt="${card.name}">
+                        <div>
+                            <strong>${card.name}</strong>
+                            <p>${card.ability}</p>
+                        </div>
+                    `;
+                    resultsDiv.appendChild(cardDiv);
+                });
+            }
+        }
+
+        document.getElementById('load-edition').addEventListener('click', async () => {
+            const selectedEdition = document.getElementById('edition-select').value;
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>Cargando cartas...</p>'; // Mensaje de carga
+            
+            try {
+                const data = await fetchEditionCards(selectedEdition);
+                displayCards(data.cards, data.edition.id); // Pasar el ID de la edición
+            } catch (error) {
+                console.error(error);
+                resultsDiv.innerHTML = `<p>Error al cargar cartas de la edición ${selectedEdition}: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+
+</html>

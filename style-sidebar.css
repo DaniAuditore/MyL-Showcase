@@ -1,0 +1,24 @@
+.sidebar {
+    width: 70px;
+    background-color: #151515;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-right: 2px solid #ff4d4d;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 25px;
+}
+
+.sidebar ul li a img {
+    width: 54px;
+    height: 54px;
+}

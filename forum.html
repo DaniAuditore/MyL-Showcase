@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - Myl Showcase</title>
+    <link rel="stylesheet" href="forum-style.css">
+    <link rel="stylesheet" href="style-sidebar.css">
+</head>
+<body>
+    <input type="checkbox" id="sidebar-click">
+    <label class="sidebar" for="sidebar-click">
+        <ul>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/library-icons/Property 1=Default, active=false.png"alt="Libreria"><h1>Librería</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/inventory-icons/Property 1=Default, active=false.png"alt="Inventario"><h1>Librería</h1></a></li>
+            <li><a href="#" class="sidebar-button active"><img src="public/images/sidebar-icons/forum-icons/Property 1=Default, active=false.png"alt="Foro"><h1>Foro</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/rules-icons/Property 1=Default, active=false.png"alt="Reglas"><h1>Reglas</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/glosary-icons/Property 1=Default, active=false.png"alt="Glosario"><h1>Glosario</h1></a></li>
+        </ul>
+
+        <a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/profile-icons/Property 1=Default, active=false.png"alt="Perfil"><h1>Perfíl</h1></a>
+    </label>
+
+    <div class="content">
+        <div class="head">
+            <div class="create-button">
+                +
+            </div>
+        </div>
+
+        <div class="posts">
+            <div class="post">
+                
+                <div class="profile-picture">
+                    <img src="public/images/perfil_prueba.jpg" alt="">
+                </div>
+                
+                <div class="title">
+                    Titulo
+                </div>
+                <div class="body">
+                    Cuerpo lorem ipsum texto cuantas<br/>
+                    ...
+                </div>
+        
+                <div class="valoration">
+                    <div class="votes">
+                        103
+                    </div>
+                    <div class="vote-buttons">
+                        <button class="vote-button">
+                            <img class="vote-button-img" src="public/images/post-imgs/dVote.png"
+                            onmouseover="this.src='public/images/post-imgs/dVoteHover.png'"
+                            onmouseout="this.src='public/images/post-imgs/dVote.png'"
+                            alt="dVote">
+                        </button>
+                        <button class="vote-button">
+                            <img class="vote-button-img" src="public/images/post-imgs/uVote.png"
+                            onmouseover="this.src='public/images/post-imgs/uVoteHover.png'"
+                            onmouseout="this.src='public/images/post-imgs/uVote.png'"
+                            alt="uVote">
+                        </button>
+                    </div>
+                </div>
+        
+                <div class="cards">
+                    <div class="card">
+                        <img class="card-img" src="public/images/post-imgs/Orochimaru.png" />
+                        
+                        <div class="card-blur"></div>
+                        <div class="carry-card-count">
+                            +3
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img"  src="public/images/post-imgs/Orochimaru.png" />
+                    </div>
+                    <div class="card">
+                        <img class="card-img"  src="public/images/post-imgs/Orochimaru.png" />
+                    </div>
+                </div>
+                
+                <div class="delete-post">
+                    Borrar
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

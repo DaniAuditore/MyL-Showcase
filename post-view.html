@@ -6,6 +6,7 @@
     <title>Post view - MyL Showcase</title>
     <link rel="stylesheet" href="post-view-style.css">
     <link rel="stylesheet" href="style-sidebar.css">
+    <link rel="stylesheet" href="back-button.css">
 </head>
 <body>
     <input type="checkbox" id="sidebar-click">
@@ -13,12 +14,12 @@
         <ul>
             <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/library-icon.png"alt="Libreria"><h1>Librería</h1></a></li>
             <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/inventory-icon.png"alt="Inventario"><h1>Librería</h1></a></li>
-            <li><a href="#" class="sidebar-button active"><img src="public/images/sidebar-icons/forum-icon.png"alt="Foro"><h1>Foro</h1></a></li>
+            <li><a href="forum.html" class="sidebar-button active"><img src="public/images/sidebar-icons/forum-icon.png"alt="Foro"><h1>Foro</h1></a></li>
             <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/rules-icon.png"alt="Reglas"><h1>Reglas</h1></a></li>
             <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/glosary-icon.png"alt="Glosario"><h1>Glosario</h1></a></li>
         </ul>
 
-        <a href="#profile.html" class="sidebar-button"><img src="public/images/sidebar-icons/profile-icon.png"alt="Perfil"><h1>Perfíl</h1></a>
+        <a href="profile.html" class="sidebar-button"><img src="public/images/sidebar-icons/profile-icon.png"alt="Perfil"><h1>Perfíl</h1></a>
     </label>
     
     <div class="content">
@@ -78,10 +79,16 @@
                 </div>
             </div>
             
-            <div class="delete-post">
-                Borrar
-            </div>
+            <a class="deletePost-link" href="forum.html">
+                <div class="delete-post">
+                    Borrar
+                </div>
+            </a>
 
+        </div>
+
+        <div class="back-button">
+            <input type="image" onclick="history.back()"  src="public/images/back-icon.png">
         </div>
     </div>
 </body>

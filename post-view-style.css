@@ -9,6 +9,7 @@ body {
     position: absolute;
     left: 130px;
     overflow: hidden;
+    /*overflow-y: scroll;*/
 }
 
 .post {
@@ -16,6 +17,7 @@ body {
     height: 580px;
     position: relative;
     left: calc(50% - 551px);
+    margin-top: 90px;
     margin-bottom: 10px;
     background: #373739; /*#2C2C2E*/
     overflow: hidden;

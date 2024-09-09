@@ -44,25 +44,43 @@ body {
 }
 
 .post {
-    width: 1103px;
-    height: 180px;
+    width: 1107px;
+    height: 184px;
     position: relative;
     left: calc(50% - 551px);
     margin-bottom: 10px;
     background: #2C2C2E;
-    border-radius: 30px;
     overflow: hidden;
-    border: 2px #E3CFCF solid;
 }
 .post:hover {
+    width: 1163px;
     overflow: visible;
+    
 }
+.post-link {
+    width: 1103px;
+    height: 180px;
+}
+.post-box {
+    width: 1103px;
+    height: 180px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 30px;
+    border: 2px #E3CFCF solid;
+}
+    .profile-link {
+        width: 85px;
+        height: 85px;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
     .profile-picture {
         width: 85px;
         height: 85px;
         position: relative;
-        left: 15px;
-        top: 15px;
         overflow: hidden;
         border-radius: 50%;
         border: 2px solid #E3CFCF;
@@ -134,7 +152,7 @@ body {
     
     .cards {
         top: 4px;
-        right: 10px;
+        left: 720px;
         position: absolute;
     }
         .card {
@@ -177,9 +195,9 @@ body {
     .delete-post {
         width: 150px;
         height: fit-content;
-        position: relative;
+        position: absolute;
         left: 1060px;
-        bottom: calc(50% - 70px);
+        bottom: calc(50% - 25px);
         text-align: center;
         font: 1000;
         font-size: xx-large;
@@ -187,4 +205,7 @@ body {
         rotate: -90deg;
         border-radius: 30px;
         border: 5px solid #A40000;
+    }
+    .delete-post:hover {
+        filter: brightness(115%);
     }

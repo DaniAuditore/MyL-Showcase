@@ -1,0 +1,190 @@
+body {
+    background-color: #2c2c2e;
+}
+
+.content {
+    z-index: -1;
+    height: 99%;
+    width: calc(100% - 130px);
+    position: absolute;
+    left: 130px;
+    overflow: hidden;
+}
+
+.head {
+    width: 1103px;
+    height: fit-content;
+    position: relative;
+    top: 22px;
+    left: calc(50% - 551px);
+}
+
+.create-button {
+    width: 147px;
+    height: 85px;
+    border-radius: 30px;
+    border: 5px #E3CFCF solid;
+    align-content: center;
+    text-align: center;
+    color: #E3CFCF;
+    font-size: 300%;
+    font-weight: 900;
+}
+
+.create-button:hover {
+    filter: contrast(384.62%) brightness(112.94%);
+}
+
+.posts {
+    width: 100%;
+    height: calc(100% - 154px);
+    position: relative;
+    margin-top: 53px;
+    overflow-y: scroll;
+}
+
+.post {
+    width: 1103px;
+    height: 180px;
+    position: relative;
+    left: calc(50% - 551px);
+    margin-bottom: 10px;
+    background: #2C2C2E;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 2px #E3CFCF solid;
+}
+.post:hover {
+    overflow: visible;
+}
+    .profile-picture {
+        width: 85px;
+        height: 85px;
+        position: relative;
+        left: 15px;
+        top: 15px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid #E3CFCF;
+    }
+        .profile-picture img {
+            width: 100%;
+        }
+    .title {
+        left: 122px;
+        top: 33px;
+        position: absolute;
+        color: #E3CFCF;
+        font-size: 36px;
+        font-family: Bebas Neue;
+        font-weight: 400;
+        word-wrap: break-word
+    }
+    .body {
+        left: 128px;
+        top: 102px;
+        position: absolute;
+        text-align: right;
+        color: #E3CFCF;
+        font-size: 24px;
+        font-family: Bebas Neue;
+        font-weight: 400;
+        word-wrap: break-word
+    }
+
+    .valoration {
+        width: 77px;
+        height: 20px;
+        left: 20px;
+        top: 150px;
+        position: absolute
+    }
+        .votes {
+            right: 54px;
+            top: 1px;
+            position: absolute;
+            color: #E3CFCF;
+            font-size: 16px;
+            font-family: Bebas Neue;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+        .vote-buttons {
+            width: 54px;
+            height: 20px;
+            left: 25px;
+            top: 0px;
+            position: absolute;
+        }
+        .vote-button {
+            width: 27px;
+            height: 20px;
+            float: right;
+            position: relative;
+            background-color: #2c2c2e;
+        }
+        .vote-button-img {
+            width: 27px;
+            height: 20px;
+            left: -8px;
+            top: -3px;
+            position: relative;
+            background-color: #2c2c2e;
+        }
+    
+    .cards {
+        top: 4px;
+        right: 10px;
+        position: absolute;
+    }
+        .card {
+            width: 104.68px;
+            height: 150px;
+            margin: 10px;
+            float: right;
+            top: 0px;
+            overflow: hidden;
+            border-radius: 5px;
+            position: relative;
+        }
+            .card-img {
+                width: 100%;
+                left: 0px;
+                top: 0px;
+                position: relative;
+            }
+            .card-blur {
+                width: 64px;
+                height: 64px;
+                left: 20px;
+                top: 35px;
+                position: absolute;
+                background: #D9D9D9;
+                box-shadow: 34px 34px 34px;
+                filter: blur(34px)
+            }
+            .carry-card-count {
+                left: 40px;
+                top: 56px;
+                position: absolute;
+                text-align: center;
+                color: #2c2c2e;
+                font-size: 32px;
+                font-family: Bebas Neue;
+                font-weight: 400;
+                word-wrap: break-word
+            }
+    .delete-post {
+        width: 150px;
+        height: fit-content;
+        position: relative;
+        left: 1060px;
+        bottom: calc(50% - 70px);
+        text-align: center;
+        font: 1000;
+        font-size: xx-large;
+        color: #E3CFCF;
+        rotate: -90deg;
+        border-radius: 30px;
+        border: 5px solid #A40000;
+    }

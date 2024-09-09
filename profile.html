@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="style-sidebar.css">
 </head>
 <body>
-
-    <aside class="sidebar">
+    <input type="checkbox" id="sidebar-click">
+    <label class="sidebar" for="sidebar-click">
         <ul>
-            <li><a href="#"><img src="public/images/icon-library.png" alt="Libreria"></a></li>
-            <li><a href="#"><img src="public/images/icon-inventory.png" alt="Inventario"></a></li>
-            <li><a href="#"><img src="public/images/icon-forum.png" alt="Foro"></a></li>
-            <li><a href="#"><img src="public/images/icon-rules.png" alt="Reglas"></a></li>
-            <li><a href="#"><img src="public/images/icon-glossary.png" alt="Glosario"></a></li>
-            <li><a href="#"><img src="public/images/icon-profile.png" alt="Perfil"></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/icon-library.png"alt="Libreria"><h1>Libreria</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/icon-inventory.png"alt="Inventario"><h1>Inventario</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/icon-forum.png"alt="Foro"><h1>Foro</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/icon-rules.png"alt="Reglas"><h1>Reglas</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/icon-glossary.png"alt="Glosario"><h1>Glosario</h1></a></li>
         </ul>
 
-    </aside>
+        <a href="profile.html" class="sidebar-button active"><img src="public/images/sidebar-icons/icon-profile.png"alt="Perfil"><h1>Perfil</h1></a>
+    </label>
 
-    <section class="main-content">
+    <div class="main-content">
         <div class="user-info">
             <div class="avatar">
-                <img src="public/images/icon-profile.png" alt="Avatar">
+                <img src="public/images/sidebar-icons/icon-profile.png" alt="Avatar">
             </div>
             <div class="username-section">
                 <div class="username">Nombre de Usuario</div>

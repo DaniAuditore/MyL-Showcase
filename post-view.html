@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post view - MyL Showcase</title>
+    <link rel="stylesheet" href="post-view-style.css">
+    <link rel="stylesheet" href="style-sidebar.css">
+</head>
+<body>
+    <input type="checkbox" id="sidebar-click">
+    <label class="sidebar" for="sidebar-click">
+        <ul>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/library-icon.png"alt="Libreria"><h1>Librería</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/inventory-icon.png"alt="Inventario"><h1>Librería</h1></a></li>
+            <li><a href="#" class="sidebar-button active"><img src="public/images/sidebar-icons/forum-icon.png"alt="Foro"><h1>Foro</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/rules-icon.png"alt="Reglas"><h1>Reglas</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/glosary-icon.png"alt="Glosario"><h1>Glosario</h1></a></li>
+        </ul>
+
+        <a href="#profile.html" class="sidebar-button"><img src="public/images/sidebar-icons/profile-icon.png"alt="Perfil"><h1>Perfíl</h1></a>
+    </label>
+    
+    <div class="content">
+        <div class="post">
+
+            <a class="profile-link" href="profile.html">
+                <div class="profile-picture">
+                    <img src="public/images/perfil_prueba.jpg" alt="">
+                </div>
+            </a>
+
+            <div class="profile-name">
+                CompadreJuan
+            </div>
+            
+            <div class="title">
+                Titulo
+            </div>
+            <div class="body">
+                Cuerpo Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit aperiam et, optio exercitationem numquam eveniet quasi distinctio provident illo dolores veniam natus suscipit totam hic quam mollitia. Culpa, nihil accusamus.
+            </div>
+    
+            <div class="valoration">
+                <div class="votes">
+                    103
+                </div>
+                <div class="vote-buttons">
+                    <button class="vote-button">
+                        <img class="vote-button-img" src="public/images/post-imgs/dVote.png"
+                        onmouseover="this.src='public/images/post-imgs/dVoteHover.png'"
+                        onmouseout="this.src='public/images/post-imgs/dVote.png'"
+                        alt="dVote">
+                    </button>
+                    <button class="vote-button">
+                        <img class="vote-button-img" src="public/images/post-imgs/uVote.png"
+                        onmouseover="this.src='public/images/post-imgs/uVoteHover.png'"
+                        onmouseout="this.src='public/images/post-imgs/uVote.png'"
+                        alt="uVote">
+                    </button>
+                </div>
+            </div>
+    
+            <div class="cards">
+                <div class="card">
+                    <img class="card-img" src="public/images/post-imgs/Orochimaru.png" />
+                    
+                    <div class="card-blur"></div>
+                    <div class="carry-card-count">
+                        +3
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img"  src="public/images/post-imgs/Orochimaru.png" />
+                </div>
+                <div class="card">
+                    <img class="card-img"  src="public/images/post-imgs/Orochimaru.png" />
+                </div>
+            </div>
+            
+            <div class="delete-post">
+                Borrar
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

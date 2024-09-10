@@ -5,6 +5,7 @@
     background-color: #2C2C2E;
     height: 94vh;
     display: flex;
+    position: fixed;
     float: left;
     flex-direction: column;
     justify-content: space-between;

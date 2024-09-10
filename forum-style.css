@@ -32,8 +32,20 @@ body {
 }
 
 .create-button:hover {
-    filter: contrast(384.62%) brightness(112.94%);
+    border-color: #FFEBEB;
+    color: #A40000;
 }
+
+.create-button:active {
+    filter: brightness(125%);
+}
+    .create-button-link {
+        width: 155px;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
 
 .posts {
     width: 100%;

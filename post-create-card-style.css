@@ -14,9 +14,13 @@
     align-content: center;
     border-bottom: 1px #E3CFCF solid;
 }
-.card image {
-    width: 375.65px;
+.card-image {
+    width: 262.08px;
+    height: 375.65px;
 }
+    .card-image img {
+        width: 100%;
+    }
     .name {
         position: absolute;
         left: 312px;

@@ -20,3 +20,6 @@
     .filter button:hover {
         color: #A40000;
     }
+    .filter button:active {
+        filter: brightness(120%);
+    }

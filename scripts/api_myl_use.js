@@ -25,6 +25,7 @@ async function displayCards(cards, editionId) {
             cardDiv.innerHTML = `
                 <img src="${imageUrl}" alt="Carta" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
                 <h3>${card.name}</h3>
+                <p class="ability">Habilidad: ${card.ability}</p>
                 <p>Raridad: ${getRarityName(card.rarity)}</p>
                 <p>Tipo: ${getCardTypeName(card.type)}</p>
                 <p>Raza: ${getRaceName(card.race)}</p>
@@ -136,5 +137,25 @@ function getRaceName(raceId) {
     return race ? race.name : 'Desconocida';
 }
 
+function filterCards() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const resultsDiv = document.getElementById('results');
+    const cards = resultsDiv.getElementsByClassName('card');
+
+    Array.from(cards).forEach(card => {
+        const cardName = card.querySelector('h3').textContent.toLowerCase();
+        const abilityText = card.querySelector('p.ability').textContent.toLowerCase();
+
+        // Filtrar si el nombre o la habilidad contienen el texto de búsqueda
+        card.style.display = cardName.includes(searchInput) || abilityText.includes(searchInput) ? 'block' : 'none';
+    });
+}
+
 // Cargar cartas de la edición inicial al iniciar
-window.onload = () => loadCards('zodiaco');
+window.onload = () => {
+    loadCards('zodiaco');
+    
+    // Configuración de la barra de búsqueda
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', filterCards);
+};

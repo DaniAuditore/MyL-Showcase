@@ -14,21 +14,29 @@ body {
     padding: 0;
 }
 
-.search-container {
-    display: flex; /* Para alinear el icono y el input */
+header {
+    margin-top: 2%;
+    margin-left: 15%; /* Alinear con cartas */
+    margin-right: 15%; /* Alinear con cartas */
+    display: flex; /* Alinear elementos dentro del header */
     align-items: center; /* Centrar verticalmente */
-    justify-content: center; /* Centrar horizontalmente */
-    background-color: var(--secondary-color); /* Color de fondo de la barra de búsqueda */
-    padding: 10px; /* Espaciado interno */
+    width: 70%; /* Ancho del header */
+}
+
+.search-container {
+    display: flex; /* Alinear barra de búsqueda y botón */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: space-between; /* Espaciado entre los elementos */
+    flex-grow: 1; /* Permitir que ocupe el espacio disponible */
 }
 
 .search-bar {
-    display: flex; /* Para alinear el icono y el input */
+    display: flex; /* Alinear ícono y input */
     align-items: center; /* Centrar verticalmente */
     border-radius: 15px; /* Bordes redondeados */
     border: 2px solid var(--tertiary-color); /* Borde sutil */
-    width: 600px; /* Ancho de la barra */
-    padding: 5px; /* Espaciado interno */
+    flex-grow: 1; /* Permitir que la barra de búsqueda ocupe espacio */
+    margin-right: 10px; /* Espacio a la derecha del input */
 }
 
 #search-input {
@@ -38,13 +46,13 @@ body {
     font-size: 16px; /* Tamaño de la fuente */
     outline: none; /* Sin contorno */
     flex: 1; /* Ocupa el espacio disponible */
-    padding: 20px; /* Espaciado interno */
+    padding: 18px; /* Espaciado interno */
 }
 
 .small_icon {
-    display: flex; /* Para centrar el ícono verticalmente */
+    display: flex; /* Centrar el ícono verticalmente */
     align-items: center; /* Centrar verticalmente */
-    margin-left: 10px; /* Espacio entre el input y el icono */
+    margin-left: 10px; /* Espacio entre el input y el ícono */
 }
 
 .small_icon img {
@@ -61,13 +69,29 @@ body {
             contrast(85%); /* Ajuste del color */
 }
 
+/* Estilos para el botón de filtro */
+#filter-button {
+    font-size: 20px; /* Tamaño de la fuente */
+    padding: 15px 25px; /* Espaciado interno del botón */
+    background-color: var(--secondary-color); /* Color de fondo */
+    color: var(--tertiary-color); /* Color del texto */
+    border: 2px solid var(--tertiary-color); /* Borde sutil */
+    border-radius: 15px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave al pasar el mouse */
+}
+
+#filter-button:hover {
+    background-color: #900000; /* Color más oscuro al pasar el mouse */
+}
+
 .card-grid {
-    margin-top: 2%;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-top: 20px; /* Aumentar espacio superior */
+    margin-left: 15%; /* Margen izquierdo de las cartas */
+    margin-right: 15%; /* Margen derecho de las cartas */
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsivo */
+    gap: 16px; /* Espacio entre cartas */
     padding: 20px; /* Espaciado alrededor de las cartas */
 }
 
@@ -84,9 +108,7 @@ body {
     height: auto;
 }
 
-.card-info {
-    display: none; /* Sin información visible */
-}
+
 
 .card:hover {
     transform: scale(1.05);

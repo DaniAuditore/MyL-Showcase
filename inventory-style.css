@@ -73,10 +73,8 @@ body {
         right: 35px;
         top: 40px;
     }
-        .menu p {
-            z-index: -1;
-            position: absolute;
-            top: -47px;
+        .menu:hover {
+            filter: brightness(120%);
         }
         .menu button {
             width: 22px;

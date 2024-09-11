@@ -22,7 +22,7 @@ body {
     left: calc(50% - 551px);
     margin-top: 90px;
     margin-bottom: 10px;
-    background: #373739; /*#2C2C2E*/
+    background: #2C2C2E;
     overflow: hidden;
     border-radius: 30px;
     border: 2px #E3CFCF solid;

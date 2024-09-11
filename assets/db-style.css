@@ -22,10 +22,11 @@ header {
     margin: 2% 15%;
     display: flex;
     align-items: center;
-    width: 70%;
+    width: 35%;
 }
 
 .search-container {
+    margin-left: 20%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -115,7 +116,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    width: 25%;
+    width: 45%;
     height: 100%;
     background-color: var(--secondary-color);
     color: var(--tertiary-color);
@@ -264,3 +265,49 @@ body {
     width: 100%;
     height: auto;
 }
+
+#static-box {
+    position: fixed;
+    top: 140px; /* Ajusta según el espacio deseado desde la parte superior */
+    right: 90px; /* Ajusta según el espacio deseado desde el borde derecho */
+    width: 500px;
+    height: 500px; /* Ajusta el ancho según sea necesario */
+    padding: 20px; /* Ajusta el padding según sea necesario */
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    border-radius: 15px; /* Mantén la coherencia con el estilo general */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra si lo deseas */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+#static-box p {
+    margin: 10%; /* Elimina márgenes para el texto */
+}
+
+/* Estilo de la barra de nombre de la baraja */
+.name-deck-bar {
+    position: fixed; /* Fija la barra en la parte superior de la ventana */
+    top: 20px; /* Ajusta la distancia desde el borde superior */
+    right: 20px; /* Ajusta la distancia desde el borde derecho */
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    border: 2px solid var(--tertiary-color);
+    background-color: var(--secondary-color);
+    padding: 0 10px; /* Añade padding para el espaciado interno */
+    width: 300px; /* Ajusta el ancho según sea necesario */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra si lo deseas */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#nombre-baraja {
+    border: none;
+    background: transparent;
+    color: var(--tertiary-color);
+    font-size: 16px;
+    outline: none;
+    flex: 1; /* Hace que el input ocupe el espacio disponible */
+    padding: 18px;
+    border-radius: 15px;
+}
+

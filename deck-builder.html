@@ -8,19 +8,16 @@
     <link rel="stylesheet" href="style-sidebar.css">
 </head>
 <body>
-
-
     <input type="checkbox" id="sidebar-click">
     <label class="sidebar" for="sidebar-click">
         <ul>
-            <li><a href="library.html" class="sidebar-button active"><img src="public/images/sidebar-icons/library-icon.png"alt="Libreria"><h1>Librería</h1></a></li>
-            <li><a href="inventory.html" class="sidebar-button"><img src="public/images/sidebar-icons/inventory-icon.png"alt="Inventario"><h1>Inventario</h1></a></li>
-            <li><a href="forum.html" class="sidebar-button"><img src="public/images/sidebar-icons/forum-icon.png"alt="Foro"><h1>Foro</h1></a></li>
-            <li><a href="rules.html" class="sidebar-button"><img src="public/images/sidebar-icons/rules-icon.png"alt="Reglas"><h1>Reglas</h1></a></li>
-            <li><a href="glossary.html" class="sidebar-button"><img src="public/images/sidebar-icons/glosary-icon.png"alt="Glosario"><h1>Glosario</h1></a></li>
+            <li><a href="library.html" class="sidebar-button active"><img src="public/images/sidebar-icons/library-icon.png" alt="Librería"><h1>Librería</h1></a></li>
+            <li><a href="inventory.html" class="sidebar-button"><img src="public/images/sidebar-icons/inventory-icon.png" alt="Inventario"><h1>Inventario</h1></a></li>
+            <li><a href="forum.html" class="sidebar-button"><img src="public/images/sidebar-icons/forum-icon.png" alt="Foro"><h1>Foro</h1></a></li>
+            <li><a href="rules.html" class="sidebar-button"><img src="public/images/sidebar-icons/rules-icon.png" alt="Reglas"><h1>Reglas</h1></a></li>
+            <li><a href="glossary.html" class="sidebar-button"><img src="public/images/sidebar-icons/glosary-icon.png" alt="Glosario"><h1>Glosario</h1></a></li>
         </ul>
-
-        <a href="profile.html" class="sidebar-button"><img src="public/images/sidebar-icons/profile-icon.png"alt="Perfil"><h1>Perfíl</h1></a>
+        <a href="profile.html" class="sidebar-button"><img src="public/images/sidebar-icons/profile-icon.png" alt="Perfil"><h1>Perfil</h1></a>
     </label>
 
     <header class="search-container">
@@ -31,18 +28,20 @@
             </span>
         </div>
         <button id="filter-button" class="styled-button">FILTROS</button>
+        <div class="name-deck-bar">
+            <input type="text" id="nombre-baraja" placeholder="NOMBRE DE LA BARAJA" aria-label="Ingrese el nombre de su baraja">
+        </div>
     </header>
 
     <main id="results" class="card-grid"></main>
-
-
+    <div id="static-box">
+        <p>Contenido del cuadro</p>
+    </div>
 
     <!-- Sidebar de Filtros -->
     <aside id="filter-sidebar">
         <div class="close-btn">&times;</div>
         <h2>Filtros</h2>
-
-        <!-- Select para cambiar de edición -->
         <div class="filter-section">
             <label for="change-edition">Edición:</label>
             <select id="change-edition" aria-label="Selecciona una edición" class="styled-button">
@@ -61,8 +60,6 @@
                 <option value="zodiaco">Zodiaco</option>
             </select>
         </div>
-
-        <!-- Filtros -->
         <div class="filter-section">
             <label for="filter-rarity">Rareza:</label>
             <select id="filter-rarity" class="styled-button">
@@ -89,8 +86,6 @@
             <label for="filter-damage">Daño:</label>
             <input type="text" id="filter-damage" placeholder="Daño" class="styled-button">
         </div>
-
-        <!-- Botón de Limpiar Filtros -->
         <button id="clear-filters" class="styled-button">Limpiar Filtros</button>
     </aside>
 

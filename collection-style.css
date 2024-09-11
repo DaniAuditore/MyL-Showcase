@@ -36,7 +36,6 @@ body {
 
     overflow-x: visible;
     overflow-y: scroll;
-    border: 1px solid #F0D;
 }
     .card {
         width: 220px;

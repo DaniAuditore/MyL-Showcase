@@ -1,0 +1,24 @@
+body {
+    background-color: #2C2C2E;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.content {
+    z-index: -1;
+    height: 99%;
+    width: calc(100% - 130px);
+    position: absolute;
+    left: 130px;
+    overflow-y: scroll;
+}
+
+.head {
+    width: 1103px;
+    height: fit-content;
+    position: relative;
+    top: 22px;
+    left: calc(50% - 551px);
+}

@@ -1,0 +1,6 @@
+.card-link {
+    z-index: 1;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+}

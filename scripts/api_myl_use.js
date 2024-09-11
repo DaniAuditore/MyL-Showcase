@@ -23,15 +23,12 @@ async function displayCards(cards, editionId) {
             const imageUrl = `https://api.myl.cl/static/cards/${editionId}/${card.edid}.png`;
 
             cardDiv.innerHTML = `
-                <img src="${imageUrl}" alt="Carta" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
-                <h3>${card.name}</h3>
-                <p class="ability">Habilidad: ${card.ability}</p>
-                <p>Raridad: ${getRarityName(card.rarity)}</p>
-                <p>Tipo: ${getCardTypeName(card.type)}</p>
-                <p>Raza: ${getRaceName(card.race)}</p>
-                <p>Costo: ${card.cost}</p>
-                <p>Daño: ${card.damage}</p>
+                <img src="${imageUrl}" alt="${card.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
             `;
+
+            // Almacenar el nombre y la habilidad en atributos de datos
+            cardDiv.dataset.name = card.name; // Guardar el nombre
+            cardDiv.dataset.ability = card.ability; // Guardar la habilidad
 
             resultsDiv.appendChild(cardDiv);
         });
@@ -51,103 +48,17 @@ async function loadCards(edition) {
     }
 }
 
-function getRarityName(rarityId) {
-    const rarities = [
-        { id: "0", name: "Promocional" },
-        { id: "1", name: "Legendaria" },
-        { id: "2", name: "Ultra Real" },
-        { id: "3", name: "Mega Real" },
-        { id: "4", name: "Real" },
-        { id: "5", name: "Cortesano" },
-        { id: "6", name: "Vasallo" },
-        { id: "7", name: "Oro" },
-        { id: "8", name: "Milenaria" },
-        { id: "9", name: "Secreta" },
-        { id: "10", name: "Ficha" },
-        { id: "11", name: "Set Paralelo" }
-    ];
-    const rarity = rarities.find(r => r.id === rarityId);
-    return rarity ? rarity.name : 'Desconocida';
-}
-
-function getCardTypeName(typeId) {
-    const types = [
-        { id: "1", name: "Aliado" },
-        { id: "2", name: "Talismán" },
-        { id: "3", name: "Arma" },
-        { id: "4", name: "Tótem" },
-        { id: "5", name: "Oro" },
-        { id: "6", name: "Monumento" }
-    ];
-    const type = types.find(t => t.id === typeId);
-    return type ? type.name : 'Desconocido';
-}
-
-function getRaceName(raceId) {
-    const races = [
-        { id: "0", name: "Sin Raza" },
-        { id: "1", name: "Caballero" },
-        { id: "2", name: "Bestia" },
-        { id: "3", name: "Eterno" },
-        { id: "4", name: "Guerrero" },
-        { id: "5", name: "Bárbaro" },
-        { id: "6", name: "Faerie" },
-        { id: "7", name: "Samurái" },
-        { id: "8", name: "Sombra" },
-        { id: "9", name: "Ancestral" },
-        { id: "10", name: "Sacerdote" },
-        { id: "11", name: "Dragón" },
-        { id: "12", name: "Héroe" },
-        { id: "13", name: "Oni" },
-        { id: "14", name: "Olímpico" },
-        { id: "15", name: "Titán" },
-        { id: "16", name: "Faraón" },
-        { id: "17", name: "Desafiante" },
-        { id: "18", name: "Defensor" },
-        { id: "19", name: "Licántropo" },
-        { id: "20", name: "Vampiro" },
-        { id: "21", name: "Cazador" },
-        { id: "22", name: "Chamán" },
-        { id: "23", name: "Dios" },
-        { id: "24", name: "Abominación" },
-        { id: "25", name: "Kami" },
-        { id: "26", name: "Xian" },
-        { id: "27", name: "Criaturas" },
-        { id: "28", name: "Campeón / Shaolín" },
-        { id: "29", name: "Campeón / Ninja" },
-        { id: "30", name: "Campeón / Samurái" },
-        { id: "31", name: "Campeón" },
-        { id: "32", name: "Héroe / Sacerdote" },
-        { id: "33", name: "Eterno / Sombra" },
-        { id: "34", name: "Caballero / Guerrero" },
-        { id: "35", name: "Bestia / Guerrero" },
-        { id: "36", name: "Caballero / Héroe" },
-        { id: "37", name: "Dragón / Eterno" },
-        { id: "38", name: "Eterno / Faerie" },
-        { id: "39", name: "Paladín" },
-        { id: "40", name: "Asesino" },
-        { id: "41", name: "Tenebris" },
-        { id: "42", name: "Eterno / Sacerdote" },
-        { id: "43", name: "Caballero / Guerrero / Héroe" },
-        { id: "44", name: "Bestia / Dragón / Sombra" },
-        { id: "45", name: "Eterno / Faerie / Sacerdote" },
-        { id: "46", name: "Bestia / Faerie" }
-    ];
-    const race = races.find(r => r.id === raceId);
-    return race ? race.name : 'Desconocida';
-}
-
 function filterCards() {
     const searchInput = document.getElementById('search-input').value.toLowerCase();
     const resultsDiv = document.getElementById('results');
     const cards = resultsDiv.getElementsByClassName('card');
 
     Array.from(cards).forEach(card => {
-        const cardName = card.querySelector('h3').textContent.toLowerCase();
-        const abilityText = card.querySelector('p.ability').textContent.toLowerCase();
+        const cardName = card.dataset.name.toLowerCase(); // Obtener el nombre desde el atributo de datos
+        const cardAbility = card.dataset.ability.toLowerCase(); // Obtener la habilidad desde el atributo de datos
 
         // Filtrar si el nombre o la habilidad contienen el texto de búsqueda
-        card.style.display = cardName.includes(searchInput) || abilityText.includes(searchInput) ? 'block' : 'none';
+        card.style.display = cardName.includes(searchInput) || cardAbility.includes(searchInput) ? 'block' : 'none';
     });
 }
 

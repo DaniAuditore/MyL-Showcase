@@ -3,62 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library - Myl Showcase</title>
+    <title>Library - My Showcase</title>
     <link rel="stylesheet" href="assets/styles_ezio.css">
 </head>
 <body>
-    <div class="search-container">
-        <header>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="BUSCAR CARTAS">
-                <span class="small_icon">
-                    <img src="assets/search-svgrepo-com.svg" alt="icono_busqueda">
-                </span>
-            </div>
-            <button id="filter-button">FILTROS</button>
-        </header>
-    </div>
+    <header class="search-container">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="BUSCAR CARTAS" aria-label="Buscar cartas">
+            <span class="small_icon">
+                <img src="assets/search-svgrepo-com.svg" alt="Icono de búsqueda">
+            </span>
+        </div>
+        <button id="filter-button" class="styled-button">FILTROS</button>
+    </header>
 
-    <div id="results" class="card-grid"></div>
+    <main id="results" class="card-grid"></main>
 
     <!-- Sidebar de Filtros -->
-<div id="filter-sidebar">
-    <div class="close-btn">&times;</div>
-    <h2>Filtros</h2>
-    <div class="filter-section">
-        <label for="filter-rarity">Rareza:</label>
-        <select id="filter-rarity">
-            <option value="">--Seleccionar--</option>
-            <!-- Las opciones se agregarán dinámicamente con JavaScript -->
-        </select>
-    </div>
-    <div class="filter-section">
-        <label for="filter-race">Raza:</label>
-        <select id="filter-race">
-            <option value="">--Seleccionar--</option>
-            <!-- Las opciones se agregarán dinámicamente con JavaScript -->
-        </select>
-    </div>
-    <div class="filter-section">
-        <label for="filter-type">Tipo:</label>
-        <select id="filter-type">
-            <option value="">--Seleccionar--</option>
-            <!-- Las opciones se agregarán dinámicamente con JavaScript -->
-        </select>
-    </div>
-    <div class="filter-section">
-        <label for="filter-cost">Coste:</label>
-        <input type="text" id="filter-cost" placeholder="Coste">
-    </div>
-    <div class="filter-section">
-        <label for="filter-damage">Daño:</label>
-        <input type="text" id="filter-damage" placeholder="Daño">
-    </div>
-</div>
+    <div id="filter-sidebar">
+        <div class="close-btn">&times;</div>
+        <h2>Filtros</h2>
 
-    
+        <!-- Select para cambiar de edición -->
+        <div class="filter-section">
+            <label for="change-edition">Edición:</label>
+            <select id="change-edition" aria-label="Selecciona una edición" class="styled-button">
+                <option value="" disabled selected>Selecciona una edición</option>
+                <option value="chile_oscuro">Chile Oscuro</option>
+                <option value="espiritu_samurai">Espíritu Samurai</option>
+                <option value="extension_valhalla">Extensión Valhalla</option>
+                <option value="giger">Giger</option>
+                <option value="la_venganza_de_horus">La Venganza de Horus</option>
+                <option value="napoleon">Napoleón</option>
+                <option value="neo_midgard">Neo Midgard</option>
+                <option value="raciales_imp_2024">Raciales IMP 2024</option>
+                <option value="relatos_del_despertar_gotico">Relatos del Despertar Gótico</option>
+                <option value="valhalla">Valhalla</option>
+                <option value="visiones_de_kemet">Visiones de Kemet</option>
+                <option value="zodiaco">Zodiaco</option>
+            </select>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filter-section">
+            <label for="filter-rarity">Rareza:</label>
+            <select id="filter-rarity" class="styled-button">
+                <option value="">--Seleccionar--</option>
+                <!-- Las opciones se agregarán dinámicamente con JavaScript -->
+            </select>
+        </div>
+        <div class="filter-section">
+            <label for="filter-type">Tipo:</label>
+            <select id="filter-type" class="styled-button">
+                <option value="">--Seleccionar--</option>
+                <!-- Las opciones se agregarán dinámicamente con JavaScript -->
+            </select>
+        </div>
+        <div class="filter-section">
+            <label for="filter-race">Raza:</label>
+            <select id="filter-race" class="styled-button">
+                <option value="">--Seleccionar--</option>
+                <!-- Las opciones se agregarán dinámicamente con JavaScript -->
+            </select>
+        </div>
+        <div class="filter-section">
+            <label for="filter-cost">Coste:</label>
+            <input type="text" id="filter-cost" placeholder="Coste" class="styled-button">
+        </div>
+        <div class="filter-section">
+            <label for="filter-damage">Daño:</label>
+            <input type="text" id="filter-damage" placeholder="Daño" class="styled-button">
+        </div>
+
+        <!-- Botón de Limpiar Filtros -->
+        <button id="clear-filters" class="styled-button">Limpiar Filtros</button>
+    </div>
 
     <script src="scripts/api_myl_use.js"></script>
 </body>
-
 </html>

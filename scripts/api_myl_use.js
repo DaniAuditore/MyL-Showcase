@@ -75,62 +75,41 @@ const filtersData = {
     ]
 };
 
+// Función para obtener las cartas de una edición específica
 async function fetchEditionCards(edition) {
-    const response = await fetch(`${apiBaseUrl}${edition}`);
-    if (!response.ok) {
-        throw new Error(`Error al cargar cartas de la edición ${edition}: ${response.statusText}`);
-    }
-    return await response.json();
-}
-
-async function displayCards(cards, editionId) {
-    const resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = ''; // Limpiar resultados anteriores
-
-    if (cards.length === 0) {
-        resultsDiv.innerHTML = '<p>No se encontraron cartas.</p>';
-    } else {
-        cards.forEach(card => {
-            const cardDiv = document.createElement('div');
-            cardDiv.classList.add('card');
-
-            // Construir la URL de la imagen
-            const imageUrl = `https://api.myl.cl/static/cards/${editionId}/${card.edid}.png`;
-
-            cardDiv.innerHTML = `
-                <img src="${imageUrl}" alt="${card.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
-            `;
-
-            // Almacenar atributos en los atributos de datos
-            cardDiv.dataset.name = card.name; // Guardar el nombre
-            cardDiv.dataset.ability = card.ability; // Guardar la habilidad
-            cardDiv.dataset.rarity = card.rarity; // Guardar la rareza (debe ser el ID)
-            cardDiv.dataset.race = card.race; // Guardar la raza (debe ser el ID)
-            cardDiv.dataset.type = card.type; // Guardar el tipo (debe ser el ID)
-            cardDiv.dataset.cost = card.cost; // Guardar el coste
-            cardDiv.dataset.damage = card.damage; // Guardar el daño
-
-            resultsDiv.appendChild(cardDiv);
-        });
-    }
-}
-
-
-
-async function loadCards(edition) {
-    const resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = '<p>Cargando cartas...</p>'; // Mensaje de carga
-    
     try {
-        const data = await fetchEditionCards(edition);
-        displayCards(data.cards, data.edition.id); // Pasar el ID de la edición
+        const response = await fetch(`${apiBaseUrl}${edition}`);
+        if (!response.ok) throw new Error(`Error ${response.status}: ${response.statusText}`);
+        return await response.json();
     } catch (error) {
         console.error(error);
-        resultsDiv.innerHTML = `<p>Error al cargar cartas de la edición ${edition}: ${error.message}</p>`;
+        document.getElementById('results').innerHTML = `<p>Error al cargar cartas: ${error.message}</p>`;
     }
 }
 
-// Filtrado de cartas
+// Función para mostrar las cartas
+function displayCards(cards, editionId) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = cards.length === 0 
+        ? '<p>No se encontraron cartas.</p>' 
+        : cards.map(card => {
+            const imageUrl = `https://api.myl.cl/static/cards/${editionId}/${card.edid}.png`;
+            return `
+                <div class="card" data-name="${card.name}" data-ability="${card.ability}" data-rarity="${card.rarity}" data-race="${card.race}" data-type="${card.type}" data-cost="${card.cost}" data-damage="${card.damage}">
+                    <img src="${imageUrl}" alt="${card.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
+                </div>
+            `;
+        }).join('');
+}
+
+// Función para cargar cartas
+async function loadCards(edition) {
+    document.getElementById('results').innerHTML = '<p>Cargando cartas...</p>';
+    const data = await fetchEditionCards(edition);
+    if (data) displayCards(data.cards, data.edition.id);
+}
+
+// Función para filtrar cartas
 function filterCards() {
     const searchInput = document.getElementById('search-input').value.toLowerCase();
     const rarityFilter = document.getElementById('filter-rarity').value;
@@ -139,82 +118,79 @@ function filterCards() {
     const costFilter = document.getElementById('filter-cost').value;
     const damageFilter = document.getElementById('filter-damage').value;
 
-    const resultsDiv = document.getElementById('results');
-    const cards = resultsDiv.getElementsByClassName('card');
-
-    Array.from(cards).forEach(card => {
-        const cardName = card.dataset.name.toLowerCase();
-        const cardAbility = card.dataset.ability.toLowerCase();
-        const cardRarity = card.dataset.rarity;
-        const cardRace = card.dataset.race;
-        const cardType = card.dataset.type;
-        const cardCost = card.dataset.cost;
-        const cardDamage = card.dataset.damage;
-
-        const isNameMatch = cardName.includes(searchInput) || cardAbility.includes(searchInput);
-        const isRarityMatch = rarityFilter === '' || rarityFilter === cardRarity;
-        const isRaceMatch = raceFilter === '' || raceFilter === cardRace;
-        const isTypeMatch = typeFilter === '' || typeFilter === cardType;
-        const isCostMatch = costFilter === '' || cardCost === costFilter;
-        const isDamageMatch = damageFilter === '' || cardDamage === damageFilter;
-
-        card.style.display = (isNameMatch && isRarityMatch && isRaceMatch && isTypeMatch && isCostMatch && isDamageMatch) ? 'block' : 'none';
+    const cards = document.querySelectorAll('#results .card');
+    cards.forEach(card => {
+        const isNameMatch = card.dataset.name.toLowerCase().includes(searchInput) || card.dataset.ability.toLowerCase().includes(searchInput);
+        const isRarityMatch = !rarityFilter || rarityFilter === card.dataset.rarity;
+        const isRaceMatch = !raceFilter || raceFilter === card.dataset.race;
+        const isTypeMatch = !typeFilter || typeFilter === card.dataset.type;
+        const isCostMatch = !costFilter || costFilter === card.dataset.cost;
+        const isDamageMatch = !damageFilter || damageFilter === card.dataset.damage;
+        
+        card.style.display = isNameMatch && isRarityMatch && isRaceMatch && isTypeMatch && isCostMatch && isDamageMatch ? 'block' : 'none';
     });
 }
 
-
-// Configuración inicial y eventos
-window.onload = () => {
-    populateFilterOptions(); // Cargar las opciones de los filtros
-    loadCards('valhalla');
-    
-    // Configuración de la barra de búsqueda
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', filterCards);
-
-    // Configuración de los filtros
-    const filterInputs = document.querySelectorAll('#filter-sidebar select, #filter-sidebar input');
-    filterInputs.forEach(input => {
-        input.addEventListener('input', filterCards);
-    });
-};
-
-
-// Llenar las opciones de filtro
+// Función para llenar las opciones de los filtros
 function populateFilterOptions() {
-    // Cargar opciones de rareza
     const raritySelect = document.getElementById('filter-rarity');
-    filtersData.rarities.forEach(rarity => {
+    filtersData.rarities.forEach(({ id, name }) => {
         const option = document.createElement('option');
-        option.value = rarity.id; // Usa el ID en lugar del slug
-        option.textContent = rarity.name;
+        option.value = id;
+        option.textContent = name;
         raritySelect.appendChild(option);
     });
 
-    // Cargar opciones de raza
     const raceSelect = document.getElementById('filter-race');
-    filtersData.races.forEach(race => {
+    filtersData.races.forEach(({ id, name }) => {
         const option = document.createElement('option');
-        option.value = race.id; // Usa el ID en lugar del slug
-        option.textContent = race.name;
+        option.value = id;
+        option.textContent = name;
         raceSelect.appendChild(option);
     });
 
-    // Cargar opciones de tipo
     const typeSelect = document.getElementById('filter-type');
-    filtersData.types.forEach(type => {
+    filtersData.types.forEach(({ id, name }) => {
         const option = document.createElement('option');
-        option.value = type.id; // Usa el ID en lugar del slug
-        option.textContent = type.name;
+        option.value = id;
+        option.textContent = name;
         typeSelect.appendChild(option);
     });
 }
 
+// Función para limpiar filtros
+function clearFilters() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('filter-rarity').value = '';
+    document.getElementById('filter-race').value = '';
+    document.getElementById('filter-type').value = '';
+    document.getElementById('filter-cost').value = '';
+    document.getElementById('filter-damage').value = '';
+    filterCards();
+}
 
-document.getElementById('filter-button').addEventListener('click', () => {
-    document.getElementById('filter-sidebar').classList.toggle('show');
-});
+// Configuración inicial y eventos (aca doy edicion de partida)
+window.onload = () => {
+    populateFilterOptions();
+    loadCards('zodiaco'); // Cargar cartas de una edición inicial
 
-document.querySelector('#filter-sidebar .close-btn').addEventListener('click', () => {
-    document.getElementById('filter-sidebar').classList.remove('show');
-});
+    document.getElementById('search-input').addEventListener('input', filterCards);
+    document.querySelectorAll('#filter-sidebar select, #filter-sidebar input').forEach(input => {
+        input.addEventListener('input', filterCards);
+    });
+
+    document.getElementById('change-edition').addEventListener('change', (event) => {
+        const selectedEdition = event.target.value;
+        if (selectedEdition) loadCards(selectedEdition);
+    });
+
+    document.getElementById('filter-button').addEventListener('click', () => {
+        document.getElementById('filter-sidebar').classList.toggle('show');
+    });
+
+    document.querySelector('#filter-sidebar .close-btn').addEventListener('click', () => {
+        document.getElementById('filter-sidebar').classList.remove('show');
+    });
+
+    document.getElementById('clear-filters').addEventListener('click', clearFilters);
+};

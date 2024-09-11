@@ -104,9 +104,9 @@ async function displayCards(cards, editionId) {
             // Almacenar atributos en los atributos de datos
             cardDiv.dataset.name = card.name; // Guardar el nombre
             cardDiv.dataset.ability = card.ability; // Guardar la habilidad
-            cardDiv.dataset.rarity = card.rarity; // Guardar la rareza
-            cardDiv.dataset.race = card.race; // Guardar la raza
-            cardDiv.dataset.type = card.type; // Guardar el tipo
+            cardDiv.dataset.rarity = card.rarity; // Guardar la rareza (debe ser el ID)
+            cardDiv.dataset.race = card.race; // Guardar la raza (debe ser el ID)
+            cardDiv.dataset.type = card.type; // Guardar el tipo (debe ser el ID)
             cardDiv.dataset.cost = card.cost; // Guardar el coste
             cardDiv.dataset.damage = card.damage; // Guardar el daño
 
@@ -114,6 +114,8 @@ async function displayCards(cards, editionId) {
         });
     }
 }
+
+
 
 async function loadCards(edition) {
     const resultsDiv = document.getElementById('results');
@@ -160,10 +162,11 @@ function filterCards() {
     });
 }
 
+
 // Configuración inicial y eventos
 window.onload = () => {
     populateFilterOptions(); // Cargar las opciones de los filtros
-    loadCards('zodiaco');
+    loadCards('valhalla');
     
     // Configuración de la barra de búsqueda
     const searchInput = document.getElementById('search-input');
@@ -176,13 +179,14 @@ window.onload = () => {
     });
 };
 
+
 // Llenar las opciones de filtro
 function populateFilterOptions() {
     // Cargar opciones de rareza
     const raritySelect = document.getElementById('filter-rarity');
     filtersData.rarities.forEach(rarity => {
         const option = document.createElement('option');
-        option.value = rarity.slug;
+        option.value = rarity.id; // Usa el ID en lugar del slug
         option.textContent = rarity.name;
         raritySelect.appendChild(option);
     });
@@ -191,7 +195,7 @@ function populateFilterOptions() {
     const raceSelect = document.getElementById('filter-race');
     filtersData.races.forEach(race => {
         const option = document.createElement('option');
-        option.value = race.slug;
+        option.value = race.id; // Usa el ID en lugar del slug
         option.textContent = race.name;
         raceSelect.appendChild(option);
     });
@@ -200,11 +204,12 @@ function populateFilterOptions() {
     const typeSelect = document.getElementById('filter-type');
     filtersData.types.forEach(type => {
         const option = document.createElement('option');
-        option.value = type.slug;
+        option.value = type.id; // Usa el ID en lugar del slug
         option.textContent = type.name;
         typeSelect.appendChild(option);
     });
 }
+
 
 document.getElementById('filter-button').addEventListener('click', () => {
     document.getElementById('filter-sidebar').classList.toggle('show');

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de la Oferta - Orochimaru</title>
+    <link rel="stylesheet" href="market-offer-description.css">
+</head>
+<body>
+    <div class="offer-container">
+        <div class="card-section">
+            <img src="public/images/Orochimaru.png" alt="Carta Orochimaru">
+            <h3>Orochimaru</h3>
+        </div>
+
+        <div class="offer-details">
+            <h2>Orochimaru</h2>
+            <p>Fuerza: 4 | Coste: 2 ⚡ | Raza: Sombra | Tipo: Aliado | Rareza: UR</p>
+            <p>Oferta de (Nombre de usuario)</p>
+            <b class="price">Valor: $3000</b>
+
+            <div class="actions">
+                <button id="accept-offer">Aceptar Oferta</button>
+                <a href="market-make-offer.html?action=oferta">
+                    <button id="propose-trade">Proponer Otro Trato</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="confirm-modal">
+        <div class="modal-content">
+            <h2>¿Aceptar Oferta?</h2>
+            <p>Estás comprando la carta "Orochimaru" por un precio de $3000.</p>
+            <div class="modal-actions">
+                <button id="cancel">Cancelar</button>
+                <button id="confirm">Aceptar Oferta</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="offert-datail.js"></script>
+</body>
+</html>

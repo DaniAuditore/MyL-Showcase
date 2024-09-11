@@ -16,7 +16,7 @@ body {
     display: none;
 }
 
-/* buttons animations */
+/*-------------------buttons animations-------------------*/
 .buttons {
     margin: 50px 20px 40px;
     display: flex;
@@ -30,7 +30,7 @@ body {
     font-family: var(--font-style);
     background-color: transparent;
     cursor: pointer;
-    max-width: 230px; 
+    max-width: 330px; 
     height: 80px; 
     width: 100%;
     padding: 0;
@@ -38,14 +38,18 @@ body {
     border-radius: 30px;
     font-size: 20px;
     font-weight: bold;
-    border: 3px solid var(--primary-border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #E3CFCF;
     transition: 0.2s ease;
+    text-align: center;
 }
 
 .edit-button:hover {
     color: rgb(247, 247, 247);
-    background-color: rgb(var(--primary-border-color));
-    border-color: rgb(var(--primary-border-color));
+    background-color: rgb(#E3CFCF);
+    border-color: rgb(#E3CFCF);
     text-shadow: 0 0 50px white, 0 0 20px white, 0 0 15px white;
     font-size: 23px;
 }
@@ -67,8 +71,9 @@ body {
     color: var(--secondary-text-color);
 }
 
-/*----------------------- popup windows -----------------------*/
+/*-----------------------------------popup windows-----------------------------------*/
 
+/* Cambiar Nombre */
 .popup-window-edit {
     display: none;
     position: fixed;
@@ -86,6 +91,7 @@ body {
     display: flex;
 }
 
+/* Borrar Cuenta */
 .popup-window-delete {
     display: none;
     position: fixed;
@@ -102,8 +108,6 @@ body {
 #btn-modal-delete:checked ~ .popup-window-delete {
     display: flex;
 }
-
-
 
 .content-modal {
     background-color: var(--primary-background-color);
@@ -133,7 +137,7 @@ input#name-change {
     border-radius: 5px;
     border: 1px solid var(--primary-border-color);
     background-color: var(--secondary-background-color);
-    color: var(--secondary-border-color);
+    color: white;
 }
 
 .btn-group {
@@ -148,14 +152,13 @@ input#name-change {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 1.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .confirm-button:hover, .cancel-button:hover {
     background-color: var(--primary-text-color);
-    color: var(--secondary-border-color);
+    color: white;
 }
-
 
 /*-----------------------------Redirect buttons-----------------------------*/
 

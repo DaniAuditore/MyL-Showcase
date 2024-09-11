@@ -23,34 +23,6 @@ body {
     left: calc(50% - 551px);
 }
 
-.create-button {
-    width: 147px;
-    height: 85px;
-    border-radius: 30px;
-    border: 5px #E3CFCF solid;
-    align-content: center;
-    text-align: center;
-    color: #E3CFCF;
-    font-size: 300%;
-    font-weight: 900;
-}
-
-.create-button:hover {
-    border-color: #FFEBEB;
-    color: #A40000;
-}
-
-.create-button:active {
-    filter: brightness(125%);
-}
-    .create-button-link {
-        width: 155px;
-        height: 100%;
-        position: absolute;
-        left: 0px;
-        top: 0px;
-    }
-
 .posts {
     width: 100%;
     height: calc(100% - 154px);

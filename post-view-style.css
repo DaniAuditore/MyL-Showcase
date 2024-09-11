@@ -1,0 +1,156 @@
+body {
+    background-color: #2C2C2E;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.content {
+    z-index: -1;
+    height: 99%;
+    width: calc(100% - 130px);
+    position: absolute;
+    left: 130px;
+    overflow-y: scroll;
+}
+
+.post {
+    width: 1103px;
+    height: 580px;
+    position: relative;
+    left: calc(50% - 551px);
+    margin-top: 90px;
+    margin-bottom: 10px;
+    background: #2C2C2E;
+    overflow: hidden;
+    border-radius: 30px;
+    border: 2px #E3CFCF solid;
+}
+    .profile-link {
+        width: 85px;
+        height: 85px;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    .profile-picture {
+        width: 85px;
+        height: 85px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid #E3CFCF;
+    }
+        .profile-picture img {
+            width: 100%;
+        }
+    .profile-name {
+        left: 122px;
+        top: 43px;
+        position: relative;
+        color: #E3CFCF;
+        font-size: 32px;
+        font-family: Bebas Neue;
+        font-weight: 400;
+        word-wrap: break-word;
+    }
+    .title {
+        left: 15px;
+        top: 125px;
+        position: absolute;
+        color: #E3CFCF;
+        font-size: 36px;
+        font-family: Bebas Neue;
+        font-weight: 400;
+        word-wrap: break-word
+    }
+    .body {
+        width: 1070px;
+        left: 15px;
+        top: 190px;
+        position: absolute;
+        color: #E3CFCF;
+        font-size: 24px;
+        font-family: Bebas Neue;
+        font-weight: 400;
+        word-wrap: break-word;
+        border: 0px #fa01fa solid;
+    }
+    .valoration {
+        width: 77px;
+        height: 20px;
+        left: 20px;
+        bottom: 15px;
+        position: absolute
+    }
+        .votes {
+            right: 54px;
+            top: 1px;
+            position: absolute;
+            color: #E3CFCF;
+            font-size: 16px;
+            font-family: Bebas Neue;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+        .vote-buttons {
+            width: 54px;
+            height: 20px;
+            left: 25px;
+            top: 0px;
+            position: absolute;
+        }
+        .vote-button {
+            width: 27px;
+            height: 20px;
+            float: right;
+            position: relative;
+            background-color: #2c2c2e;
+        }
+        .vote-button-img {
+            width: 27px;
+            height: 20px;
+            left: -8px;
+            top: -3px;
+            position: relative;
+            background-color: #2c2c2e;
+        }
+    .cards {
+        bottom: 10px;
+        right: 10px;
+        position: absolute;
+    }
+        .card {
+            width: 104.68px;
+            height: 150px;
+            margin: 10px;
+            float: right;
+            top: 0px;
+            overflow: hidden;
+            border-radius: 5px;
+            position: relative;
+        }
+            .card-img {
+                width: 100%;
+                left: 0px;
+                top: 0px;
+                position: relative;
+            }
+            
+    .delete-post {
+        width: 150px;
+        height: fit-content;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        text-align: center;
+        font: 1000;
+        font-size: xx-large;
+        color: #E3CFCF;
+        border-radius: 30px;
+        border: 5px solid #A40000;
+    }
+    .delete-post:hover {
+        filter: brightness(115%);
+    }

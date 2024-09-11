@@ -1,0 +1,106 @@
+.cards {
+    width: 100%;
+    height: 870px;
+    overflow-y: scroll;
+    position: absolute;
+    top: 565px;
+}
+
+.card {
+    width: 1103px;
+    height: 436px;
+    position: relative;
+    left: calc(50% - 551px);
+    align-content: center;
+    border-bottom: 1px #E3CFCF solid;
+}
+.card-image {
+    width: 262.08px;
+    height: 375.65px;
+}
+    .card-image img {
+        width: 100%;
+    }
+    .name {
+        position: absolute;
+        left: 312px;
+        top: 80px;
+        font-size: 25px;
+        color: #FFF;
+    }
+    .gold {
+        position: absolute;
+        left: 312px;
+        top: 130px;
+        font-size: 40px;
+        color: #FFD700;
+    }
+    .frecuency {
+        width: 28.61px;
+        height: 33.8px;
+        position: absolute;
+        left: 341px;
+        top: 138px;
+    }
+        .frecuency img {
+            width: 100%;
+        }
+    .description {
+        width: 791px;
+        height: 130px;
+        position: absolute;
+        left: 312px;
+        top: 204px;
+        font-size: 20px;
+        color: #FFF;
+    }
+    .add-button {
+        width: 121px;
+        height: 70px;
+        position: absolute;
+        left: 313px;
+        top: 336px;
+        overflow: hidden;
+        border: 5px #E3CFCF solid;
+        border-radius: 30px;
+    }
+        #add-button-check{
+            display: none;
+        }
+        #add-button-check2{
+            display: none;
+        }
+        #add-button-check3{
+            display: none;
+        }
+        #add-button-check4{
+            display: none;
+        }
+        #add-button-check5{
+            display: none;
+        }
+        .add-button-label {
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-align: center;
+            align-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #A40000;
+            background-color: #2C2C2E;
+            border: 0;
+        }
+        .add-button-label:hover, :checked + .add-button-label:hover {
+            filter: brightness(120%);
+        }
+        .add-button-label:active {
+            color: #E3CFCF;
+        }
+        :checked + .add-button-label {
+            color: #59B65C;
+        }
+        :checked + .add-button-label:active {
+            color: #E3CFCF;
+        }

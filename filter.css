@@ -1,0 +1,26 @@
+.filter {
+    width: 252px;
+    height: 85px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    overflow: hidden;
+    border: 5px #E3CFCF solid;
+    border-radius: 30px;
+}
+    .filter button {
+        width: 100%;
+        height: 100%;
+        font-size: 40px;
+        font-weight: 700;
+        cursor: pointer;
+        color: #E3CFCF;
+        background-color: #2C2C2E;
+        border: 0;
+    }
+    .filter button:hover {
+        color: #A40000;
+    }
+    .filter button:active {
+        filter: brightness(120%);
+    }

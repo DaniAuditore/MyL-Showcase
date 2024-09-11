@@ -1,0 +1,32 @@
+.comments {
+    width: 100%;
+    min-height: 123px;
+    height: fit-content;
+    position: absolute;
+    margin-top: 10px;
+}
+
+.comment {
+    width: 1103px;
+    min-height: 221px;
+    height: calc(max-content + 50px);
+    position: relative;
+    left: calc(50% - 551px);
+    margin-bottom: 10px;
+    border: 2px #E3CFCF solid;
+    border-radius: 30px;
+}
+    .comment-body {
+        width: 1070px;
+        height: auto;
+        left: 15px;
+        top: 125px;
+        position: absolute;
+        color: #E3CFCF;
+        font-size: 24px;
+        font-family: Bebas Neue;
+        font-weight: 400;
+        word-wrap: break-word;
+        border: 0px #fa01fa solid;
+    }
+    

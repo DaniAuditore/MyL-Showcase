@@ -1,0 +1,17 @@
+[data-role="juez"] .avatar img {
+    border-color: rgb(212, 175, 55);
+    box-shadow: 0 0 20px rgb(212, 175, 55);;
+}
+
+[data-role="usuario"] .avatar img {
+    border-color: var(--primary-text-color);
+}
+
+
+[data-role="admin"] .admin-action {
+    display: block;
+}
+
+[data-role="usuario"] .admin-action, [data-role="juez"] .admin-action {
+    display: none;
+}

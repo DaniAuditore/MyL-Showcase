@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario (Admin)</title>
+    <link rel="stylesheet" href="profile-style.css">
+    <link rel="stylesheet" href="style-sidebar.css">
+    <link rel="stylesheet" href="profile-status-style.css">
+    <link rel="stylesheet" href="profile-button.css">
+</head>
+<body>
+    <input type="checkbox" id="sidebar-click">
+    <label class="sidebar" for="sidebar-click">
+        <ul>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/library-icon.png" alt="Libreria"><h1>Libreria</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/inventory-icon.png" alt="Inventario"><h1>Inventario</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/forum-icon.png" alt="Foro"><h1>Foro</h1></a></li>
+            <li><a href="#" class="sidebar-button"><img src="public/images/sidebar-icons/rules-icon.png" alt="Reglas"><h1>Reglas</h1></a></li>
+            <li><a href="#glossary.html" class="sidebar-button"><img src="public/images/sidebar-icons/glossary-icon.png" alt="Glosario"><h1>Glosario</h1></a></li>
+        </ul>
+
+        <a href="profile.html" class="sidebar-button active"><img src="public/images/sidebar-icons/profile-icon.png" alt="Perfil"><h1>Perfil</h1></a>
+    </label>
+
+    <div class="main-content" data-role="usuario">
+        <div class="user-info">
+            <div class="avatar">
+                <img id="avatar-img" src="public/images/perfil_prueba.jpg" alt="Avatar">
+            </div>
+            <div class="username-section">
+                <div class="username">Nombre de Usuario</div>
+                <div class="buttons">
+
+                    <!-- Button to toggle between User and Judge -->
+                    <button id="toggle-role" class="rank-button" onclick="toggleRole()">
+                        Convertir en Juez
+                    </button>
+
+                    <!-- account delete confirmation window -->
+                    <input type="checkbox" id="btn-modal-delete" class="hidden-checkbox">
+                    <label for="btn-modal-delete" class="delete-button">
+                        Borrar cuenta
+                    </label>
+                    
+                    <div class="popup-window-delete">
+                        <div class="content-modal">
+                            <h2>Confirmar Borrado</h2>
+                            <p>¿Está seguro de que desea borrar la cuenta de este usuario?</p>
+                            <div class="btn-group">
+                                <button class="confirm-button">Confirmar</button>
+                                <label for="btn-modal-delete" class="cancel-button">Cancelar</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-buttons">
+            <button class="redirect-button" onclick="window.location.href='coleccion.html'">Colección</button> 
+            <button class="redirect-button" onclick="window.location.href='posts.html'">Posts</button>
+            <button class="redirect-button" onclick="window.location.href='mercado.html'">Mercado</button>
+        </div>
+    </div>
+
+    <button class="admin-button" onclick="window.location.href='profile.html'">Cambiar a usuario</button>
+
+    <script>
+        // method to change user roles
+        function toggleRole() {
+            const mainContent = document.querySelector('.main-content');
+            const avatarImg = document.getElementById('avatar-img');
+            const role = mainContent.getAttribute('data-role');
+            const toggleButton = document.getElementById('toggle-role');
+
+            if (role === 'usuario') {
+                mainContent.setAttribute('data-role', 'juez');
+                toggleButton.textContent = 'Convertir en Usuario';
+            } else {
+                mainContent.setAttribute('data-role', 'usuario');
+                toggleButton.textContent = 'Convertir en Juez';
+            }
+        }
+    </script>
+
+</body>
+</html>

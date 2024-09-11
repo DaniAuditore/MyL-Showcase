@@ -21,6 +21,44 @@
 
     <div id="results" class="card-grid"></div>
 
+    <!-- Sidebar de Filtros -->
+<div id="filter-sidebar">
+    <div class="close-btn">&times;</div>
+    <h2>Filtros</h2>
+    <div class="filter-section">
+        <label for="filter-rarity">Rareza:</label>
+        <select id="filter-rarity">
+            <option value="">--Seleccionar--</option>
+            <!-- Las opciones se agregarán dinámicamente con JavaScript -->
+        </select>
+    </div>
+    <div class="filter-section">
+        <label for="filter-race">Raza:</label>
+        <select id="filter-race">
+            <option value="">--Seleccionar--</option>
+            <!-- Las opciones se agregarán dinámicamente con JavaScript -->
+        </select>
+    </div>
+    <div class="filter-section">
+        <label for="filter-type">Tipo:</label>
+        <select id="filter-type">
+            <option value="">--Seleccionar--</option>
+            <!-- Las opciones se agregarán dinámicamente con JavaScript -->
+        </select>
+    </div>
+    <div class="filter-section">
+        <label for="filter-cost">Coste:</label>
+        <input type="text" id="filter-cost" placeholder="Coste">
+    </div>
+    <div class="filter-section">
+        <label for="filter-damage">Daño:</label>
+        <input type="text" id="filter-damage" placeholder="Daño">
+    </div>
+</div>
+
+    
+
     <script src="scripts/api_myl_use.js"></script>
 </body>
+
 </html>

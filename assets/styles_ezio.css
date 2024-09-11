@@ -15,9 +15,7 @@ body {
 }
 
 header {
-    margin-top: 2%;
-    margin-left: 15%; /* Alinear con cartas */
-    margin-right: 15%; /* Alinear con cartas */
+    margin: 2% 15%; /* Alinear con cartas */
     display: flex; /* Alinear elementos dentro del header */
     align-items: center; /* Centrar verticalmente */
     width: 70%; /* Ancho del header */
@@ -59,14 +57,8 @@ header {
     width: 20px; /* Tamaño del ícono */
     height: 20px; /* Tamaño del ícono */
     cursor: pointer; /* Cambiar cursor al pasar sobre el icono */
-    filter: brightness(0)
-            saturate(100%) 
-            invert(63%) 
-            sepia(10%) 
-            saturate(100%) 
-            hue-rotate(0deg) 
-            brightness(93%) 
-            contrast(85%); /* Ajuste del color */
+    filter: brightness(0) saturate(100%) invert(63%) sepia(10%) saturate(100%) 
+            hue-rotate(0deg) brightness(93%) contrast(85%); /* Ajuste del color */
 }
 
 /* Estilos para el botón de filtro */
@@ -78,17 +70,16 @@ header {
     border: 2px solid var(--tertiary-color); /* Borde sutil */
     border-radius: 15px; /* Bordes redondeados */
     cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-    transition: background-color 0.3s; /* Transición suave al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transición suave */
 }
 
 #filter-button:hover {
     background-color: #900000; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
 }
 
 .card-grid {
-    margin-top: 20px; /* Aumentar espacio superior */
-    margin-left: 15%; /* Margen izquierdo de las cartas */
-    margin-right: 15%; /* Margen derecho de las cartas */
+    margin: 20px 15%; /* Margen superior y lateral de las cartas */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsivo */
     gap: 16px; /* Espacio entre cartas */
@@ -108,8 +99,49 @@ header {
     height: auto;
 }
 
-
-
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Efecto de aumento al pasar sobre la carta */
+}
+
+/* Estilos para la sidebar de filtros */
+#filter-sidebar {
+    position: fixed; /* Fijo para que esté sobre el contenido */
+    top: 0;
+    right: 0;
+    width: 25%; /* Ajusta el ancho según lo necesites */
+    height: 100%;
+    background-color: var(--secondary-color); /* Color de fondo de la sidebar */
+    color: var(--tertiary-color); /* Color del texto */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3); /* Sombra para darle profundidad */
+    transform: translateX(100%); /* Inicialmente escondido fuera de la pantalla */
+    transition: transform 0.3s ease; /* Transición suave */
+    z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+    overflow-y: auto; /* Permite el scroll si el contenido es mayor al alto de la pantalla */
+}
+
+#filter-sidebar.show {
+    transform: translateX(0); /* Mostrar la sidebar */
+}
+
+#filter-sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--tertiary-color);
+}
+
+#filter-sidebar h2 {
+    padding: 20px;
+    margin: 0;
+}
+
+#filter-sidebar .filter-section {
+    padding: 20px;
+}
+
+#filter-sidebar .filter-section label {
+    display: block;
+    margin-bottom: 10px;
 }

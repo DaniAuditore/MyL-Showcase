@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas desde MyL API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #results {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+            gap: 15px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Cambiar el cursor al pasar sobre la carta */
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px 8px 0 0; /* Bordes redondeados solo en la parte superior */
+        }
+
+        .card-info {
+            display: none; /* Ocultar información por defecto */
+            padding: 10px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Uso de MyL API</h1>
+
+    <div id="controls">
+        <div>
+            <label for="edition-select">Selecciona una edición:</label>
+            <select id="edition-select">
+                <option value="chile_oscuro">Chile Oscuro</option>
+                <option value="espiritu_samurai">Espíritu Samurái</option>
+                <option value="extension_valhalla">Extensión Valhalla</option>
+                <option value="giger">Giger</option>
+                <option value="la_venganza_de_horus">La Venganza de Horus</option>
+                <option value="napoleon">Napoleón</option>
+                <option value="neo_midgard">Neo Midgard</option>
+                <option value="raciales_imp_2024">Raciales Imp 2024</option>
+                <option value="relatos_del_despertar_gotico">Relatos del Despertar Gótico</option>
+                <option value="valhalla">Valhalla</option>
+                <option value="visiones_de_kemet">Visiones de Kemet</option>
+                <option value="zodiaco" selected>Zodiaco</option> <!-- Seleccionada por defecto -->
+            </select>
+        </div>
+        <div>
+            <input type="text" id="search-input" placeholder="Buscar cartas...">
+        </div>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        const apiBaseUrl = 'https://api.myl.cl/cards/edition/';
+
+        async function fetchEditionCards(edition) {
+            const response = await fetch(`${apiBaseUrl}${edition}`);
+            if (!response.ok) {
+                throw new Error(`Error al cargar cartas de la edición ${edition}: ${response.statusText}`);
+            }
+            return await response.json();
+        }
+
+        function displayCards(cards, editionId) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Limpiar resultados anteriores
+
+            if (cards.length === 0) {
+                resultsDiv.innerHTML = '<p>No se encontraron cartas.</p>';
+            } else {
+                cards.forEach(card => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.classList.add('card');
+
+                    // Construir la URL de la imagen
+                    const imageUrl = `https://api.myl.cl/static/cards/${editionId}/${card.edid}.png`;
+
+                    cardDiv.innerHTML = `
+                        <img src="${imageUrl}" alt="${card.name}">
+                        <div class="card-info">
+                            <strong>${card.name}</strong>
+                            <p>${card.ability}</p>
+                        </div>
+                    `;
+
+                    // Evento para mostrar/ocultar información al hacer clic
+                    cardDiv.addEventListener('click', () => {
+                        const infoDiv = cardDiv.querySelector('.card-info');
+                        infoDiv.style.display = infoDiv.style.display === 'none' || infoDiv.style.display === '' ? 'block' : 'none';
+                    });
+
+                    resultsDiv.appendChild(cardDiv);
+                });
+            }
+        }
+
+        async function loadCards(edition) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>Cargando cartas...</p>'; // Mensaje de carga
+            
+            try {
+                const data = await fetchEditionCards(edition);
+                displayCards(data.cards, data.edition.id); // Pasar el ID de la edición
+            } catch (error) {
+                console.error(error);
+                resultsDiv.innerHTML = `<p>Error al cargar cartas de la edición ${edition}: ${error.message}</p>`;
+            }
+        }
+
+        document.getElementById('edition-select').addEventListener('change', (event) => {
+            loadCards(event.target.value); // Cargar cartas al cambiar la edición
+        });
+
+        document.getElementById('search-input').addEventListener('input', (event) => {
+            const query = event.target.value.toLowerCase();
+            const cards = Array.from(document.querySelectorAll('.card'));
+            cards.forEach(card => {
+                const cardName = card.querySelector('strong').textContent.toLowerCase();
+                if (cardName.includes(query)) {
+                    card.style.display = ''; // Mostrar carta
+                } else {
+                    card.style.display = 'none'; // Ocultar carta
+                }
+            });
+        });
+
+        // Cargar cartas de la edición "Zodiaco" al iniciar
+        window.onload = () => loadCards('zodiaco');
+    </script>
+</body>
+
+</html>

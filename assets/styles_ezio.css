@@ -1,0 +1,93 @@
+:root {
+    --primary-color: #A40000;
+    --secondary-color: #2C2C2E;
+    --tertiary-color: #E3CFCF;
+    --quaternary-color: #B0B0B0;
+    --quinary-color: #D6D6D6;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    margin: 0;
+    padding: 0;
+}
+
+.search-container {
+    display: flex; /* Para alinear el icono y el input */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    background-color: var(--secondary-color); /* Color de fondo de la barra de búsqueda */
+    padding: 10px; /* Espaciado interno */
+}
+
+.search-bar {
+    display: flex; /* Para alinear el icono y el input */
+    align-items: center; /* Centrar verticalmente */
+    border-radius: 15px; /* Bordes redondeados */
+    border: 2px solid var(--tertiary-color); /* Borde sutil */
+    width: 600px; /* Ancho de la barra */
+    padding: 5px; /* Espaciado interno */
+}
+
+#search-input {
+    border: none; /* Sin borde */
+    background: transparent; /* Fondo transparente */
+    color: var(--tertiary-color); /* Color del texto */
+    font-size: 16px; /* Tamaño de la fuente */
+    outline: none; /* Sin contorno */
+    flex: 1; /* Ocupa el espacio disponible */
+    padding: 20px; /* Espaciado interno */
+}
+
+.small_icon {
+    display: flex; /* Para centrar el ícono verticalmente */
+    align-items: center; /* Centrar verticalmente */
+    margin-left: 10px; /* Espacio entre el input y el icono */
+}
+
+.small_icon img {
+    width: 20px; /* Tamaño del ícono */
+    height: 20px; /* Tamaño del ícono */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el icono */
+    filter: brightness(0)
+            saturate(100%) 
+            invert(63%) 
+            sepia(10%) 
+            saturate(100%) 
+            hue-rotate(0deg) 
+            brightness(93%) 
+            contrast(85%); /* Ajuste del color */
+}
+
+.card-grid {
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 16px;
+    padding: 20px; /* Espaciado alrededor de las cartas */
+}
+
+.card {
+    background-color: #3a3a3a;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-info {
+    display: none; /* Sin información visible */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}

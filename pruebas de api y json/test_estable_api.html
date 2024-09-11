@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API MyL Ezio Test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Uso de MyL API</h1>
+        <div id="controls">
+            <input type="text" id="search-input" placeholder="Buscar cartas...">
+            <button id="filter-button">Filtros</button>
+        </div>
+    </div>
+
+    <div id="edition-controls">
+        <label for="edition-select">Selecciona una edición:</label>
+        <select id="edition-select">
+            <option value="chile_oscuro">Chile Oscuro</option>
+            <option value="espiritu_samurai">Espíritu Samurái</option>
+            <option value="extension_valhalla">Extensión Valhalla</option>
+            <option value="giger">Giger</option>
+            <option value="la_venganza_de_horus">La Venganza de Horus</option>
+            <option value="napoleon">Napoleón</option>
+            <option value="neo_midgard">Neo Midgard</option>
+            <option value="raciales_imp_2024">Raciales Imp 2024</option>
+            <option value="relatos_del_despertar_gotico">Relatos del Despertar Gótico</option>
+            <option value="valhalla">Valhalla</option>
+            <option value="visiones_de_kemet">Visiones de Kemet</option>
+            <option value="zodiaco" selected>Zodiaco</option> <!-- Seleccionada por defecto -->
+        </select>
+    </div>
+
+    <div id="results"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

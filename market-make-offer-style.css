@@ -71,7 +71,7 @@ header {
 
 .btn {
     background-color: var(--secondary-background-color);
-    color: white;
+    color: var(--secondary-border-color);
     border: 2px solid var(--primary-border-color);
     padding: 10px 20px;
     border-radius: 5px;
@@ -138,7 +138,7 @@ header {
 
 .description {
     font-size: 14px;
-    color: #bbbbbb;
+    color: var(--secondary-border-color);
     margin-bottom: 15px;    
 }
 
@@ -147,7 +147,7 @@ header {
     padding: 10px 30px;
     border: 2px solid var(--primary-border-color);
     border-radius: 5px;
-    color: white;
+    color: var(--secondary-border-color);
     cursor: pointer;
     transition: 0.3s ease;
     font-weight: bold;

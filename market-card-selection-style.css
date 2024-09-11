@@ -1,0 +1,95 @@
+:root {
+    --primary-background-color: #2c2c2e;
+    --secondary-background-color: #373739;
+    --primary-text-color: #A40000;
+    --secondary-text-color:#CB0000;
+    --primary-border-color: #E3CFCF;
+    --secondary-border-color: #FFEBEB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-background-color);
+    font-family: 'Arial', sans-serif;
+    color: var(--secondary-border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    padding: 40px;
+    margin-top: 0;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
+}
+
+.search-bar {
+    width: 70%;
+    padding: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-background-color);
+    color:var(--secondary-border-color);
+}
+
+.filter-btn {
+    padding: 15px 60px;
+    background-color: var(--primary-background-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--secondary-border-color);
+    cursor: pointer;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.cards-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 210px;
+    overflow-y: auto;
+}
+
+.card-item {
+    background-color: var(--primary-background-color);
+    border: 2px solid var(--secondary-text-color);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.card-image {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.offer-btn {
+    background-color: transparent;
+    color: var(--secondary-border-color);
+    border: 2px solid var(--secondary-border-color);
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+

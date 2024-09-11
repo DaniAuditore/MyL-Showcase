@@ -103,3 +103,19 @@ body {
         height: 50px;
         position: relative;
     }
+
+.welcome {
+    width: 1103px;
+    height: 100px;
+    position: absolute;
+    left: calc(50% - 551px);
+    align-content: center;
+    border: 3px solid #A40000;
+    border-radius: 30px;
+}
+
+.welcome h2 {
+    position: relative;
+    left: 30px;
+    color: #E3CFCF;
+}

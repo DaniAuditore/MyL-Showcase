@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/db-style.css">
+    <link rel="stylesheet" href="assets/style-sidebar.css">
+    <title>Deck-Builder - MyL Showcase</title>
+</head>
+<body>
+    <header>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Buscar cartas">
+                <button id="filter-button" class="menu-button">☰</button>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div id="card-section" class="card-section">
+            <div id="results" class="card-container">
+                <!-- Aquí se agregarán las cartas dinámicamente -->
+            </div>
+        </div>
+        <div class="deck-info">
+            <input type="text" placeholder="Escriba el nombre de su baraja">
+            <h3>Aliados</h3>
+            <ul id="allies"></ul>
+            <h3>Talismán</h3>
+            <ul id="talisman"></ul>
+            <h3>Arma</h3>
+            <ul id="weapon"></ul>
+            <h3>Tótem</h3>
+            <ul id="totem"></ul>
+            <h3>Oro</h3>
+            <ul id="gold"></ul>
+            <button id="save-deck" class="styled-button">Guardar Baraja</button>
+        </div>
+    </div>
+    <div id="filter-sidebar" class="filter-sidebar">
+        <button class="close-btn">×</button>
+        <h2>Filtros</h2>
+        <div class="filter-section">
+            <label for="filter-rarity">Rareza</label>
+            <select id="filter-rarity"></select>
+
+            <label for="filter-race">Raza</label>
+            <select id="filter-race"></select>
+
+            <label for="filter-type">Tipo</label>
+            <select id="filter-type"></select>
+
+            <button id="clear-filters" class="styled-button">Limpiar Filtros</button>
+        </div>
+    </div>
+    <div class="edition-selector">
+        <label for="change-edition">Selecciona Edición</label>
+        <select id="change-edition">
+            <option value="zodiaco">Zodiaco</option>
+            <option value="otra-edicion">Otra Edición</option>
+            <!-- Añadir más opciones de ediciones aquí -->
+        </select>
+    </div>
+    <script src="scripts/db-script.js"></script>
+</body>
+</html>

@@ -280,6 +280,22 @@ body {
     z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
 }
 
+.fixed-button {
+    position: absolute;
+    bottom: 10px;  /* Cambiamos 'top' a 'bottom' para colocarlo abajo */
+    right: 10px;   /* Mantén el botón a la derecha */
+    padding: 10px 20px;
+    background-color: var(--secondary-color); /* Color del botón */
+    color: white;
+    border: none;
+    border-radius: 15px; /* Consistente con tu diseño */
+    cursor: pointer;
+}
+
+.fixed-button:hover {
+    background-color: var(--primary-color); /* Cambia el color al pasar el mouse */
+}
+
 #static-box p {
     margin: 10%; /* Elimina márgenes para el texto */
 }

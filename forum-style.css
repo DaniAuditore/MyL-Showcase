@@ -186,6 +186,7 @@ body {
         position: absolute;
         left: 1060px;
         bottom: calc(50% - 25px);
+        cursor: pointer;
         text-align: center;
         font: 1000;
         font-size: xx-large;

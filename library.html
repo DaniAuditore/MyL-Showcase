@@ -5,8 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library - My Showcase</title>
     <link rel="stylesheet" href="assets/styles_ezio.css">
+    <link rel="stylesheet" href="style-sidebar.css">
 </head>
 <body>
+
+
+    <input type="checkbox" id="sidebar-click">
+    <label class="sidebar" for="sidebar-click">
+        <ul>
+            <li><a href="library-html" class="sidebar-button active"><img src="public/images/sidebar-icons/library-icon.png"alt="Libreria"><h1>Librería</h1></a></li>
+            <li><a href="inventory.html" class="sidebar-button"><img src="public/images/sidebar-icons/inventory-icon.png"alt="Inventario"><h1>Inventario</h1></a></li>
+            <li><a href="forum.html" class="sidebar-button"><img src="public/images/sidebar-icons/forum-icon.png"alt="Foro"><h1>Foro</h1></a></li>
+            <li><a href="rules.html" class="sidebar-button"><img src="public/images/sidebar-icons/rules-icon.png"alt="Reglas"><h1>Reglas</h1></a></li>
+            <li><a href="glossary.html" class="sidebar-button"><img src="public/images/sidebar-icons/glosary-icon.png"alt="Glosario"><h1>Glosario</h1></a></li>
+        </ul>
+
+        <a href="profile.html" class="sidebar-button"><img src="public/images/sidebar-icons/profile-icon.png"alt="Perfil"><h1>Perfíl</h1></a>
+    </label>
+
     <header class="search-container">
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="BUSCAR CARTAS" aria-label="Buscar cartas">
@@ -19,8 +35,10 @@
 
     <main id="results" class="card-grid"></main>
 
+
+
     <!-- Sidebar de Filtros -->
-    <div id="filter-sidebar">
+    <aside id="filter-sidebar">
         <div class="close-btn">&times;</div>
         <h2>Filtros</h2>
 
@@ -49,21 +67,18 @@
             <label for="filter-rarity">Rareza:</label>
             <select id="filter-rarity" class="styled-button">
                 <option value="">--Seleccionar--</option>
-                <!-- Las opciones se agregarán dinámicamente con JavaScript -->
             </select>
         </div>
         <div class="filter-section">
             <label for="filter-type">Tipo:</label>
             <select id="filter-type" class="styled-button">
                 <option value="">--Seleccionar--</option>
-                <!-- Las opciones se agregarán dinámicamente con JavaScript -->
             </select>
         </div>
         <div class="filter-section">
             <label for="filter-race">Raza:</label>
             <select id="filter-race" class="styled-button">
                 <option value="">--Seleccionar--</option>
-                <!-- Las opciones se agregarán dinámicamente con JavaScript -->
             </select>
         </div>
         <div class="filter-section">
@@ -77,7 +92,7 @@
 
         <!-- Botón de Limpiar Filtros -->
         <button id="clear-filters" class="styled-button">Limpiar Filtros</button>
-    </div>
+    </aside>
 
     <script src="scripts/api_myl_use.js"></script>
 </body>

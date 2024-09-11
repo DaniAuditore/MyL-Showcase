@@ -169,10 +169,10 @@ function clearFilters() {
     filterCards();
 }
 
-// Configuración inicial y eventos (aca doy edicion de partida)
+// Configuración inicial y eventos
 window.onload = () => {
     populateFilterOptions();
-    loadCards('zodiaco'); // Cargar cartas de una edición inicial
+    loadCards('zodiaco');
 
     document.getElementById('search-input').addEventListener('input', filterCards);
     document.querySelectorAll('#filter-sidebar select, #filter-sidebar input').forEach(input => {
@@ -194,3 +194,45 @@ window.onload = () => {
 
     document.getElementById('clear-filters').addEventListener('click', clearFilters);
 };
+
+// Asegúrate de que el script se ejecute después de que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', () => {
+    const resultsContainer = document.getElementById('results');
+
+    // Función para redirigir a los detalles de la carta
+    function goToCardDetails(cardId, editionId) {
+        window.location.href = `card-details.html?id=${cardId}&edition=${editionId}`;
+    }
+
+    // Función que renderiza las cartas
+    function renderCards(cards, editionId) {
+        resultsContainer.innerHTML = '';
+
+        cards.forEach(card => {
+            const cardElement = document.createElement('div');
+            cardElement.classList.add('card');
+
+            // Agregamos un evento al hacer clic en la carta
+            cardElement.addEventListener('click', () => {
+                goToCardDetails(card.id, editionId);
+            });
+
+            cardElement.innerHTML = `
+                <img src="https://api.myl.cl/static/cards/${editionId}/${card.edid}.png" alt="${card.name}">
+                <h2>${card.name}</h2>
+            `;
+
+            resultsContainer.appendChild(cardElement);
+        });
+    }
+
+    // Aquí deberías tener el código para obtener las cartas y luego llamas a renderCards
+    // por ejemplo, después de obtener la lista de cartas desde tu API
+    fetch(`${apiBaseUrl}${selectedEdition}`)
+        .then(response => response.json())
+        .then(data => {
+            const cards = data.cards; // Suponiendo que el JSON tiene una propiedad 'cards'
+            renderCards(cards, selectedEdition);
+        })
+        .catch(error => console.error('Error al cargar las cartas:', error));
+});

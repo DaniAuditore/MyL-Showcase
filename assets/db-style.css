@@ -6,28 +6,30 @@
     --quinary-color: #D6D6D6;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--secondary-color);
     color: var(--tertiary-color);
     margin: 0;
     padding: 0;
-    display: flex;
-    height: 100vh;
 }
 
 header {
-    width: 100%;
-    margin: 0;
-    padding: 10px 15px;
-    background-color: var(--secondary-color);
+    margin: 2% 15%;
+    display: flex;
+    align-items: center;
+    width: 70%;
 }
 
 .search-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    flex-grow: 1;
 }
 
 .search-bar {
@@ -37,7 +39,6 @@ header {
     border: 2px solid var(--tertiary-color);
     flex-grow: 1;
     margin-right: 10px;
-    background-color: var(--secondary-color);
 }
 
 #search-input {
@@ -47,8 +48,21 @@ header {
     font-size: 16px;
     outline: none;
     flex: 1;
-    padding: 18px;
+    padding: 18px; /* Ajusta el padding para coincidir con el alto deseado */
     border-radius: 15px;
+}
+
+.small_icon {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.small_icon img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(63%) sepia(10%) saturate(100%) hue-rotate(0deg) brightness(93%) contrast(85%);
 }
 
 #filter-button {
@@ -60,6 +74,10 @@ header {
     color: var(--tertiary-color);
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
+    height: 56px; /* Ajusta este valor para que coincida con el alto de la barra de búsqueda */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #filter-button:hover {
@@ -68,30 +86,19 @@ header {
     border-color: var(--quaternary-color);
 }
 
-.container {
-    display: flex;
-    flex: 1;
-    width: 100%;
-}
-
-.card-section {
-    width: 50%;
-    background-color: var(--secondary-color);
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.card-container {
+.card-grid {
+    margin: 20px 15%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
+    padding: 20px;
 }
 
 .card {
     background-color: #3a3a3a;
-    border-radius: 15px;
+    border-radius: 15px; /* Ajustado a 15px para mantener la estética */
     overflow: hidden;
+    position: relative;
     transition: transform 0.2s;
 }
 
@@ -104,25 +111,7 @@ header {
     transform: scale(1.05);
 }
 
-.deck-info {
-    width: 25%;
-    background-color: var(--tertiary-color);
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.deck-info h3 {
-    margin-top: 0;
-}
-
-.deck-info ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.filter-sidebar {
+#filter-sidebar {
     position: fixed;
     top: 0;
     right: 0;
@@ -137,14 +126,14 @@ header {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    border-radius: 15px;
+    border-radius: 15px; /* Redondea las esquinas del sidebar */
 }
 
-.filter-sidebar.show {
+#filter-sidebar.show {
     transform: translateX(0);
 }
 
-.close-btn {
+#filter-sidebar .close-btn {
     font-size: 24px;
     cursor: pointer;
     color: var(--tertiary-color);
@@ -152,30 +141,30 @@ header {
     text-align: right;
 }
 
-h2 {
+#filter-sidebar h2 {
     padding: 20px;
     margin: 0;
     border-bottom: 2px solid var(--tertiary-color);
-    border-radius: 15px;
+    border-radius: 15px; /* Redondea las esquinas del título del sidebar */
 }
 
-.filter-section {
+#filter-sidebar .filter-section {
     padding: 20px;
     margin: 0;
     display: flex;
     flex-direction: column;
 }
 
-.filter-section label {
+#filter-sidebar .filter-section label {
     margin-bottom: 5px;
 }
 
-.filter-section select,
-.filter-section input {
+#filter-sidebar .filter-section select,
+#filter-sidebar .filter-section input {
     margin-bottom: 10px;
     font-size: 16px;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 15px; /* Redondea las esquinas de los inputs y selects */
     border: 2px solid var(--tertiary-color);
     background-color: var(--secondary-color);
     color: var(--tertiary-color);
@@ -183,8 +172,8 @@ h2 {
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-.filter-section select:focus,
-.filter-section input:focus {
+#filter-sidebar .filter-section select:focus,
+#filter-sidebar .filter-section input:focus {
     background-color: var(--tertiary-color);
     border-color: var(--quaternary-color);
     color: var(--secondary-color);
@@ -195,7 +184,7 @@ h2 {
     background-color: var(--tertiary-color);
     color: var(--secondary-color);
     border: 2px solid var(--quaternary-color);
-    border-radius: 15px;
+    border-radius: 15px; /* Redondea las esquinas de los botones */
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
@@ -206,3 +195,72 @@ h2 {
     color: var(--secondary-color);
 }
 
+#filter-sidebar .filter-section button {
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--quaternary-color);
+    width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
+    height: 56px; /* Ajusta este valor para que coincida con el alto de la barra de búsqueda */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px; /* Redondea las esquinas de los botones en el sidebar */
+}
+
+#filter-sidebar .filter-section button:hover {
+    background-color: var(--quaternary-color);
+    color: var(--secondary-color);
+}
+
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sección de cartas */
+.cards-section {
+    width: 60%;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f4f4f4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de la baraja */
+.deck-section {
+    margin-left: 60%;
+    width: 40%;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Estilo de las cartas */
+#results {
+    margin-right: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Estilo de las cartas individuales */
+.card {
+    width: calc(50% - 10px);
+    box-sizing: border-box;
+}
+
+/* Asegúrate de que la imagen de las cartas tenga un tamaño adecuado */
+.card img {
+    width: 100%;
+    height: auto;
+}

@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- Enter 'npm i vue-router@next' on terminal to import router -->
+    <!-- Enter 'npm install @vue/cli-service' on terminal if can't compile -->
     <router-view />
   </div>
 </template>

@@ -12,6 +12,9 @@ export default {
     HelloWorld
   }
 }
+
+//re organizar cosas dentro de carpetas
+
 </script>
 
 <style>

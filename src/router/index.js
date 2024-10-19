@@ -10,6 +10,10 @@ const links = [
     name: "About",     
     component: () => import("../pages/about-page.vue")      alt way to import
 }*/
+{   path: "/inventory",
+    name: "Inventory",     
+    component: () => import("../pages/inventory-page.vue")
+}
 ]
 
 const router = createRouter({   

@@ -14,7 +14,8 @@
         </header>
 
         <main class="decks">
-            <deckView/>
+            <!-- <deckView class="deck" @click="expand(this.id)"/> -->
+            <deckView class="deck"/>
         </main>
     </div>
 </div>
@@ -25,6 +26,12 @@ import sideBar from '../components/SideBar.vue';
 import createButton from '../components/create-button.vue';
 // import filterButton from '../components/filter-button.vue';
 import deckView from '../components/deck-view.vue';
+
+
+// var deck_expan = document.querySelectorAll('.deck');
+// const expand = (id) => {
+//     deck_expan[id].classList.toggle('deck-expanded');
+// }
 </script>
 
 <style scoped>

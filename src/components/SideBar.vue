@@ -59,7 +59,7 @@ export default {
     .sidebar {
         z-index: 10;
         display: block;
-        width: 123px;
+        width: 130px;
         height: calc(100%);
         min-height: 400px;
         background-color: var(--primary-background-color);

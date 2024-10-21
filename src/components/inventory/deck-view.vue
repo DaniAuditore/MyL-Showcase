@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import MylCard from '../MylCard.vue';
+import MylCard from '../myl-card.vue';
 import menuButton from '../menu-button.vue';
 
 export default {

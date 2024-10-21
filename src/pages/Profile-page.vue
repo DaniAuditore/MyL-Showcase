@@ -9,8 +9,8 @@
 </template>
   
 <script setup>
-  import SideBar from '@/components/SideBar.vue';
-  import profileLayout from './profile-layout.vue';
+  import SideBar from '../components/Side-bar.vue';
+  import profileLayout from '../components/profile/profile-layout.vue';
   
 </script>
   

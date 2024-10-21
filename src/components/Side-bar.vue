@@ -35,6 +35,7 @@
 
 <script>
 export default {
+    name: 'SideBar',  // Renombrar aquí si es necesario
     computed: {
         isActive() {
             return (route) => this.$route.path === route;

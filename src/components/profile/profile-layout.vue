@@ -1,6 +1,6 @@
 <template>
   <div class="user-info">
-    <profilePhoto :profileImage="userImage" />
+    <profilePhoto :userId="userId" />
     <div class="username-section">
       <div class="username">{{ userName }}</div>
       <div class="profile-buttons">
@@ -35,26 +35,29 @@ import profilePhoto from "@/components/profile-photo.vue";
 import ProfileButton from './Profile-button.vue';
 import profileActionButton from "./profile-action-button.vue";
 
-// Using Vuex to access current user data
+// Accede al store de Vuex
 const store = useStore();
 const userName = computed(() => store.getters.currentUser.name);
 const userImage = computed(() => store.getters.currentUser.profileImage);
-const userId = computed(() => store.getters.currentUser.id);
+const userId = computed(() => store.getters.currentUser.id || "2");
 
+// Cargar la información del usuario desde el archivo test_users.json
 onMounted(async () => {
   try {
     const response = await axios.get(`http://localhost:3000/users/${userId.value}`);
+    
     store.dispatch('setUser', {
       id: response.data.id,
       name: response.data.name,
-      profileImage: response.data.profileImage
+      profileImage: response.data.profileImage,
+      role: response.data.role // Añadir el rol
     });
   } catch (error) {
     console.error('Error al cargar el perfil del usuario:', error);
   }
 });
 
-// Function to update the profile in the API
+// Función para actualizar el perfil (en la API) al confirmar cambios en la ventana de edición
 async function updateProfile({ newName, newImage }) {
   try {
     const updatedUser = {
@@ -62,8 +65,10 @@ async function updateProfile({ newName, newImage }) {
       profileImage: newImage || userImage.value
     };
 
+    // Actualizar el archivo test_users.json a través de una petición PUT
     await axios.put(`http://localhost:3000/users/${userId.value}`, updatedUser);
 
+    // Actualizar los datos en Vuex
     store.dispatch('setUser', {
       id: userId.value,
       name: updatedUser.name,
@@ -74,6 +79,8 @@ async function updateProfile({ newName, newImage }) {
   }
 }
 </script>
+
+
 
 <style scoped>
 .user-info {

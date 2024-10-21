@@ -47,7 +47,7 @@ export default {
     display: inline-block; /*en caso de que muestre mas de una*/
 }
 
-.car-img{
+.card-img{
     width: 100%;
     height: auto;
     display: block;

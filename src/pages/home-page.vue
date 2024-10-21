@@ -10,7 +10,7 @@
 
 <script setup>
 import cardExample from '../components/card-example.vue';
-import SideBar from '../components/SideBar.vue';
+import SideBar from '../components/side.bar.vue';
 </script>
 
 <style scoped>

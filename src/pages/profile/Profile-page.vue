@@ -9,7 +9,7 @@
 </template>
   
 <script setup>
-  import SideBar from '@/components/SideBar.vue';
+  import SideBar from '@/components/side.bar.vue';
   import profileLayout from './profile-layout.vue';
   
 </script>

@@ -6,7 +6,7 @@
                     <img src="../assets/sidebar-icons/library-icon.png" alt="Libreria">
                     <h1>Libreria</h1>
                 </router-link></li>
-                <li><router-link to="/inventory" class="sidebar-button" :class="{ active: isActive('/inventario') }">
+                <li><router-link to="/inventory" class="sidebar-button" :class="{ active: isActive('/inventory') }">
                     <img src="../assets/sidebar-icons/inventory-icon.png" alt="">
                     <h1>Inventario</h1>
                 </router-link></li>

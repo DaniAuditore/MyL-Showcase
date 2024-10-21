@@ -37,11 +37,13 @@ export default {
       newName: this.currentName || '',   // Inicializa newName con el valor de currentName
       previewImage: '',                  // Previsualización de la imagen
       selectedFile: null                 // Archivo seleccionado
+
     };
   },
   computed: {
     currentUser() {
-      return this.$store.getters.currentUser;  // Accede al usuario actual desde Vuex
+      return this.$store.getters.currentUser;  //Access the current user from Vuex
+
     }
   },
   methods: {
@@ -50,6 +52,7 @@ export default {
       if (file && file.type.match('image.*')) {
         this.selectedFile = file;
         this.previewImage = URL.createObjectURL(file);  // Previsualizar la imagen seleccionada
+
       } else {
         this.previewImage = null;
         console.error("El archivo seleccionado no es válido o no es una imagen.");
@@ -70,11 +73,11 @@ export default {
               'Content-Type': 'multipart/form-data'
             }
           });
+
         } catch (error) {
           console.error('Error al cargar la imagen:', error);
         }
       }
-
       try {
         const updatedUser = {
           name: updatedName,  // Asegurarse de usar el nombre correcto
@@ -105,7 +108,6 @@ export default {
   }
 };
 </script>
-
 
 
 <style scoped>  

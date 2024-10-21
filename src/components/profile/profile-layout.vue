@@ -51,13 +51,15 @@ onMounted(async () => {
       name: response.data.name,
       profileImage: response.data.profileImage,
       role: response.data.role // Añadir el rol
+
     });
   } catch (error) {
     console.error('Error al cargar el perfil del usuario:', error);
   }
 });
 
-// Función para actualizar el perfil (en la API) al confirmar cambios en la ventana de edición
+
+// Function to update the profile in the API
 async function updateProfile({ newName, newImage }) {
   try {
     const updatedUser = {
@@ -68,7 +70,6 @@ async function updateProfile({ newName, newImage }) {
     // Actualizar el archivo test_users.json a través de una petición PUT
     await axios.put(`http://localhost:3000/users/${userId.value}`, updatedUser);
 
-    // Actualizar los datos en Vuex
     store.dispatch('setUser', {
       id: userId.value,
       name: updatedUser.name,
@@ -79,8 +80,6 @@ async function updateProfile({ newName, newImage }) {
   }
 }
 </script>
-
-
 
 <style scoped>
 .user-info {

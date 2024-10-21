@@ -1,19 +1,22 @@
 {
   "users": [
     {
-      "name": "tomas shelby vue",
-      "profileImage": null,
-      "id": "1"
+      "id": "1",
+      "name": "Armando Paredes",
+      "profileImage": "../assets/profile-icons/user-1.png",
+      "role": "user"
     },
     {
       "id": "2",
-      "name": "Maria Lopez",
-      "profileImage": "blob:http://localhost:8080/3a3480ab-daa6-4dfe-87bd-1481def3eeaf"
+      "name": "xd",
+      "profileImage": "../assets/profile-icons/user-2.png",
+      "role": "judge"
     },
     {
       "id": "3",
       "name": "Carlos Diaz",
-      "profileImage": "./assets/profile-icons/test_profile_photo.png"
+      "profileImage": null,
+      "role": "admin"
     }
   ]
 }

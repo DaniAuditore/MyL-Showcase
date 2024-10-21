@@ -14,24 +14,44 @@
         </header>
 
         <main class="decks">
-            <!-- <deckView class="deck" @click="expand(this.id)"/> -->
-            <deckView class="deck"/>
+             <div v-for="(deck, index) in decks" :key="deck.id">
+                <deckView class="deck"
+                    :deck="deck" 
+                    @click="expand(index)"
+                    :class="{ deckExpanded: expandIndex === index }"
+                />
+             </div>
         </main>
     </div>
 </div>
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
+import axios from 'axios';
+
 import sideBar from '../components/SideBar.vue';
 import createButton from '../components/create-button.vue';
 // import filterButton from '../components/filter-button.vue';
-import deckView from '../components/deck-view.vue';
+import deckView from '../components/inventory/deck-view.vue';
+
+var expandIndex = ref(null);
+
+const expand = (id) => {
+    expandIndex.value = expandIndex.value === id ? null : id;
+}
 
 
-// var deck_expan = document.querySelectorAll('.deck');
-// const expand = (id) => {
-//     deck_expan[id].classList.toggle('deck-expanded');
-// }
+const decks = ref([]);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/decks');
+        decks.value = response.data;
+    } catch (error) {
+        console.error('Error al cargar los mazos:', error);
+    }
+});
 </script>
 
 <style scoped>
@@ -50,21 +70,23 @@ import deckView from '../components/deck-view.vue';
     height: 99%;
     width: calc(100% - 130px);
     position: absolute;
-    left: 130px;
+    /* left: 130px; */
+    right: 0;
     
     z-index: -1;
     text-align: center;
 }
 
 header {
-    width: 1103px;
+    width: 90%;
+    max-width: 1103px;
     height: fit-content;
     position: relative;
     top: 22px;
-    left: calc(50% - 551px);
+    left: 50%;
+    transform: translateX(-50%);
 
     text-align: left;
-    border: 1px solid #f0c;
 }
 
 .decks {
@@ -72,7 +94,9 @@ header {
     height: 83%;
     position: absolute;
     top: 160px;
-    
+    right: inherit;
+
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 </style>

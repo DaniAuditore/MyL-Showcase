@@ -8,16 +8,20 @@
 button {
     width: 147px;
     height: 85px;
-    border-radius: 30px;
-    border: 5px solid var(--primary-border-color);
+
     align-content: center;
     text-align: center;
-    color: var(--primary-border-color);
     font-size: 300%;
-    font-weight: 900;
+    font-weight: 100;
+
+    cursor: pointer;
+    
+    color: var(--primary-border-color);
+    background-color: var(--primary-background-color);
+    border-radius: 30px;
+    border: 2px solid var(--primary-border-color);
 }
 button:hover {
-    background-color: var(--secondary-border-color);
     color: var(--primary-text-color);
 }
 button:active {

@@ -30,7 +30,7 @@
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
 
-import sideBar from '../components/SideBar.vue';
+import sideBar from '../components/Side-bar.vue';
 import createButton from '../components/create-button.vue';
 import filterButton from '../components/filter-button.vue';
 import deckView from '../components/inventory/deck-view.vue';

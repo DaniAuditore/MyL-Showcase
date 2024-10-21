@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import MylCard from './MylCard.vue';
+import MylCard from './myl-card.vue';
 
 const cards = [
   {ide: '009' },{ide: '010'} //Arreglo de cartas

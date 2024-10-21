@@ -104,7 +104,6 @@
       display: flex;
       justify-content: center;
       gap: 2rem;
-      scale: 0.35;
   }
   
   .vertical-images {
@@ -112,7 +111,6 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      scale: 0.35;
   }
   
   </style>

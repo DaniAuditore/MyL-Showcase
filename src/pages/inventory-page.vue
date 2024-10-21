@@ -14,24 +14,44 @@
         </header>
 
         <main class="decks">
-            <!-- <deckView class="deck" @click="expand(this.id)"/> -->
-            <deckView class="deck"/>
+             <div v-for="(deck, index) in decks" :key="deck.id">
+                <deckView class="deck"
+                    :deck="deck" 
+                    @click="expand(index)"
+                    :class="{ deckExpanded: expandIndex === index }"
+                />
+             </div>
         </main>
     </div>
 </div>
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
+import axios from 'axios';
+
 import sideBar from '../components/SideBar.vue';
 import createButton from '../components/create-button.vue';
 // import filterButton from '../components/filter-button.vue';
-import deckView from '../components/deck-view.vue';
+import deckView from '../components/inventory/deck-view.vue';
+
+var expandIndex = ref(null);
+
+const expand = (id) => {
+    expandIndex.value = expandIndex.value === id ? null : id;
+}
 
 
-// var deck_expan = document.querySelectorAll('.deck');
-// const expand = (id) => {
-//     deck_expan[id].classList.toggle('deck-expanded');
-// }
+const decks = ref([]);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/decks');
+        decks.value = response.data;
+    } catch (error) {
+        console.error('Error al cargar los mazos:', error);
+    }
+});
 </script>
 
 <style scoped>
@@ -74,5 +94,6 @@ header {
     top: 160px;
     
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 </style>

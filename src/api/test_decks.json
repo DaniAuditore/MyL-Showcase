@@ -1,0 +1,58 @@
+{
+    "decks": [
+        {
+            "id": "000",
+            "name": "Deck 1",
+            "cards": [
+                { "ide": "001", "edid": "125", "count":3 },
+                { "ide": "002", "edid": "125", "count":2 },
+                { "ide": "003", "edid": "125", "count":2 }
+            ]
+        },
+        {
+            "id": "001",
+            "name": "Deck 2",
+            "cards": [
+                { "ide": "004", "edid": "125", "count":3 },
+                { "ide": "005", "edid": "125", "count":2 },
+                { "ide": "006", "edid": "125", "count":2 },
+                { "ide": "010", "edid": "125", "count":1 },
+                { "ide": "016", "edid": "125", "count":1 },
+                { "ide": "046", "edid": "125", "count":1 },
+                { "ide": "050", "edid": "125", "count":2 },
+                { "ide": "051", "edid": "125", "count":2 }
+            ]
+        },
+        {
+            "id": "002",
+            "name": "Deck 3",
+            "cards": [
+                { "ide": "004", "edid": "125", "count":3 },
+                { "ide": "007", "edid": "125", "count":2 },
+                { "ide": "008", "edid": "125", "count":2 },
+                { "ide": "009", "edid": "125", "count":1 },
+                { "ide": "017", "edid": "125", "count":1 },
+                { "ide": "018", "edid": "125", "count":1 },
+                { "ide": "019", "edid": "125", "count":2 },
+                { "ide": "020", "edid": "125", "count":2 }
+                
+            ]
+        },
+        {
+            "id": "003",
+            "name": "Deck 4",
+            "cards": [
+                { "ide": "010", "edid": "125", "count":40 }
+            ]
+        },
+        {
+            "id": "004",
+            "name": "Deck 5",
+            "cards": [
+                { "ide": "013", "edid": "125", "count":10 },
+                { "ide": "036", "edid": "125", "count":10 },
+                { "ide": "056", "edid": "125", "count":10 }
+            ]
+        }
+    ]
+}

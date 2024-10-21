@@ -10,7 +10,7 @@
                 <createButton/>
             </router-link>
             
-            <!-- <filterButton/> -->
+            <filterButton/>
         </header>
 
         <main class="decks">
@@ -32,7 +32,7 @@ import axios from 'axios';
 
 import sideBar from '../components/Side-bar.vue';
 import createButton from '../components/create-button.vue';
-// import filterButton from '../components/filter-button.vue';
+import filterButton from '../components/filter-button.vue';
 import deckView from '../components/inventory/deck-view.vue';
 
 var expandIndex = ref(null);
@@ -70,7 +70,6 @@ onMounted(async () => {
     height: 99%;
     width: calc(100% - 130px);
     position: absolute;
-    /* left: 130px; */
     right: 0;
     
     z-index: -1;

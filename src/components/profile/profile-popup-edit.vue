@@ -30,23 +30,20 @@ export default {
     currentName: {
       type: String,
       required: true
-    },
-  },
-  mounted() {
-    // Inicializar los valores de newName y previewImage desde Vuex
-    this.newName = this.currentUser.name;
-    this.previewImage = this.currentUser.profileImage;
+    }
   },
   data() {
     return {
-      newName: '',                      
-      previewImage: '',                 
-      selectedFile: null                
+      newName: this.currentName || '',   // Inicializa newName con el valor de currentName
+      previewImage: '',                  // Previsualización de la imagen
+      selectedFile: null                 // Archivo seleccionado
+
     };
   },
   computed: {
     currentUser() {
       return this.$store.getters.currentUser;  //Access the current user from Vuex
+
     }
   },
   methods: {
@@ -54,47 +51,64 @@ export default {
       const file = event.target.files[0];
       if (file && file.type.match('image.*')) {
         this.selectedFile = file;
-        this.previewImage = URL.createObjectURL(file);  
+        this.previewImage = URL.createObjectURL(file);  // Previsualizar la imagen seleccionada
+
       } else {
         this.previewImage = null;
         console.error("El archivo seleccionado no es válido o no es una imagen.");
       }
     },
     async confirmChanges() {
-      let newImagePath = this.previewImage;
+      // Verifica si hay un nombre nuevo o usa el nombre actual
+      var updatedName = this.newName.trim() !== '' ? this.newName : this.currentUser.name; //desmenusar esta linea de codigo (mas tarde)
 
+      // Subir la nueva imagen de perfil
       if (this.selectedFile) {
         const formData = new FormData();
         formData.append('profileImage', this.selectedFile);
 
         try {
-          const response = await axios.post(`http://localhost:4000/upload/${this.currentUser.id}`, formData, {
+          await axios.post(`http://localhost:4000/upload/${this.currentUser.id}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           });
 
-          newImagePath = response.data.imagePath;  
         } catch (error) {
           console.error('Error al cargar la imagen:', error);
         }
       }
+      try {
+        const updatedUser = {
+          name: updatedName,  // Asegurarse de usar el nombre correcto
+          profileImage: `../assets/profile-icons/user-${this.currentUser.id}.png` || this.previewImage
+        };
 
-      this.$store.dispatch('setUser', {
-        id: this.currentUser.id,
-        name: this.newName || this.currentUser.name,
-        profileImage: newImagePath || this.currentUser.profileImage
-      });
+        await axios.patch(`http://localhost:3000/users/${this.currentUser.id}`, updatedUser);
 
-        this.$emit('confirm');
+        // Actualizar los datos en Vuex
+        this.$store.dispatch('setUser', {
+          id: this.currentUser.id,
+          name: updatedUser.name,
+          profileImage: updatedUser.profileImage
+        });
+      } catch (error) {
+        console.error('Error al actualizar el perfil del usuario en la API:', error);
+      }
+
+      this.$emit('confirm');
     },
     cancelChanges() {
-      this.$emit('cancel');
+      this.$emit('cancel'); 
     }
   },
-  
+  mounted() {
+    this.newName = this.currentUser.name || '';  
+    this.previewImage = this.currentUser.profileImage;
+  }
 };
 </script>
+
 
 <style scoped>  
 .popup-window {

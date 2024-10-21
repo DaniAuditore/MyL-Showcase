@@ -70,21 +70,23 @@ onMounted(async () => {
     height: 99%;
     width: calc(100% - 130px);
     position: absolute;
-    left: 130px;
+    /* left: 130px; */
+    right: 0;
     
     z-index: -1;
     text-align: center;
 }
 
 header {
-    width: 1103px;
+    width: 90%;
+    max-width: 1103px;
     height: fit-content;
     position: relative;
     top: 22px;
-    left: calc(50% - 551px);
+    left: 50%;
+    transform: translateX(-50%);
 
     text-align: left;
-    border: 1px solid #f0c;
 }
 
 .decks {
@@ -92,7 +94,8 @@ header {
     height: 83%;
     position: absolute;
     top: 160px;
-    
+    right: inherit;
+
     overflow-y: scroll;
     scrollbar-width: none;
 }

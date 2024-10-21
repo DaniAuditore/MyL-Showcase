@@ -17,7 +17,7 @@
                         v-if="index < 4"
                         :class="{ card_small: isRepeated(index, card.count) }" 
                     />
-                    <label class="card_count" for="card" v-if="index === 1">{{ card.count }}</label>
+                    <label class="group_card_count" for="card" v-if="index === 1 && card.count > 3">{{ card.count }}</label>
                 </div>
             </div>
         </figure>
@@ -66,10 +66,12 @@ export default {
 
 <style scoped>
 .deck {
-    width: 1103px;
+    width: 90%;
+    max-width: 1103px;
     height: 100px;
     position: relative;
-    left: calc(50% - 551px);
+    left: 50%;
+    transform: translateX(-50%);
 
     margin-bottom: 20px;
     overflow: hidden;
@@ -131,7 +133,7 @@ export default {
     height: 30px;
 }
 
-.card_count {
+.group_card_count {
     position: absolute;
     top: 0;
     left: 50%;
@@ -139,6 +141,6 @@ export default {
     transform: translateX(-50%);
     
     color: var(--primary-background-color);
-    background-image: radial-gradient(circle, rgb(163 163 163 / 50%) 39%, rgb(255 255 255 / 0%) 96%);
+    background-image: radial-gradient(circle, rgb(163 163 163 / 80%) 39%, rgb(255 255 255 / 0%) 96%);
 }
 </style>

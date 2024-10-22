@@ -103,6 +103,8 @@
 
   main{
     overflow-y: scroll;
+    min-width: 100%;
+    justify-content: center;
   }
   
   .content {
@@ -126,9 +128,9 @@
       display: inline-flex;
       flex-direction: row;
       flex-wrap: unwrap;
-      max-height: 362px;
-      max-width: 80%;
-      justify-content: center;
+      max-height: 357px;
+      max-width: 790px;
+      justify-content: flex-start;
       gap: 1rem;
       overflow-x: scroll, hidden;
       overflow-y: hidden;

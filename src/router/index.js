@@ -19,6 +19,10 @@ const links = [
 {   path: "/inventory",
     name: "Inventory",     
     component: () => import("../pages/inventory-page.vue")
+},
+{   path: "/rules",
+    name: "rules",     
+    component: () => import("../pages/rules-page.vue")
 }
 ]
 

@@ -10,7 +10,7 @@
                     <img src="../assets/sidebar-icons/inventory-icon.png" alt="">
                     <h1>Inventario</h1>
                 </router-link></li>
-                <li><router-link to="/forum" class="sidebar-button" :class="{ active: isActive('/foro') }">
+                <li><router-link to="/forum" class="sidebar-button" :class="{ active: isActive('/forum') }">
                     <img src="../assets/sidebar-icons/forum-icon.png" alt="">
                     <h1>Foro</h1>
                 </router-link></li>

@@ -1,6 +1,6 @@
 <template>
   <div class="user-info">
-    <profilePhoto :userId="userId" />
+    <profilePhoto :userId="userId" class="profilePhoto"/>
     <div class="username-section">
       <div class="username">{{ userName }}</div>
       <div class="profile-buttons">
@@ -103,6 +103,11 @@ async function updateProfile({ newName, newImage }) {
   gap: 30px;
   max-width: 1000px;
   width: 100%;
+}
+
+.profilePhoto{
+  width: 300px;
+  height: 300px;
 }
 
 .username {

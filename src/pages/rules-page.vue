@@ -68,66 +68,69 @@
           { ide: '034', edid: '106' },
         ],
         erratum: [
-        {
-    ide: '176',
-    edid: '125',
-    description: `<h4>Donde dice:<br></h4>
-    Sólo puedes jugar un Jujitsu por turno. En tu turno, 
-    si no controlas más Oros que tu oponente, cuesta un Oro menos y Destiérralo. 
-    Elige una carta que no sea Oro. Paga tantos Oros como coste tenga esa carta menos uno y Barájala. 
-    Luego, Roba dos cartas.<br>
+      {
+        ide: '176',
+        edid: '125',
+        description: `<h4>Donde dice:<br></h4>
+        Sólo puedes jugar un Jujitsu por turno. En tu turno, 
+        si no controlas más Oros que tu oponente, cuesta un Oro menos y Destiérralo. 
+        Elige una carta que no sea Oro. Paga tantos Oros como coste tenga esa carta menos uno y Barájala. 
+        Luego, Roba dos cartas.<br>
     
-    <h4>Debiese decir:<br></h4>
-    Sólo puedes jugar un Jujitsu por turno. En tu turno,
-    si no controlas más Oros que tu oponente, cuesta un Oro menos y Destiérralo. 
-    Elige una carta que no sea Oro. Paga tantos Oros como coste tenga esa carta menos <strong>uno. 
-    Luego, Barájala y</strong> Roba dos cartas.`
-  },
-          { ide: '297', 
-            edid: '106', 
-            description: `<h4>Donde dice:<br></h4>
-    Cuando sea usado para pagar el coste de un Aliado o Tótem,
-puedes Barajar una carta de tu mano para aplicar un efecto
-según su coste: - Coste 1 o 2: Roba cartas igual a su coste. -
-Coste 3 o más: Prevén el efecto del próximo Talismán o
-habilidad que utilice tu oponente.<br>
-    
-    <h4>Debiese decir:<br></h4>
-    Cuando sea usado para pagar el coste de un Aliado o Tótem,
-puedes Barajar una carta de tu mano para aplicar un efecto
-según su coste: - Coste 1 o 2: Roba cartas igual a su coste. -
-Coste 3 o más: Prevén el efecto del próximo Talismán o
-habilidad que utilice tu oponente <strong>este turno.</strong>`
+        <h4>Debiese decir:<br></h4>
+        Sólo puedes jugar un Jujitsu por turno. En tu turno,
+        si no controlas más Oros que tu oponente, cuesta un Oro menos y Destiérralo. 
+        Elige una carta que no sea Oro. Paga tantos Oros como coste tenga esa carta menos <strong>uno. 
+        Luego, Barájala y</strong> Roba dos cartas.`
+      },
+      {
+        ide: '297', 
+        edid: '106', 
+        description: `<h4>Donde dice:<br></h4>
+        Cuando sea usado para pagar el coste de un Aliado o Tótem,
+        puedes Barajar una carta de tu mano para aplicar un efecto
+        según su coste: - Coste 1 o 2: Roba cartas igual a su coste. -
+        Coste 3 o más: Prevén el efecto del próximo Talismán o
+        habilidad que utilice tu oponente.<br>
 
-          },
-          { ide: '007', 
-            edid: '91', 
-            description: `<h4>Donde dice:<br></h4>
-    Furia. Cuando haga daño, puedes Barajarlo para subir un
-Aliado de tu Cementerio a tu mano. Puedes Destruirlo para
-que cada jugador Bote dos cartas y que un Aliado que
-controles gane 2 de Fuerza por el turno.<br>
-    
-    <h4>Debiese decir:<br></h4>
-    Furia. Cuando haga daño, puedes Barajarlo para subir un
-Aliado de tu Cementerio a tu mano. Puedes <strong>Desterrarlo</strong> para
-que cada jugador Bote dos cartas y que un Aliado que
-controles gane 2 de Fuerza por el turno.`  
+        <h4>Debiese decir:<br></h4>
+        Cuando sea usado para pagar el coste de un Aliado o Tótem,
+        puedes Barajar una carta de tu mano para aplicar un efecto
+        según su coste: - Coste 1 o 2: Roba cartas igual a su coste. -
+        Coste 3 o más: Prevén el efecto del próximo Talismán o
+        habilidad que utilice tu oponente <strong>este turno.</strong>`
 
-          },
-          { ide: '043', 
-            edid: '125', 
-            description: `<h4>Donde dice:<br></h4>
-    Imbloqueable. Cuando este u otro Aliado entre en juego bajo
-tu control, hasta dos veces por turno, puedes Desterrar la
-primera carta de tu Castillo para jugar un Arma de tu mano o
-Cementerio por un Oro menos y portarla a un Aliado.<br>
+      },
+      { 
+        ide: '007', 
+        edid: '91', 
+        description: `<h4>Donde dice:<br></h4>
+        Furia. Cuando haga daño, puedes Barajarlo para subir un
+        Aliado de tu Cementerio a tu mano. Puedes Destruirlo para
+        que cada jugador Bote dos cartas y que un Aliado que
+        controles gane 2 de Fuerza por el turno.<br>
     
-    <h4>Debiese decir:<br></h4>
-    Imbloqueable. Cuando este u otro Aliado entre en juego bajo
-tu control, hasta dos veces por turno, puedes Desterrar la
-primera carta de tu Castillo para jugar un Arma de tu mano o
-Cementerio por un Oro <strong>menos.</strong>`  
+        <h4>Debiese decir:<br></h4>
+        Furia. Cuando haga daño, puedes Barajarlo para subir un
+        Aliado de tu Cementerio a tu mano. Puedes <strong>Desterrarlo</strong> para
+        que cada jugador Bote dos cartas y que un Aliado que
+        controles gane 2 de Fuerza por el turno.`  
+
+      },
+      {
+        ide: '043', 
+        edid: '125', 
+        description: `<h4>Donde dice:<br></h4>
+        Imbloqueable. Cuando este u otro Aliado entre en juego bajo
+        tu control, hasta dos veces por turno, puedes Desterrar la
+        primera carta de tu Castillo para jugar un Arma de tu mano o
+        Cementerio por un Oro menos y portarla a un Aliado.<br>
+    
+        <h4>Debiese decir:<br></h4>
+        Imbloqueable. Cuando este u otro Aliado entre en juego bajo
+        tu control, hasta dos veces por turno, puedes Desterrar la
+        primera carta de tu Castillo para jugar un Arma de tu mano o
+        Cementerio por un Oro <strong>menos.</strong>`  
 
           },
         ],

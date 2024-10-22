@@ -45,22 +45,31 @@ export default {
       return this.$store.getters.currentUser;  //Access the current user from Vuex
 
     }
-  },
-  methods: {
-    onFileChange(event) {
-      const file = event.target.files[0];
-      if (file && file.type.match('image.*')) {
-        this.selectedFile = file;
-        this.previewImage = URL.createObjectURL(file);  // Previsualizar la imagen seleccionada
-
-      } else {
-        this.previewImage = null;
-        console.error("El archivo seleccionado no es válido o no es una imagen.");
-      }
     },
-    async confirmChanges() {
+    mounted() {
+      this.newName = this.currentUser?.name || '';  
+      this.previewImage = this.currentUser?.profileImage || this.defaultImage;
+    },
+    methods: {
+      onFileChange(event) {
+        const file = event.target.files[0];
+        if (file && file.type.match('image.*')) {
+          this.selectedFile = file;
+          this.previewImage = URL.createObjectURL(file);  // Previsualizar la imagen seleccionada
+
+        } else {
+          this.previewImage = null;
+          console.error("El archivo seleccionado no es válido o no es una imagen.");
+        }
+      },
+      async confirmChanges() {
+      if (!this.currentUser) {
+      console.error("currentUser is undefined.");
+      return;
+      }
+
       // Verifica si hay un nombre nuevo o usa el nombre actual
-      var updatedName = this.newName.trim() !== '' ? this.newName : this.currentUser.name; //desmenusar esta linea de codigo (mas tarde)
+      const updatedName = this.newName.trim() !== '' ? this.newName : this.currentUser.name;
 
       // Subir la nueva imagen de perfil
       if (this.selectedFile) {
@@ -73,14 +82,15 @@ export default {
               'Content-Type': 'multipart/form-data'
             }
           });
-
         } catch (error) {
           console.error('Error al cargar la imagen:', error);
         }
       }
+
+      // Actualizar el archivo JSON "test_users.json" con el nuevo nombre y ruta de imagen
       try {
         const updatedUser = {
-          name: updatedName,  // Asegurarse de usar el nombre correcto
+          name: updatedName,
           profileImage: `../assets/profile-icons/user-${this.currentUser.id}.png` || this.previewImage
         };
 
@@ -97,14 +107,18 @@ export default {
       }
 
       this.$emit('confirm');
-    },
+    }, 
     cancelChanges() {
       this.$emit('cancel'); 
-    }
-  },
-  mounted() {
-    this.newName = this.currentUser.name || '';  
-    this.previewImage = this.currentUser.profileImage;
+    },
+  watch: {
+    currentUser(newVal) {
+      if (newVal) {
+        this.newName = newVal.name;
+        this.previewImage = newVal.profileImage;
+      }
+  }
+}
   }
 };
 </script>

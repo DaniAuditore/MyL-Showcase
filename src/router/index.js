@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router" 
 import HomePage from "../pages/home-page.vue"
 import ProfilePage from "../pages/Profile-page.vue"
+import GlossaryPage from "../pages/glossary-page.vue"
 
 const links = [
 {   path: "/",     
@@ -23,7 +24,12 @@ const links = [
 {   path: "/forum",
     name: "Forum",
     component: () => import("../pages/forum-page.vue")
-}
+},
+{
+    path: "/glossary",
+    name: "glossary",
+    component: GlossaryPage,
+  }
 ]
 
 const router = createRouter({   

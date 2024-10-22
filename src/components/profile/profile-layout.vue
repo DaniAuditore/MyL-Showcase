@@ -3,7 +3,7 @@
     <profilePhoto :userId="userId" class="profilePhoto"/>
     <div class="username-section">
       <div class="username">{{ userName }}</div>
-      <div class="profile-buttons">
+      <div class="profile-buttons" v-if="isCurrentUser || isAdmin">
         <profileActionButton
           text="Editar Perfil"
           :currentName="userName"
@@ -15,6 +15,7 @@
           text="Borrar Cuenta"
           title="Confirmar Borrado"
           description="¿Está seguro de que desea borrar su cuenta?"
+          v-if="isAdmin"
         />
       </div>
     </div>
@@ -27,39 +28,49 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import axios from 'axios';
+import { useRoute } from 'vue-router';
 
 import profilePhoto from "@/components/profile-photo.vue";
 import ProfileButton from './Profile-button.vue';
 import profileActionButton from "./profile-action-button.vue";
 
-// Accede al store de Vuex
+// Accede al store de Vuex y ruta actual
 const store = useStore();
-const userName = computed(() => store.getters.currentUser.name);
-const userImage = computed(() => store.getters.currentUser.profileImage);
-const userId = computed(() => store.getters.currentUser.id || "2");
+const route = useRoute();
+
+// Recibe el userId desde la propiedad
+const userId = ref(route.params.userId);
+
+// Variables reactivas para los datos del usuario
+const userName = ref('');
+const userImage = ref('');
+const userRole = ref('');
+
+// Variables para permisos
+const isCurrentUser = ref(false);
+const isAdmin = ref(false);
 
 // Cargar la información del usuario desde el archivo test_users.json
 onMounted(async () => {
   try {
     const response = await axios.get(`http://localhost:3000/users/${userId.value}`);
-    
-    store.dispatch('setUser', {
-      id: response.data.id,
-      name: response.data.name,
-      profileImage: response.data.profileImage,
-      role: response.data.role // Añadir el rol
 
-    });
+    userName.value = response.data.name;
+    userImage.value = response.data.profileImage;
+    userRole.value = response.data.role;
+
+    // Verificar si es el usuario actual o un administrador
+    isCurrentUser.value = store.getters.currentUser.id === userId.value;
+    isAdmin.value = store.getters.currentUser.role === 'admin';
   } catch (error) {
     console.error('Error al cargar el perfil del usuario:', error);
   }
 });
 
-
-// Function to update the profile in the API
+// Función para actualizar el perfil en la API
 async function updateProfile({ newName, newImage }) {
   try {
     const updatedUser = {
@@ -67,14 +78,21 @@ async function updateProfile({ newName, newImage }) {
       profileImage: newImage || userImage.value
     };
 
-    // Actualizar el archivo test_users.json a través de una petición PUT
+    // Actualizar el archivo test_users.json
     await axios.put(`http://localhost:3000/users/${userId.value}`, updatedUser);
 
-    store.dispatch('setUser', {
-      id: userId.value,
-      name: updatedUser.name,
-      profileImage: updatedUser.profileImage
-    });
+    // Actualizar los datos locales
+    userName.value = updatedUser.name;
+    userImage.value = updatedUser.profileImage;
+
+    // Si es el usuario actual, actualizar en Vuex también
+    if (isCurrentUser.value) {
+      store.dispatch('setUser', {
+        id: userId.value,
+        name: updatedUser.name,
+        profileImage: updatedUser.profileImage
+      });
+    }
   } catch (error) {
     console.error('Error al actualizar el perfil del usuario:', error);
   }
@@ -83,7 +101,6 @@ async function updateProfile({ newName, newImage }) {
 
 <style scoped>
 .user-info {
- /* border: 3px solid var(--test-border-color);*/
   display: flex;
   width: 80%;
   max-width: 1800px;
@@ -93,7 +110,6 @@ async function updateProfile({ newName, newImage }) {
 }
 
 .username-section {
-  /*border: 3px solid var(--test-border-color);*/
   position: relative;
   display: flex;
   flex-direction: column;
@@ -105,13 +121,12 @@ async function updateProfile({ newName, newImage }) {
   width: 100%;
 }
 
-.profilePhoto{
+.profilePhoto {
   width: 300px;
   height: 300px;
 }
 
 .username {
-  /*background-color: var(--secondary-background-color);*/
   color: var(--secondary-text-color);
   font-size: 40px;
   border: 4px solid var(--primary-border-color);
@@ -122,7 +137,6 @@ async function updateProfile({ newName, newImage }) {
 }
 
 .profile-buttons {
-  /*border: 3px solid var(--test-border-color);*/
   display: flex;
   justify-content: space-around;
   width: 100%;

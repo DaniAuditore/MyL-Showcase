@@ -12,8 +12,8 @@ const links = [
     name: "About",     
     component: () => import("../pages/about-page.vue")      alt way to import
 }*/
-{   
-    path: "/profile",
+{
+    path: "/profile/:userId",     // Include the userId parameter in the route
     name: "Profile",
     component: ProfilePage,
 },

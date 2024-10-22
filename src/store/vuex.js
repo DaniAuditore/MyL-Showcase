@@ -4,7 +4,7 @@ const store = createStore({
   state() {
     return {
       currentUser: {
-        id: '',
+        id: ''||"1",
         name: "user name",
         profileImage: ''
       }

@@ -26,6 +26,12 @@ const links = [
     component: () => import("../pages/forum-page.vue")
 },
 {
+    path: "/rules",
+    name: "rules",
+    component: () => import("../pages/rules-page.vue")
+},
+
+{
     path: "/glossary",
     name: "glossary",
     component: GlossaryPage,

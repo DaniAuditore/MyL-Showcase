@@ -45,7 +45,7 @@
   
   .card{
       display: inline-block; /*en caso de que muestre mas de una*/
-      max-width: 75%;
+      max-width: 100%;
   }
   
   .card img{

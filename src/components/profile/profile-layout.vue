@@ -4,22 +4,38 @@
     <div class="username-section">
       <div class="username">{{ userName }}</div>
       <div class="profile-buttons" v-if="isCurrentUser || isAdmin">
+
+        <!-- Botón para editar perfil (solo si es el perfil del usuario actual) -->
         <profileActionButton
           text="Editar Perfil"
           :currentName="userName"
           :currentImage="userImage"
           :currentId="userId"
-          @confirm="updateProfile"
+          v-if="isCurrentUser"
+          @confirm="openEditProfile"
         />
+
+        <!-- Botón de "Promover a Juez" o "Degradar a Usuario" (solo si el usuario es admin y viendo otro perfil) -->
+        <profileActionButton
+          :text="userRole === 'judge' ? 'Degradar a Usuario' : 'Promover a Juez'"
+          :title="userRole === 'judge' ? 'Confirmar Degradación' : 'Confirmar Promoción'"
+          :description="userRole === 'judge' ? '¿Está seguro de que desea degradar este usuario a Usuario?' : '¿Está seguro de que desea promover este usuario a Juez?'"
+          v-if="isAdmin && !isCurrentUser"
+          @confirm="userRole === 'judge' ? openDemoteUser : openPromoteUser"
+        />
+
+        <!-- Botón para borrar cuenta (para el usuario actual o si un admin está en el perfil de otro) -->
         <profileActionButton
           text="Borrar Cuenta"
           title="Confirmar Borrado"
-          description="¿Está seguro de que desea borrar su cuenta?"
-          v-if="isAdmin"
+          description="¿Está seguro de que desea borrar esta cuenta?"
+          v-if="isCurrentUser || isAdmin"
+          @confirm="openDeleteAccount"
         />
       </div>
     </div>
   </div>
+
   <div class="profile-buttons">
     <profile-button text="Colección" route="collection.html" />
     <profile-button text="Posts" route="forum.html" />
@@ -70,32 +86,25 @@ onMounted(async () => {
   }
 });
 
-// Función para actualizar el perfil en la API
-async function updateProfile({ newName, newImage }) {
-  try {
-    const updatedUser = {
-      name: newName || userName.value,
-      profileImage: newImage || userImage.value
-    };
+// Emitir eventos para abrir ventanas emergentes con las respectivas acciones
+function openEditProfile() {
+  // Emitir evento para editar el perfil
+  console.log('Editar perfil');
+}
 
-    // Actualizar el archivo test_users.json
-    await axios.put(`http://localhost:3000/users/${userId.value}`, updatedUser);
+function openPromoteUser() {
+  // Emitir evento para promover a juez
+  console.log('Promover a juez');
+}
 
-    // Actualizar los datos locales
-    userName.value = updatedUser.name;
-    userImage.value = updatedUser.profileImage;
+function openDemoteUser() {
+  // Emitir evento para degradar a usuario
+  console.log('Degradar a usuario');
+}
 
-    // Si es el usuario actual, actualizar en Vuex también
-    if (isCurrentUser.value) {
-      store.dispatch('setUser', {
-        id: userId.value,
-        name: updatedUser.name,
-        profileImage: updatedUser.profileImage
-      });
-    }
-  } catch (error) {
-    console.error('Error al actualizar el perfil del usuario:', error);
-  }
+function openDeleteAccount() {
+  // Emitir evento para borrar cuenta
+  console.log('Borrar cuenta');
 }
 </script>
 

@@ -149,21 +149,24 @@
   "users": [
     {
       "id": "1",
-      "name": "Armando Paredes",
+      "name": "user name",
       "profileImage": "../assets/profile-icons/user-1.png",
-      "role": "user"
+      "role": "admin",
+      "posts": ["1","4"]
     },
     {
       "id": "2",
       "name": "waos",
       "profileImage": "../assets/profile-icons/user-2.png",
-      "role": "judge"
+      "role": "judge",
+      "posts": ["3"]
     },
     {
       "id": "3",
       "name": "Carlos Diaz",
       "profileImage": null,
-      "role": "admin"
+      "role": "user",
+      "posts": ["2","5"]
     }
   ],
   "posts": [

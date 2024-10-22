@@ -6,9 +6,9 @@
 
   <div class="content">
   
-    <h1>Reglas Formato Imperio</h1>
-  
   <main>
+
+    <h1>Reglas Formato Imperio</h1>
   
     <h2>Cartas Prohibidas</h2>
   
@@ -99,6 +99,10 @@
       color: var(--tertiary-color);
       font-family: 'Arial', sans-serif;
       text-align: center;
+  }
+
+  main{
+    overflow-y: scroll;
   }
   
   .content {

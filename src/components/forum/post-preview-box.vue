@@ -1,10 +1,18 @@
 <template>
-    <router-link :to="'/forum/'
-    //  + post.id
+    <router-link :to="'/forum/post/'
+     + this.postId
     " class="post_box"></router-link>
 </template>
 
-<script setup>
+<script>
+export default {
+    props: {
+        postId: {
+            type: String,
+            required: true
+        },
+    },
+}
 </script>
 
 <style scoped>

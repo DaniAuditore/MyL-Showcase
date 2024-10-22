@@ -23,7 +23,7 @@
 
     <deleteButton class="delete_button"/>
     
-    <postPreviewBox/>
+    <postPreviewBox :postId="this.post.id"/>
 </div>
 </template>
 

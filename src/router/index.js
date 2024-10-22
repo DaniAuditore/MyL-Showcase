@@ -7,11 +7,7 @@ const links = [
 {   path: "/",     
     name: "Home",     
     component: HomePage,
-},/*
-{   path: "/about",
-    name: "About",     
-    component: () => import("../pages/about-page.vue")      alt way to import
-}*/
+},
 {
     path: "/profile/:userId",     // Include the userId parameter in the route
     name: "Profile",
@@ -24,6 +20,14 @@ const links = [
 {   path: "/forum",
     name: "Forum",
     component: () => import("../pages/forum-page.vue")
+},
+{   path: "/forum/post/:id",
+    name: "ForumPost",
+    component: () => import("../pages/post-page.vue")
+},
+{   path: "/forum/user-posts/:id",
+    name: "ForumUser",
+    component: () => import("../pages/user-posts-page.vue")
 },
 {
     path: "/rules",

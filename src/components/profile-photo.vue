@@ -60,8 +60,8 @@ export default {
 
 <style scoped>
 .avatar img {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border: 8px solid;
 }

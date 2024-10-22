@@ -55,6 +55,7 @@ onMounted(async () => {
     width: calc(100% - 130px);
     position: absolute;
     right: 0;
+    top: 0;
     
     z-index: -1;
     text-align: center;
@@ -64,11 +65,12 @@ header {
     width: 90%;
     max-width: 1103px;
     height: fit-content;
-    position: relative;
+    position: absolute;
     top: 22px;
     left: 50%;
     transform: translateX(-50%);
 
+    margin: 0;
     text-align: left;
 }
 

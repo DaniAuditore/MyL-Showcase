@@ -1,48 +1,63 @@
 <template>
     <input type="checkbox" id="sidebar-click">
-        <label class="sidebar" for="sidebar-click">
-            <ul>
-                <li><router-link to="/library" class="sidebar-button" :class="{ active: isActive('/') }">
-                    <img src="../assets/sidebar-icons/library-icon.png" alt="Libreria">
-                    <h1>Libreria</h1>
-                </router-link></li>
-                <li><router-link to="/inventory" class="sidebar-button" :class="{ active: isActive('/inventory') }">
-                    <img src="../assets/sidebar-icons/inventory-icon.png" alt="">
-                    <h1>Inventario</h1>
-                </router-link></li>
-                <li><router-link to="/forum" class="sidebar-button" :class="{ active: isActive('/forum') }">
-                    <img src="../assets/sidebar-icons/forum-icon.png" alt="">
-                    <h1>Foro</h1>
-                </router-link></li>
-                <li><router-link to="/rules" class="sidebar-button" :class="{ active: isActive('/reglas') }">
-                    <img src="../assets/sidebar-icons/rules-icon.png" alt="">
-                    <h1>Reglas</h1>
-                </router-link></li>
-                <li><router-link to="/glossary" class="sidebar-button" :class="{ active: isActive('/glosario') }">
-                    <img src="../assets/sidebar-icons/glossary-icon.png" alt="">
-                    <h1>Glosario</h1>
-                </router-link></li>
-                <li><router-link to="/profile" class="sidebar-button" :class="{ active: isActive('/profile') }">
-                    <img src="../assets/sidebar-icons/profile-icon.png" alt="">
-                    <h1>Perfil</h1>
-                    </router-link>
-                </li>
-            </ul>
+    <label class="sidebar" for="sidebar-click">
+      <ul>
+        <li>
+          <router-link to="/library" class="sidebar-button" :class="{ active: isActive('/') }">
+            <img src="../assets/sidebar-icons/library-icon.png" alt="Libreria">
+            <h1>Libreria</h1>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/inventory" class="sidebar-button" :class="{ active: isActive('/inventory') }">
+            <img src="../assets/sidebar-icons/inventory-icon.png" alt="">
+            <h1>Inventario</h1>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/forum" class="sidebar-button" :class="{ active: isActive('/forum') }">
+            <img src="../assets/sidebar-icons/forum-icon.png" alt="">
+            <h1>Foro</h1>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/rules" class="sidebar-button" :class="{ active: isActive('/rules') }">
+            <img src="../assets/sidebar-icons/rules-icon.png" alt="">
+            <h1>Reglas</h1>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/glossary" class="sidebar-button" :class="{ active: isActive('/glossary') }">
+            <img src="../assets/sidebar-icons/glossary-icon.png" alt="">
+            <h1>Glosario</h1>
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="`/profile/${currentUser.id}`" class="sidebar-button" :class="{ active: isActive('/profile') }">
+            <img src="../assets/sidebar-icons/profile-icon.png" alt="Perfil">
+            <h1>Perfil</h1>
+          </router-link>
+        </li>
+      </ul>
+    </label>
+  </template>
+  
 
-            
-        </label>
-</template>
-
-<script>
-export default {
-    name: 'SideBar',  // Renombrar aquí si es necesario
+  <script>
+  import { mapGetters } from 'vuex';
+  
+  export default {
+    name: 'SideBar',
     computed: {
-        isActive() {
-            return (route) => this.$route.path === route;
-        }
+      ...mapGetters({
+        currentUser: 'currentUser'
+      }),
+      isActive() {
+        return (route) => this.$route.path === route;
+      }
     }
-}
-</script>
+  };
+  </script>
 
 <style>
 

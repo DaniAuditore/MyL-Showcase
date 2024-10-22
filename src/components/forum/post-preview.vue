@@ -3,7 +3,8 @@
         "id": "1",
         "title": "Post 1",
         "content": "Content 1",
-        "author": "1" 
+        "author": "1",
+        "valoration": "0",
     -->
 <div class="post">
     <profilePhoto class="pfp" :user-id="this.post.author"/>
@@ -11,9 +12,10 @@
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
 
-    <div class="valoration">
-
-    </div>
+    <valoration 
+        :valoration="parseInt(this.post.valoration)" 
+        @update:valoration="update"
+    />
 
     <div class="cards">
 
@@ -26,9 +28,12 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import postPreviewBox from './post-preview-box.vue';
 import deleteButton from '../delete-button.vue';
 import profilePhoto from '../profile-photo.vue';
+import valoration from './post-valoration.vue';
 
 export default {
     props: {
@@ -37,10 +42,31 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            valoration: this.post.valoration
+        };
+    },
     components: {
         postPreviewBox,
         deleteButton,
         profilePhoto,
+        valoration,
+    },
+    methods: {
+        update(valoration) {
+            this.valoration = valoration;
+            this.jsonUpdate();
+        },
+        async jsonUpdate() {
+            try {
+                await axios.put(`http://localhost:3000/posts/${this.post.id}`, {
+                    valoration: this.valoration
+                });
+            } catch (error) {
+                console.error('Error al actualizar la valoración del post:', error);
+            }
+        },
     }
 }
 </script>

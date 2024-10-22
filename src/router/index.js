@@ -21,11 +21,15 @@ const links = [
     name: "Inventory",     
     component: () => import("../pages/inventory-page.vue")
 },
+{   path: "/forum",
+    name: "Forum",
+    component: () => import("../pages/forum-page.vue")
+},
 {
     path: "/glossary",
     name: "glossary",
     component: GlossaryPage,
-}
+  }
 ]
 
 const router = createRouter({   

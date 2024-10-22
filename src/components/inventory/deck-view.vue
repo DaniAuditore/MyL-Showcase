@@ -73,7 +73,7 @@ export default {
     left: 50%;
     transform: translateX(-50%);
 
-    margin-bottom: 20px;
+    margin: 0 0 20px;
     overflow: hidden;
     font-size: 32px;
     

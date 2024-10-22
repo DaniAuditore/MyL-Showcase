@@ -9,7 +9,8 @@
 
 <style scoped>
 .post_box {
-    width: 1103px;
+    /* width: 1103px; */
+    width: calc(100% - 4px);
     height: 180px;
     position: absolute;
     top: 0px;

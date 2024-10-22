@@ -10,16 +10,32 @@
         </header>
 
         <main class="posts">
-            <postPreview/>
+            <postPreview v-for="post in posts" :key="post.id"
+                :post="post"
+            />
         </main>
     </div>
 </div>
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
+import axios from 'axios';
+
 import SideBar from '@/components/Side-bar.vue';
 import createButton from '@/components/create-button.vue';
 import postPreview from '@/components/forum/post-preview.vue';
+
+const posts = ref([]);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/posts');
+        posts.value = response.data;
+    } catch (error) {
+        console.error('Error al cargar los mazos:', error);
+    }
+});
 </script>
 
 <style scoped>

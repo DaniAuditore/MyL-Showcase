@@ -82,7 +82,6 @@ onMounted( async () => {
 
 main {
     width: 100%;
-    /* display: block; */
     position: relative;
     top: 245px;
 }
@@ -91,7 +90,6 @@ main {
     width: 90%;
     max-width: 1103px;
     height: 71px;
-    /* display: block; */
     position: relative;
     top: 245px;
 
@@ -136,7 +134,6 @@ button:hover {
 .commentSection {
     width: 100%;
     height: fit-content;
-    /* display: block; */
     position: relative;
     top: 245px;
 }

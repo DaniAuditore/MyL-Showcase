@@ -4,9 +4,10 @@ const store = createStore({
   state() {
     return {
       currentUser: {
-        id: ''||"3",
-        name: "user name",
-        profileImage: ''
+        id: '1',
+        name: '',
+        profileImage: '',
+        role: 'admin'
       }
     }
   },
@@ -16,6 +17,7 @@ const store = createStore({
       state.currentUser.id = user.id;
       state.currentUser.name = user.name;
       state.currentUser.profileImage = user.profileImage;
+      state.currentUser.role = user.role
     },
     // Mutation to update only profile image
     updateProfileImage(state, imagePath) {

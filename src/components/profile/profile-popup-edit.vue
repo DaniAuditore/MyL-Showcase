@@ -102,6 +102,8 @@ export default {
           name: updatedUser.name,
           profileImage: updatedUser.profileImage
         });
+        window.location.reload();
+        
       } catch (error) {
         console.error('Error al actualizar el perfil del usuario en la API:', error);
       }

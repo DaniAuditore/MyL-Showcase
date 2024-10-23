@@ -3,7 +3,7 @@
     <label class="sidebar" for="sidebar-click">
       <ul>
         <li>
-          <router-link to="/library" class="sidebar-button" :class="{ active: isActive('/') }">
+          <router-link to="/library" class="sidebar-button" :class="{ active: isActive('/library') }">
             <img src="../assets/sidebar-icons/library-icon.png" alt="Libreria">
             <h1>Libreria</h1>
           </router-link>
@@ -33,7 +33,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="`/profile/${currentUser.id}`" class="sidebar-button" :class="{ active: isActive('/profile') }">
+          <router-link :to="`/profile/${currentUser.id}`" class="sidebar-button" :class="{ active: isActive('/profile')}">
             <img src="../assets/sidebar-icons/profile-icon.png" alt="Perfil">
             <h1>Perfil</h1>
           </router-link>
@@ -53,8 +53,8 @@
         currentUser: 'currentUser'
       }),
       isActive() {
-        return (route) => this.$route.path === route;
-      }
+      return (route) => this.$route.path.includes(route); // Check if the path includes the given fragment
+    }
     }
   };
   </script>

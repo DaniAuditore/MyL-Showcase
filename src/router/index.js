@@ -3,6 +3,9 @@ import HomePage from "../pages/home-page.vue"
 import ProfilePage from "../pages/Profile-page.vue"
 import GlossaryPage from "../pages/glossary-page.vue"
 import marketPage from "@/pages/market-page.vue"
+import cardSelection from "../pages/card-selection.vue"
+import makeOffer from "../pages/make-offer.vue"
+import store from '@/store/vuex'; 
 
 const links = [
 {   path: "/",     
@@ -62,13 +65,38 @@ const links = [
     path: "/market/:userId",   // Include the userId parameter in the route
     name: "market",
     component: marketPage
-
-}
+},
+{
+    path: '/card-selection',
+    name: 'CardSelection',
+    component: cardSelection,
+    meta: { requiresAuth: true }, // Requiere estar autenticado
+  },
+  {
+    path: '/make-offer',
+    name: 'MakeOffer',
+    component: makeOffer,
+    meta: { requiresAuth: true }, // Requiere estar autenticado
+  },
 ]
 
 const router = createRouter({   
 history: createWebHistory(),
     routes: links, 
 })  
+
+router.beforeEach((to, from, next) => {
+    const currentUser = store.getters.currentUser;
+  
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (!currentUser) {
+        next({ name: 'Login' }); // Redirect to login page if not authenticated (for later)
+      } else {
+        next();
+      }
+    } else {
+      next(); // Continue if no authentication required
+    }
+  });
 
 export default router

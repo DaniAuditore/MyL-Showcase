@@ -1,110 +1,105 @@
 <template>
     <nav>
-      <SideBar></SideBar>
+        <SideBar></SideBar>
     </nav>
-  
+
     <div class="content">
-      <div class="market-title">
-          <!-- Botón para crear oferta -->
-        <button id="create-offer" v-if="isCurrentUser" @click="goToCardSelection">Crear Oferta</button>
-        <h1>Marketplace de {{ userName }}</h1>
-      </div>
-  
-      <div class="cards">
-        <MarketOffer 
-          v-for="offer in filteredOffers" 
-          :key="offer.offerId" 
-          :offer="offer"
-          @open-details="openOfferDetails(offer)"
+        <div class="market-title">
+            <!-- Botón para crear oferta -->
+          <router-link to= "/card-selection" class="create-offer" v-if="isCurrentUser">Crear Oferta</router-link>
+          <h1>Marketplace de {{ userName }}</h1>
+        </div>      
+        <div class="cards">
+          <MarketOffer 
+            v-for="offer in filteredOffers" 
+            :key="offer.offerId" 
+            :offer="offer"
+            @open-details="openOfferDetails(offer)"
+          />
+        </div>      
+        <OfferDetails 
+          v-if="showDetails"
+          :offer="selectedOffer"
+          :isOwner="isCurrentUser"
+          @close="closeOfferDetails"
+          @accept="acceptOffer"
+          @propose="proposeTrade"
+          @remove="deleteOffer"
         />
-      </div>
-  
-      <OfferDetails 
-        v-if="showDetails"
-        :offer="selectedOffer"
-        :isOwner="isCurrentUser"
-        @close="closeOfferDetails"
-        @accept="acceptOffer"
-        @propose="proposeTrade"
-        @remove="deleteOffer"
-      />
     </div>
-  </template>
-  
-  <script>
-  import SideBar from '@/components/Side-bar.vue';
-  import MarketOffer from '../components/market/market-offer.vue';
-  import OfferDetails from '../components/market/offer-details.vue';
-  import axios from 'axios';
-  
-  export default {
-    data() {
-      return {
-        offers: [],
-        filteredOffers: [],
-        userName: '',
-        isCurrentUser: false,
-        showDetails: false,
-        selectedOffer: null
-      };
-    },
-    methods: {
-      async fetchOffers(userId) {
-        try {
-          const response = await axios.get(`http://localhost:3000/offers`);
-          this.offers = response.data.filter(offer => offer.userId === userId);
-          this.filteredOffers = this.offers;
-        } catch (error) {
-          console.error('Error fetching offers:', error);
-        }
-      },
-      openOfferDetails(offer) {
-        this.selectedOffer = offer;
-        this.showDetails = true;
-      },
-      closeOfferDetails() {
-        this.showDetails = false;
-      },
-      acceptOffer(offer) {
-        console.log('Oferta aceptada:', offer);
-        this.closeOfferDetails();
-      },
-      proposeTrade(offer) {
-        console.log('Propuesta de trato para:', offer);
-        this.closeOfferDetails();
-      },
-      async deleteOffer(offer) {
-        try {
-          await axios.delete(`http://localhost:3000/offers/${offer.offerId}`);
-          this.filteredOffers = this.filteredOffers.filter(o => o.offerId !== offer.offerId);
-          this.closeOfferDetails();
-        } catch (error) {
-          console.error('Error eliminando la oferta:', error);
-        }
-      },
-      goToCardSelection() {
-        this.$router.push(`/market-card-selection`);
-      }
-    },
-    async mounted() {
-      const userId = this.$route.params.userId;
-      await this.fetchOffers(userId);
-      this.isCurrentUser = this.$store.getters.currentUser.id === userId;
-  
+</template>
+
+<script scoped>
+import SideBar from '@/components/Side-bar.vue';
+import MarketOffer from '../components/market/market-offer.vue';
+import OfferDetails from '../components/market/offer-details.vue';
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      offers: [],
+      filteredOffers: [],
+      userName: '',
+      isCurrentUser: false,
+      showDetails: false,
+      selectedOffer: null
+    };
+  },
+  methods: {
+    async fetchOffers(userId) {
       try {
-        const userResponse = await axios.get(`http://localhost:3000/users/${userId}`);
-        this.userName = userResponse.data.name;
+        const response = await axios.get(`http://localhost:3000/offers`);
+        this.offers = response.data.filter(offer => offer.userId === userId);
+        this.filteredOffers = this.offers;
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error('Error fetching offers:', error);
       }
     },
-    components: {
-      MarketOffer,
-      SideBar,
-      OfferDetails
+    openOfferDetails(offer) {
+      this.selectedOffer = offer;
+      this.showDetails = true;
+    },
+    closeOfferDetails() {
+      this.showDetails = false;
+    },
+    acceptOffer(offer) {
+      console.log('Oferta aceptada:', offer);
+      this.closeOfferDetails();
+    },
+    proposeTrade(offer) {
+      console.log('Propuesta de trato para:', offer);
+      this.closeOfferDetails();
+    },
+    async deleteOffer(offer) {
+      try {
+        await axios.delete(`http://localhost:3000/offers/${offer.offerId}`);
+        this.filteredOffers = this.filteredOffers.filter(o => o.offerId !== offer.offerId);
+        this.closeOfferDetails();
+      } catch (error) {
+        console.error('Error eliminando la oferta:', error);
+      }
     }
-  };
-  </script>
+  },
+  async mounted() {
+    const userId = this.$route.params.userId;
+    await this.fetchOffers(userId);
+    this.isCurrentUser = this.$store.getters.currentUser.id === userId;
+
+    try {
+      const userResponse = await axios.get(`http://localhost:3000/users/${userId}`);
+      this.userName = userResponse.data.name;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  },
+  components: {
+    MarketOffer,
+    SideBar,
+    OfferDetails
+  }
+};
+</script>
   
 <style scoped>
 
@@ -119,12 +114,19 @@
         --test-border-color: #008000;
     }
     .content {
-        margin-left: 130px;
+        overflow: hidden;
+        height: 100%;
         width: calc(100% - 130px);
+        left: 130px;
+        position: fixed;
+        top: 0px;
+        flex-grow: 1;
         padding: 20px;
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--primary-background-color);
     }
 
     .market-title {
@@ -132,19 +134,23 @@
         margin-left: 130px;
         width: calc(100% - 130px);
         max-width: 1600px;
-        width: 100%;
-        text-align: center;
         display: flex;
-        justify-content:space-around;
-        align-items: center;
-        background-color: #373739;
+        background-color: var(--secondary-background-color);
         padding: 20px;
         border-radius: 10px;
         margin: 0 70px 0;
         border: 3px solid var(--primary-border-color);
     }  
+
+    .market-title h1{
+        max-width: 1600px;
+        width: 100%;
+        position: absolute;
+    }
   
-    #create-offer {
+    .create-offer {
+        align-self: self-start;
+        align-content: center;
         background-color: transparent;
         color: var(--primary-border-color);
         border: 3px solid var(--primary-border-color);
@@ -154,9 +160,10 @@
         font-size: 16px;
         cursor: pointer;
         transition: 0.5s ease-in-out;
+        z-index: 10;
     }
 
-    #create-offer:hover {
+    .create-offer:hover {
         transition: 0.2s ease-in-out;
         border-color: rgb(212, 175, 55);
         box-shadow: 0 0 20px rgb(212, 175, 55);
@@ -167,7 +174,6 @@
     .cards {
         /*border: 2px solid var(--test-border-color);*/
         max-width: 1500px;
-        margin-left: 90px;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 40px;

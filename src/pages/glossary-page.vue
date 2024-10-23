@@ -13,7 +13,7 @@
   import GlossaryLayout from '../components/glossary/glossary-layout.vue'
 </script>
 
-<style>
+<style scoped>
     .content {
         background-color: var(--primary-background-color);
         z-index: 2;

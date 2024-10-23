@@ -6,7 +6,7 @@
     
     <div class="content">
         <header>
-            <router-link to="/inventory">
+            <router-link to="/deckbuilder">
                 <createButton/>
             </router-link>
             

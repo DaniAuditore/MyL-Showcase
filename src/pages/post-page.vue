@@ -4,20 +4,19 @@
 
     <div class="content">
         <main>
-            <postFullview :post="post"
+            <postFullview class="post"
+                :post="post"
                 :isAdmin="isAdmin"
                 :currentUser="currentUser"
             />
         </main>
 
-        <div class="coment">
-            <textarea></textarea>
+        <div class="comment">
+            <input type="text" placeholder="Escribe un comentario aquí">
             <button>Comentar</button>
         </div>
 
-        <div class="coments">
-
-        </div>
+        <commentsSection class="commentSection" :comments="post.comments"/>
     </div>
 </div>
 </template>
@@ -30,6 +29,7 @@ import axios from 'axios';
 
 import SideBar from '@/components/Side-bar.vue';
 import postFullview from '@/components/forum/post-fullview.vue';
+import commentsSection from '@/components/forum/comments-section.vue';
 
 // To access post id from path
 const route = useRoute();
@@ -75,22 +75,66 @@ onMounted( async () => {
     position: absolute;
     right: 0;
     top: 0;
-    
+
     z-index: -1;
-    text-align: center;
     overflow-y: scroll;
 }
 
 main {
     width: 100%;
-    position: absolute;
-    top: 0;
-    display: block;
+    position: relative;
+    top: 245px;
 }
 
-.coment {
+.comment {
+    width: 90%;
+    max-width: 1103px;
+    height: 71px;
+    position: relative;
+    top: 245px;
+
+    text-align: left;
+    margin: 0 0 10px;
+}
+
+input {
+    width: calc(100% - 180px);
+    height: 63px;
+    left: 0px;
+
+    margin: 0 5px 0 0;
+    padding: 1px 10px;
+    font-size: 24px;
+    color: var(--primary-border-color);
+
+    border: 2px solid var(--primary-border-color);
+    border-radius: 30px;
+    background-color: transparent;
+}
+
+button {
+    width: 150px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+
+    color: var(--primary-background-color);
+    font-size: 24px;
+
+    border: 2px solid var(--primary-border-color);
+    border-radius: 30px;
+    background-color: var(--primary-border-color);
+}
+button:hover {
+    color: var(--primary-border-color);
+    border-color: var(--secondary-border-color);
+    background-color: var(--secondary-background-color);
+}
+
+.commentSection {
     width: 100%;
-    height: 100px;
-    display: block;
+    height: fit-content;
+    position: relative;
+    top: 245px;
 }
 </style>

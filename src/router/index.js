@@ -14,6 +14,10 @@ const links = [
     name: "Profile",
     component: ProfilePage,
 },
+{   path: "/profile/:userId/collection",     // Include the userId parameter in the route
+    name: "Collection",
+    component: () => import("../pages/collection-page.vue")
+},
 {   path: "/inventory",
     name: "Inventory",     
     component: () => import("../pages/inventory-page.vue")
@@ -29,6 +33,10 @@ const links = [
 {   path: "/forum/user-posts/:postId",
     name: "ForumUser",
     component: () => import("../pages/user-posts-page.vue")
+},
+{   path: "/forum/create-post",
+    name: "ForumCreatePost",
+    component: () => import("../pages/post-create-page.vue")
 },
 {
     path: "/rules",

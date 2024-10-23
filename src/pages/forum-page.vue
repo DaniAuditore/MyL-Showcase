@@ -4,7 +4,7 @@
 
     <div class="content">
         <header>
-            <router-link to="/TODO">
+            <router-link to="/forum/create-post">
                 <createButton/>
             </router-link>
         </header>

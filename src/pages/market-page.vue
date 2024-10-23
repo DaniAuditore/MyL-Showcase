@@ -1,105 +1,109 @@
 <template>
     <nav>
-        <SideBar></SideBar>
+      <SideBar></SideBar>
     </nav>
-
+  
     <div class="content">
-        <div class="market-title">
-            <!-- Botón para crear oferta -->
-          <router-link to= "/card-selection" class="create-offer" v-if="isCurrentUser">Crear Oferta</router-link>
-          <h1>Marketplace de {{ userName }}</h1>
-        </div>      
-        <div class="cards">
-          <MarketOffer 
-            v-for="offer in filteredOffers" 
-            :key="offer.offerId" 
-            :offer="offer"
-            @open-details="openOfferDetails(offer)"
-          />
-        </div>      
-        <OfferDetails 
-          v-if="showDetails"
-          :offer="selectedOffer"
-          :isOwner="isCurrentUser"
-          @close="closeOfferDetails"
-          @accept="acceptOffer"
-          @propose="proposeTrade"
-          @remove="deleteOffer"
+      <div class="market-title">
+        <!-- Botón para crear oferta -->
+        <router-link to="/card-selection" class="create-offer" v-if="isCurrentUser">Crear Oferta</router-link>
+        <h1>Marketplace de {{ userName }}</h1>
+      </div>      
+      <div class="cards">
+        <MarketOffer 
+          v-for="offer in filteredOffers" 
+          :key="offer.offerId" 
+          :offer="offer"
+          @open-details="openOfferDetails(offer)"
         />
+      </div>      
+      <OfferDetails 
+        v-if="showDetails"
+        :offer="selectedOffer"
+        :isOwner="isCurrentUser"
+        @close="closeOfferDetails"
+        @accept="acceptOffer"
+        @propose="proposeTrade"
+        @remove="deleteOffer" 
+      />
     </div>
-</template>
-
-<script scoped>
-import SideBar from '@/components/Side-bar.vue';
-import MarketOffer from '../components/market/market-offer.vue';
-import OfferDetails from '../components/market/offer-details.vue';
-import axios from 'axios';
-
-export default {
-  data() {
-    return {
-      offers: [],
-      filteredOffers: [],
-      userName: '',
-      isCurrentUser: false,
-      showDetails: false,
-      selectedOffer: null
-    };
-  },
-  methods: {
-    async fetchOffers(userId) {
-      try {
-        const response = await axios.get(`http://localhost:3000/offers`);
-        this.offers = response.data.filter(offer => offer.userId === userId);
-        this.filteredOffers = this.offers;
-      } catch (error) {
-        console.error('Error fetching offers:', error);
-      }
+  </template>
+  
+  <script scoped>
+  import SideBar from '@/components/Side-bar.vue';
+  import MarketOffer from '../components/market/market-offer.vue';
+  import OfferDetails from '../components/market/offer-details.vue';
+  import axios from 'axios';
+  
+  export default {
+    data() {
+      return {
+        offers: [],
+        filteredOffers: [],
+        userName: '',
+        isCurrentUser: false,
+        showDetails: false,
+        selectedOffer: null
+      };
     },
-    openOfferDetails(offer) {
-      this.selectedOffer = offer;
-      this.showDetails = true;
-    },
-    closeOfferDetails() {
-      this.showDetails = false;
-    },
-    acceptOffer(offer) {
-      console.log('Oferta aceptada:', offer);
-      this.closeOfferDetails();
-    },
-    proposeTrade(offer) {
-      console.log('Propuesta de trato para:', offer);
-      this.closeOfferDetails();
-    },
-    async deleteOffer(offer) {
-      try {
-        await axios.delete(`http://localhost:3000/offers/${offer.offerId}`);
-        this.filteredOffers = this.filteredOffers.filter(o => o.offerId !== offer.offerId);
+    methods: {
+      async fetchOffers(userId) {
+        try {
+          const response = await axios.get(`http://localhost:3000/offers`);
+          this.offers = response.data.filter(offer => offer.userId === userId);
+          this.filteredOffers = this.offers;
+        } catch (error) {
+          console.error('Error fetching offers:', error);
+        }
+      },
+      openOfferDetails(offer) {
+        this.selectedOffer = offer;
+        this.showDetails = true;
+      },
+      closeOfferDetails() {
+        this.showDetails = false;
+      },
+      acceptOffer(offer) {
+        console.log('Oferta aceptada:', offer);
         this.closeOfferDetails();
-      } catch (error) {
-        console.error('Error eliminando la oferta:', error);
-      }
-    }
-  },
-  async mounted() {
-    const userId = this.$route.params.userId;
-    await this.fetchOffers(userId);
-    this.isCurrentUser = this.$store.getters.currentUser.id === userId;
+      },
+      proposeTrade(offer) {
+        console.log('Propuesta de trato para:', offer);
+        this.closeOfferDetails();
+      },
+      // Método para eliminar la oferta capturando el evento 'remove'
+        async deleteOffer(offer) {
+            try {
+                console.log('Offer ID:', offer.offerId); // Verifica el offerId aquí
+                await axios.delete(`http://localhost:3000/offers/${offer.offerId}`);
+                this.filteredOffers = this.filteredOffers.filter(o => o.offerId !== offer.offerId);
+                this.closeOfferDetails();
+            } catch (error) {
+                console.error('Error eliminando la oferta:', error);
+            }   
+        }
 
-    try {
-      const userResponse = await axios.get(`http://localhost:3000/users/${userId}`);
-      this.userName = userResponse.data.name;
-    } catch (error) {
-      console.error('Error fetching user data:', error);
+    },
+    async mounted() {
+      const userId = this.$route.params.userId;
+      await this.fetchOffers(userId);
+      this.isCurrentUser = this.$store.getters.currentUser.id === userId;
+  
+      try {
+        const userResponse = await axios.get(`http://localhost:3000/users/${userId}`);
+        this.userName = userResponse.data.name;
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    },
+    components: {
+      MarketOffer,
+      SideBar,
+      OfferDetails
     }
-  },
-  components: {
-    MarketOffer,
-    SideBar,
-    OfferDetails
-  }
-};
-</script>
+  };
+  </script>
+  
   
 <style scoped>
 

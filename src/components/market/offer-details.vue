@@ -1,61 +1,74 @@
 <template>
-    <div class="modal">
-      <div class="modal-content">
-        <div class="card-section">
-          <img :src="imageUrl" alt="Card image" />
-          <h2 class="card-name">{{ cardName }}</h2>
-        </div>
-        <div class="details-section">
-            <h2>{{ cardName }}</h2>
-            <p>Fuerza: 4 | Coste: 2 ⚡ | Raza: Sombra | Tipo: Aliado | Rareza: UR</p>
-            <p>Oferta de {{ offerOwnerName }}</p>
-            <p v-if="offer.price" class="price">Valor: <span class="highlight">{{ offer.price }} Coins</span></p>
-            <p v-else>Intercambio por carta: {{ requestedCardName }}</p>
+  <div class="modal">
+    <div class="modal-content">
+      <div class="card-section">
+        <img :src="imageUrl" alt="Card image" />
+        <h2 class="card-name">{{ cardName }}</h2>
+      </div>
+      <div class="details-section">
+          <h2>{{ cardName }}</h2>
+          <p>Fuerza: 4 | Coste: 2 ⚡ | Raza: Sombra | Tipo: Aliado | Rareza: UR</p>
+          <p>Oferta de {{ offerOwnerName }}</p>
+          <p v-if="offer.price" class="price">Valor: <span class="highlight">{{ offer.price }} Coins</span></p>
+          <p v-else>Intercambio por carta: {{ requestedCardName }}</p>
 
-            <div class="buttons">
-                <div v-if="isOwner">
-                    <button class="remove-offer" @click="$emit('remove', offer)">Eliminar Oferta</button>
-                </div>
-                <div v-else>
-                    <button class="accept-offer" @click="$emit('accept', offer)">Aceptar Oferta</button>
-                    <button class="propose-trade" @click="$emit('propose', offer)">Proponer Otro Trato</button>
-                </div>
-                <button class="close-modal" @click="$emit('close')">Cerrar</button>
-            </div>
-        </div>
+          <div class="buttons">
+              <div v-if="isOwner">
+                  <button class="remove-offer" @click="deleteOffer">Eliminar Oferta</button>
+              </div>
+              <div v-else>
+                  <button class="accept-offer" @click="$emit('accept', offer)">Aceptar Oferta</button>
+                  <button class="propose-trade" @click="$emit('propose', offer)">Proponer Otro Trato</button>
+              </div>
+              <button class="close-modal" @click="$emit('close')">Cerrar</button>
+          </div>
       </div>
     </div>
-  </template>
-  
-  <script scoped>
-  export default {
-    props: {
-      offer: {
-        type: Object,
-        required: true
-      },
-      isOwner: {
-        type: Boolean,
-        required: true
-      }
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  props: {
+    offer: {
+      type: Object,
+      required: true
     },
-    computed: {
-      imageUrl() {
-        const baseUrl = 'https://api.myl.cl/static/cards/';
-        return `${baseUrl}${this.offer.card.edid}/${this.offer.card.ide}.png`;
-      },
-      cardName() {
-        return `Orochimaru`; 
-      },
-      requestedCardName() {
-        return this.offer.requestedCard ? `Card ${this.offer.requestedCard.ide}` : 'N/A';
-      },
-      offerOwnerName() {
-        return "Nombre de usuario";
-      }
+    isOwner: {
+      type: Boolean,
+      required: true
     }
-  };
-  </script>
+  },
+  computed: {
+    imageUrl() {
+      const baseUrl = 'https://api.myl.cl/static/cards/';
+      return `${baseUrl}${this.offer.card.edid}/${this.offer.card.ide}.png`;
+    },
+    cardName() {
+      return `Orochimaru`; 
+    },
+    requestedCardName() {
+      return this.offer.requestedCard ? `Card ${this.offer.requestedCard.ide}` : 'N/A';
+    },
+    offerOwnerName() {
+      return "Nombre de usuario";
+    }
+  },
+  methods: {
+    async deleteOffer() {
+  try {
+    await axios.delete(`http://localhost:3000/offers/${this.offer.offerId}`);
+    this.$emit('offerDeleted', this.offer.offerId);
+  } catch (error) {
+    console.error('Error al eliminar la oferta:', error);
+  }
+}
+
+  }
+};
+</script>
   
 <style scoped>
     :root {

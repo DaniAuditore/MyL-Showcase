@@ -12,9 +12,9 @@
         </router-link>
         <p v-else class="error-message">Error: Carta no válida</p>
     </div>
-    </template>
+</template>
     
-    <script>
+<script>
     import mylCard from '../myl-card.vue';
     
     export default {
@@ -37,9 +37,9 @@
             }
         }
     };
-    </script>
+</script>
     
-    <style scoped>
+<style scoped>
     .error-message {
         color: red;
         font-weight: bold;
@@ -77,5 +77,5 @@
         border-color: var(--primary-text-color);
         color: var(--primary-text-color);
     }
-    </style>
+</style>
     

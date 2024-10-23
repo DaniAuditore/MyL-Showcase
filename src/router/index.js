@@ -29,6 +29,10 @@ const links = [
     name: "ForumUser",
     component: () => import("../pages/user-posts-page.vue")
 },
+{   path: "/forum/create-post",
+    name: "ForumCreatePost",
+    component: () => import("../pages/post-create-page.vue")
+},
 {
     path: "/rules",
     name: "rules",

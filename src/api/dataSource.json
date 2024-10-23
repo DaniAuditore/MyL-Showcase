@@ -295,7 +295,6 @@
           "ide": "035",
           "edid": "125"
         }
-
       ]
     },
     {
@@ -303,8 +302,12 @@
       "name": "rei bkn",
       "profileImage": "../assets/profile-icons/user-2.png",
       "role": "judge",
-      "posts": ["3"],
-      "decks": ["002"],
+      "posts": [
+        "3"
+      ],
+      "decks": [
+        "002"
+      ],
       "cards": [
         {
           "ide": "036",
@@ -353,8 +356,13 @@
       "name": "Carlos Diaz",
       "profileImage": null,
       "role": "user",
-      "posts": ["2","5"],
-      "decks": ["003"],
+      "posts": [
+        "2",
+        "5"
+      ],
+      "decks": [
+        "003"
+      ],
       "cards": [
         {
           "ide": "046",
@@ -469,15 +477,15 @@
       "comments": [
         {
           "id": "6",
-          "content": "Comment 6",
-          "author": "1",
-          "valoration": 1
-        },
-        {
-          "id": "7",
           "content": "Comment 7",
           "author": "2",
           "valoration": 4
+        },
+        {
+          "id": "7",
+          "content": "Comment 6",
+          "author": "1",
+          "valoration": 1
         }
       ]
     },
@@ -703,5 +711,78 @@
       "name": "Subir",
       "content": "• Enviar una carta desde una zona de juego o desde el Cementerio a la mano de su\ndueño.\n• Una carta Subida a la mano de su dueño desde una zona de juego (Línea de Ataque,\nLínea de Defensa, Línea de Apoyo, Reserva de Oros o Zona de Oro pagado), se\nconsidera que “Sale del juego”."
     }
-  ]
+  ],
+  "filtersData": {
+    "races": [
+        { "id": "0", "slug": "noraza", "name": "Sin Raza" },
+        { "id": "1", "slug": "caballero", "name": "Caballero" },
+        { "id": "2", "slug": "bestia", "name": "Bestia" },
+        { "id": "3", "slug": "eterno", "name": "Eterno" },
+        { "id": "4", "slug": "guerrero", "name": "Guerrero" },
+        { "id": "5", "slug": "barbaro", "name": "Bárbaro" },
+        { "id": "6", "slug": "faerie", "name": "Faerie" },
+        { "id": "7", "slug": "samurai", "name": "Samurái" },
+        { "id": "8", "slug": "sombra", "name": "Sombra" },
+        { "id": "9", "slug": "ancestral", "name": "Ancestral" },
+        { "id": "10", "slug": "sacerdote", "name": "Sacerdote" },
+        { "id": "11", "slug": "dragon", "name": "Dragón" },
+        { "id": "12", "slug": "heroe", "name": "Héroe" },
+        { "id": "13", "slug": "oni", "name": "Oni" },
+        { "id": "14", "slug": "olimpico", "name": "Olímpico" },
+        { "id": "15", "slug": "titan", "name": "Titán" },
+        { "id": "16", "slug": "faraon", "name": "Faraón" },
+        { "id": "17", "slug": "desafiante", "name": "Desafiante" },
+        { "id": "18", "slug": "defensor", "name": "Defensor" },
+        { "id": "19", "slug": "licantropo", "name": "Licántropo" },
+        { "id": "20", "slug": "vampiro", "name": "Vampiro" },
+        { "id": "21", "slug": "cazador", "name": "Cazador" },
+        { "id": "22", "slug": "chaman", "name": "Chamán" },
+        { "id": "23", "slug": "dios", "name": "Dios" },
+        { "id": "24", "slug": "abominacion", "name": "Abominación" },
+        { "id": "25", "slug": "kami", "name": "Kami" },
+        { "id": "26", "slug": "xian", "name": "Xian" },
+        { "id": "27", "slug": "criaturas", "name": "Criaturas" },
+        { "id": "28", "slug": "campeon/shaolin", "name": "Campeón / Shaolín" },
+        { "id": "29", "slug": "campeon/ninja", "name": "Campeón / Ninja" },
+        { "id": "30", "slug": "campeon/samurai", "name": "Campeón / Samurái" },
+        { "id": "31", "slug": "campeon", "name": "Campeón" },
+        { "id": "32", "slug": "heroe/sacerdote", "name": "Héroe/Sacerdote" },
+        { "id": "33", "slug": "eterno/sombra", "name": "Eterno/Sombra" },
+        { "id": "34", "slug": "caballero/guerrero", "name": "Caballero/Guerrero" },
+        { "id": "35", "slug": "bestia/guerrero", "name": "Bestia/Guerrero" },
+        { "id": "36", "slug": "caballero/heroe", "name": "Caballero/Héroe" },
+        { "id": "37", "slug": "dragon/eterno", "name": "Dragón/Eterno" },
+        { "id": "38", "slug": "eterno/faerie", "name": "Eterno/Faerie" },
+        { "id": "39", "slug": "paladin", "name": "Paladín" },
+        { "id": "40", "slug": "asesino", "name": "Asesino" },
+        { "id": "41", "slug": "tenebris", "name": "Tenebris" },
+        { "id": "42", "slug": "eterno/sacerdote", "name": "Eterno/Sacerdote" },
+        { "id": "43", "slug": "caballero/guerrero/hero", "name": "Caballero/Guerrero/Héroe" },
+        { "id": "44", "slug": "bestia/dragon/sombra", "name": "Bestia/Dragón/Sombra" },
+        { "id": "45", "slug": "eterno/faerie/sacerdote", "name": "Eterno/Faerie/Sacerdote" },
+        { "id": "46", "slug": "bestia/faerie", "name": "Bestia/Faerie" }
+    ],
+    "rarities": [
+        { "id": "0", "slug": "promo", "name": "Promocional" },
+        { "id": "1", "slug": "legendaria", "name": "Legendaria" },
+        { "id": "2", "slug": "ultra-real", "name": "Ultra Real" },
+        { "id": "3", "slug": "mega-real", "name": "Mega Real" },
+        { "id": "4", "slug": "real", "name": "Real" },
+        { "id": "5", "slug": "cortesano", "name": "Cortesano" },
+        { "id": "6", "slug": "vasallo", "name": "Vasallo" },
+        { "id": "7", "slug": "oro", "name": "Oro" },
+        { "id": "8", "slug": "milenaria", "name": "Milenaria" },
+        { "id": "9", "slug": "secreta", "name": "Secreta" },
+        { "id": "10", "slug": "ficha", "name": "Ficha" },
+        { "id": "11", "slug": "set_paralelo", "name": "Set Paralelo" }
+    ],
+    "types": [
+        { "id": "1", "slug": "aliado", "name": "Aliado" },
+        { "id": "2", "slug": "talisman", "name": "Talismán" },
+        { "id": "3", "slug": "arma", "name": "Arma" },
+        { "id": "4", "slug": "totem", "name": "Tótem" },
+        { "id": "5", "slug": "oro", "name": "Oro" },
+        { "id": "6", "slug": "monumento", "name": "Monumento" }
+    ]
+  }
 }

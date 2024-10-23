@@ -1,26 +1,21 @@
 <template>
-    <section class="post">
-        <profilePhoto class="pfp" :userId="post.author"/>
+    <div class="comment">
+        <profilePhoto class="pfp" :userId="comment.author"/>
         <h1 class="authorName">
             {{ authorName }}
         </h1>
-        
-        <h1 class="title">
-            {{ post.title }}
-        </h1>
-        <p>{{ post.content }}</p>
+
+        <p class="content">
+            {{ comment.content }}
+        </p>
 
         <valoration 
-            :valoration="parseInt(this.post.valoration)" 
+            :valoration="parseInt(this.comment.valoration)" 
             @update:valoration="update"
         />
 
-        <div class="cards">
-
-        </div>
-
-        <deleteButton class="delete" v-if="isAdmin || currentUser === post.author"/>
-    </section>
+        <deleteButton class="delete_button" v-if="isAdmin || currentUser === comment.author"/>
+    </div>
 </template>
 
 <script>
@@ -31,44 +26,34 @@ import valoration from './post-valoration.vue';
 import deleteButton from '../delete-button.vue';
 
 export default {
-    components: {
-        profilePhoto,
-        valoration,
-        deleteButton,
-    },
     props: {
-        post: {
+        /** Comment object */
+        comment: {
             type: Object,
             required: true
-        },
-        isAdmin: {
-            type: Boolean,
-            required: false,
-            default: false
-        },
-        currentUser: {
-            type: String,
-            required: false,
-            default: ''
         }
     },
     data() {
         return {
-            authorName: 'Participante',
-            valoration: this.post.valoration,
+            authorName: '',
         };
+    },
+    components: {
+        profilePhoto,
+        valoration,
+        deleteButton,
     },
     mounted() {
         this.getAuthorName();
     },
     methods: {
         async getAuthorName() {
-            try {
-                const response = await axios.get(`http://localhost:3000/users/${this.post.author}`);
+            try {   // Fetching author name
+                const response = await axios.get(`http://localhost:3000/users/${this.comment.author}`);
                 this.authorName = response.data.name;
             } catch (error) {
                 console.error('Error fetching author name:', error);
-                this.authorName = 'Participante';
+                this.authorName = 'Comentante';
             }
         },
     }
@@ -76,21 +61,20 @@ export default {
 </script>
 
 <style scoped>
-.post {
+.comment {
     width: 90%;
     max-width: 1103px;
     height: fit-content;
-    min-height: 580px;
+    min-height: 225px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    
-    margin: 90px 0 10px;
-    background: var(--primary-background-color);
+
+    margin: 0 0 10px;
+    padding: 0 0 10px 0;
+
     border: 2px solid var(--primary-border-color);
     border-radius: 30px;
-
-    overflow: hidden;
 }
 
 .pfp {
@@ -106,37 +90,26 @@ export default {
     top: 15px;
     position: absolute;
     
-    color: var(--primary-border-color);
     font-size: 36px;
     font-weight: 400;
     word-wrap: break-word;
+    color: var(--primary-border-color);
 }
 
-.title {
-    width: fit-content;
+.content {
+    width: calc(100% - 40px);
     height: fit-content;
     left: 20px;
     top: 110px;
     position: absolute;
     
-    font-size: 36px;
-    font-weight: 400;
-    word-wrap: break-word;
-    
-    color: var(--primary-border-color);
-    border: 0;
-    background-color: transparent;
-}
-p {
-    left: 20px;
-    top: 180px;
-    position: absolute;
-
-    text-align: right;
-    color: var(--primary-border-color);
+    text-align: left;
     font-size: 24px;
     font-weight: 400;
-    word-wrap: break-word;
+    
+    color: var(--primary-border-color);
+    background-color: transparent;
+    border: 0;
 }
 
 .delete_button {

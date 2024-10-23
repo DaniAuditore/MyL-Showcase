@@ -83,7 +83,7 @@ onMounted( async () => {
 main {
     width: 100%;
     position: relative;
-    top: 245px;
+    top: 0px;
 }
 
 .comment {
@@ -91,7 +91,9 @@ main {
     max-width: 1103px;
     height: 71px;
     position: relative;
-    top: 245px;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
 
     text-align: left;
     margin: 0 0 10px;
@@ -118,6 +120,7 @@ button {
     position: absolute;
     right: 0px;
 
+    cursor: pointer;
     color: var(--primary-background-color);
     font-size: 24px;
 
@@ -135,6 +138,6 @@ button:hover {
     width: 100%;
     height: fit-content;
     position: relative;
-    top: 245px;
+    top: 0px;
 }
 </style>

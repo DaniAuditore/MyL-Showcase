@@ -15,9 +15,7 @@
             @update:valoration="update"
         />
 
-        <div class="cards">
-
-        </div>
+        <postCards class="post-cards" :cards="post.cards"/>
 
         <deleteButton class="delete" v-if="isAdmin || currentUser === post.author"/>
     </section>
@@ -29,12 +27,14 @@ import axios from 'axios';
 import profilePhoto from '../profile-photo.vue';
 import valoration from './post-valoration.vue';
 import deleteButton from '../delete-button.vue';
+import postCards from './post-cards.vue';
 
 export default {
     components: {
         profilePhoto,
         valoration,
         deleteButton,
+        postCards,
     },
     props: {
         post: {

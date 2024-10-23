@@ -11,7 +11,7 @@
         <p>{{ post.content }}</p>
 
         <valoration 
-            :valoration="parseInt(this.post.valoration)" 
+            :valoration="parseInt(this.valoration)" 
             @update:valoration="update"
         />
 
@@ -69,6 +69,24 @@ export default {
             } catch (error) {
                 console.error('Error fetching author name:', error);
                 this.authorName = 'Participante';
+            }
+        },
+        update(valoration) {
+            this.valoration = valoration;
+            this.jsonUpdate();
+        },
+        async jsonUpdate() {
+            try {
+                await axios.put(`http://localhost:3000/posts/${this.post.id}`, {
+                    title: this.post.title,
+                    content: this.post.content,
+                    author: this.post.author,
+                    valoration: this.valoration,
+                    cards: this.post.cards,
+                    comments: this.post.comments
+                });
+            } catch (error) {
+                console.error('Error al actualizar la valoración del post:', error);
             }
         },
     }

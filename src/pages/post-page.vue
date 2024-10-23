@@ -16,7 +16,7 @@
             <button>Comentar</button>
         </div>
 
-        <commentsSection class="commentSection" :comments="post.comments"/>
+        <commentsSection class="commentSection" :comments="post.comments" :postId="postId"/>
     </div>
 </div>
 </template>

@@ -3,6 +3,7 @@
         <commentView
             v-for="comment in comments" :key="comment.id"
             :comment="comment"
+            :postId="postId"
         />
     </section>
 </template>
@@ -16,7 +17,12 @@ export default {
         comments: {
             type: Object,
             required: true
-        }
+        },
+        /** Post id */
+        postId: {
+            type: String,
+            required: true
+        },
     },
     components: {
         commentView,

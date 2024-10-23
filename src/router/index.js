@@ -8,7 +8,6 @@ const links = [
     name: "Home",     
     component: HomePage,
 },
-},
 {
     path: "/profile/:userId",     // Include the userId parameter in the route
     name: "Profile",

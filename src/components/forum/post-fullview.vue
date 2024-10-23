@@ -19,7 +19,7 @@
 
         </div>
 
-        <deleteButton class="delete"/>
+        <deleteButton class="delete" v-if="isAdmin || currentUser === post.author"/>
     </section>
 </template>
 
@@ -41,6 +41,16 @@ export default {
             type: Object,
             required: true
         },
+        isAdmin: {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        currentUser: {
+            type: String,
+            required: false,
+            default: ''
+        }
     },
     data() {
         return {

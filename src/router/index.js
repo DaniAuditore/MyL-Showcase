@@ -13,6 +13,10 @@ const links = [
     name: "Profile",
     component: ProfilePage,
 },
+{   path: "/profile/:userId/collection",     // Include the userId parameter in the route
+    name: "Collection",
+    component: () => import("../pages/collection-page.vue")
+},
 {   path: "/inventory",
     name: "Inventory",     
     component: () => import("../pages/inventory-page.vue")

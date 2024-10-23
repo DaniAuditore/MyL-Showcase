@@ -1,23 +1,4 @@
 <template>
-    <!-- Template post
-        "id": "1",
-        "title": "Post 1",
-        "content": "Content 1",
-        "author": "1",
-        "valoration": 5,
-        "cards": [
-            { "ide": "001", "edid": "125" },
-            { "ide": "048", "edid": "125" }
-        ],
-        "comments": [
-            {
-            "id": "1",
-            "content": "Comment 1",
-            "author": "2",
-            "valoration": 3
-            },
-        ]
-    -->
 <div class="post">
     <profilePhoto class="pfp" :userId="this.post.author"/>
 
@@ -29,9 +10,7 @@
         @update:valoration="update"
     />
 
-    <div class="cards">
-
-    </div>
+    <postCards class="post-cards" :cards="post.cards"/>
 
     <deleteButton class="delete_button"/>
     
@@ -46,6 +25,7 @@ import postPreviewRouter from './post-preview-router.vue';
 import deleteButton from '../delete-button.vue';
 import profilePhoto from '../profile-photo.vue';
 import valoration from './post-valoration.vue';
+import postCards from './post-cards.vue';
 
 export default {
     props: {
@@ -64,6 +44,7 @@ export default {
         deleteButton,
         profilePhoto,
         valoration,
+        postCards,
     },
     methods: {
         update(valoration) {
@@ -142,5 +123,11 @@ p {
 
     display: none;
     rotate: -90deg;
+}
+
+.post-cards {
+    position: absolute;
+    top: 13px;
+    right: 13px;
 }
 </style>

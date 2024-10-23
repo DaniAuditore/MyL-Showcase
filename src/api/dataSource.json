@@ -152,6 +152,7 @@
       "name": "pvllv kuxal",
       "profileImage": "../assets/profile-icons/user-1.png",
       "role": "admin",
+      "money": 10000,
       "posts": ["1","4"],
       "decks": ["000","001"],
       "cards": [
@@ -302,12 +303,9 @@
       "name": "rei bkn",
       "profileImage": "../assets/profile-icons/user-2.png",
       "role": "judge",
-      "posts": [
-        "3"
-      ],
-      "decks": [
-        "002"
-      ],
+      "money": 4000,
+      "posts": ["3"],
+      "decks": ["002"],
       "cards": [
         {
           "ide": "036",
@@ -356,13 +354,10 @@
       "name": "Carlos Diaz",
       "profileImage": null,
       "role": "user",
-      "posts": [
-        "2",
-        "5"
-      ],
-      "decks": [
-        "003"
-      ],
+      "money": 8000,
+      "posts": ["2","5"],
+      "decks": ["003"],
+
       "cards": [
         {
           "ide": "046",
@@ -784,5 +779,203 @@
         { "id": "5", "slug": "oro", "name": "Oro" },
         { "id": "6", "slug": "monumento", "name": "Monumento" }
     ]
-  }
+  },
+  "offers": [
+      {
+        "offerId": "001",
+        "userId": "1",
+        "card": {
+          "ide": "001",
+          "edid": "125"
+        },
+        "price": 500,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "002",
+        "userId": "1",
+        "card": {
+          "ide": "002",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "003",
+        "userId": "1",
+        "card": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "price": 300,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "004",
+        "userId": "2",
+        "card": {
+          "ide": "036",
+          "edid": "125"
+        },
+        "price": 700,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "005",
+        "userId": "2",
+        "card": {
+          "ide": "037",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "040",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "006",
+        "userId": "2",
+        "card": {
+          "ide": "038",
+          "edid": "125"
+        },
+        "price": 600,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "007",
+        "userId": "3",
+        "card": {
+          "ide": "046",
+          "edid": "125"
+        },
+        "price": 200,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "008",
+        "userId": "3",
+        "card": {
+          "ide": "047",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "050",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "009",
+        "userId": "3",
+        "card": {
+          "ide": "048",
+          "edid": "125"
+        },
+        "price": 350,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "001",
+        "userId": "3",
+        "card": {
+          "ide": "001",
+          "edid": "125"
+        },
+        "price": 500,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "002",
+        "userId": "3",
+        "card": {
+          "ide": "002",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "003",
+        "userId": "3",
+        "card": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "price": 300,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "004",
+        "userId": "3",
+        "card": {
+          "ide": "036",
+          "edid": "125"
+        },
+        "price": 700,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "005",
+        "userId": "3",
+        "card": {
+          "ide": "037",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "040",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "006",
+        "userId": "3",
+        "card": {
+          "ide": "038",
+          "edid": "125"
+        },
+        "price": 600,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      }
+  ]
 }
+

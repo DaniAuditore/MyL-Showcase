@@ -53,7 +53,7 @@ export default {
     width: 77px;
     height: 20px;
     left: 20px;
-    top: 150px;
+    bottom: 15px;
     position: absolute
 }
 

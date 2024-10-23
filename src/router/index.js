@@ -29,7 +29,7 @@ const links = [
     name: "ForumPost",
     component: () => import("../pages/post-page.vue")
 },
-{   path: "/forum/user-posts/:postId",
+{   path: "/forum/user-posts/:userId",
     name: "ForumUser",
     component: () => import("../pages/user-posts-page.vue")
 },

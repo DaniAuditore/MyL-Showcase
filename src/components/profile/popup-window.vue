@@ -36,6 +36,7 @@ export default {
       } else if (this.title === 'Confirmar Promoción' || this.title === 'Confirmar Degradación') {
         this.promoteOrDemoteUser();
       }
+      window.location.reload();
     },
     cancelAction() {
       this.$emit('cancel');
@@ -56,6 +57,7 @@ export default {
       } catch (error) {
         console.error('Error al cambiar el rol del usuario:', error);
       }
+      window.location.reload();
     }
   }
 };
@@ -100,11 +102,12 @@ h2 {
   font-size: 40px;
   text-align: center;
 }
+
 p{
+  width: 100%;
+  position: relative;
   color: var(--secondary-text-color);
   font-weight: bold;
-  width: 200px;
-  text-align: center;
 }
 
 .btn-group {

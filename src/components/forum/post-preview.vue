@@ -4,16 +4,28 @@
         "title": "Post 1",
         "content": "Content 1",
         "author": "1",
-        "valoration": "0",
+        "valoration": 5,
+        "cards": [
+            { "ide": "001", "edid": "125" },
+            { "ide": "048", "edid": "125" }
+        ],
+        "comments": [
+            {
+            "id": "1",
+            "content": "Comment 1",
+            "author": "2",
+            "valoration": 3
+            },
+        ]
     -->
 <div class="post">
-    <profilePhoto class="pfp" :user-id="this.post.author"/>
+    <profilePhoto class="pfp" :userId="this.post.author"/>
 
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
 
     <valoration 
-        :valoration="parseInt(this.post.valoration)" 
+        :valoration="parseInt(this.valoration)" 
         @update:valoration="update"
     />
 
@@ -23,14 +35,14 @@
 
     <deleteButton class="delete_button"/>
     
-    <postPreviewBox/>
+    <postPreviewRouter :postId="this.post.id"/>
 </div>
 </template>
 
 <script>
 import axios from 'axios';
 
-import postPreviewBox from './post-preview-box.vue';
+import postPreviewRouter from './post-preview-router.vue';
 import deleteButton from '../delete-button.vue';
 import profilePhoto from '../profile-photo.vue';
 import valoration from './post-valoration.vue';
@@ -48,7 +60,7 @@ export default {
         };
     },
     components: {
-        postPreviewBox,
+        postPreviewRouter,
         deleteButton,
         profilePhoto,
         valoration,
@@ -61,7 +73,12 @@ export default {
         async jsonUpdate() {
             try {
                 await axios.put(`http://localhost:3000/posts/${this.post.id}`, {
-                    valoration: this.valoration
+                    title: this.post.title,
+                    content: this.post.content,
+                    author: this.post.author,
+                    valoration: this.valoration,
+                    cards: this.post.cards,
+                    comments: this.post.comments
                 });
             } catch (error) {
                 console.error('Error al actualizar la valoración del post:', error);
@@ -75,14 +92,15 @@ export default {
 .post {
     width: 90%;
     max-width: 1103px;
-
     height: 184px;
     position: relative;
-    left: calc(50% - 551px);
+    left: 50%;
+    transform: translateX(-50%);
 
     margin-bottom: 10px;
     background: var(--primary-background-color);
-    /* overflow: hidden; */
+    border: 2px solid var(--primary-border-color);
+    border-radius: 30px;
 }
 
 .pfp {
@@ -115,11 +133,14 @@ p {
     word-wrap: break-word;
 }
 
-.delete_Button {
+.delete_button {
+    width: fit-content;
+    height: fit-content;
     position: absolute;
-    left: 100px;
-    top: 0;
+    right: -35px;
+    top: 37%;
 
+    display: none;
     rotate: -90deg;
 }
 </style>

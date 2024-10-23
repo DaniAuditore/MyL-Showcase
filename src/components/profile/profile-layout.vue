@@ -1,35 +1,34 @@
-<template>
+<template> 
   <div class="user-info">
     <profilePhoto :userId="userId" class="profilePhoto"/>
     <div class="username-section">
       <div class="username">{{ userName }}</div>
-      <div class="profile-buttons" v-if="isCurrentUser || isAdmin">
-
-        <!-- Botón para editar perfil (solo si es el perfil del usuario actual) -->
+      <!-- Botones dinámicos dependiendo de las condiciones de perfil -->
+      <div class="profile-buttons">
+        <!-- Mostrar si el usuario actual está viendo su propio perfil -->
         <profileActionButton
           text="Editar Perfil"
           :currentName="userName"
           :currentImage="userImage"
-          :currentId="userId"
           v-if="isCurrentUser"
           @confirm="openEditProfile"
         />
 
-        <!-- Botón de "Promover a Juez" o "Degradar a Usuario" (solo si el usuario es admin y viendo otro perfil) -->
+        <!-- Mostrar si el usuario es Admin y no está en su propio perfil -->
         <profileActionButton
           :text="userRole === 'judge' ? 'Degradar a Usuario' : 'Promover a Juez'"
           :title="userRole === 'judge' ? 'Confirmar Degradación' : 'Confirmar Promoción'"
-          :description="userRole === 'judge' ? '¿Está seguro de que desea degradar este usuario a Usuario?' : '¿Está seguro de que desea promover este usuario a Juez?'"
+          :description="userRole === 'judge' ? '¿Desea degradar este usuario a Usuario?' : '¿Desea promover este usuario a Juez?'"
           v-if="isAdmin && !isCurrentUser"
           @confirm="userRole === 'judge' ? openDemoteUser : openPromoteUser"
         />
 
-        <!-- Botón para borrar cuenta (para el usuario actual o si un admin está en el perfil de otro) -->
+        <!-- Botón para borrar la cuenta (se muestra para el usuario actual o si es Admin y está en otro perfil) -->
         <profileActionButton
           text="Borrar Cuenta"
           title="Confirmar Borrado"
           description="¿Está seguro de que desea borrar esta cuenta?"
-          v-if="isCurrentUser || isAdmin"
+          v-if="isCurrentUser || (isAdmin && !isCurrentUser)"
           @confirm="openDeleteAccount"
         />
       </div>
@@ -37,9 +36,9 @@
   </div>
 
   <div class="profile-buttons">
-    <profile-button text="Colección" route="collection.html" />
-    <profile-button text="Posts" route="forum.html" />
-    <profile-button text="Mercado" route="market.html" />
+    <profile-button :text="`Colección`" :route="`/profile/${userId}/collection`" />
+    <profile-button text="Posts" route="/forum" />
+    <profile-button :text="'Mercado'" :route="`/market/${userId}`" />
   </div>
 </template>
 
@@ -53,59 +52,39 @@ import profilePhoto from "@/components/profile-photo.vue";
 import ProfileButton from './Profile-button.vue';
 import profileActionButton from "./profile-action-button.vue";
 
-// Accede al store de Vuex y ruta actual
+// Acceso a Vuex y la ruta actual
 const store = useStore();
 const route = useRoute();
 
-// Recibe el userId desde la propiedad
+// Datos del perfil actual visitado
 const userId = ref(route.params.userId);
-
-// Variables reactivas para los datos del usuario
 const userName = ref('');
 const userImage = ref('');
 const userRole = ref('');
 
-// Variables para permisos
+// Variables de permisos
 const isCurrentUser = ref(false);
 const isAdmin = ref(false);
 
-// Cargar la información del usuario desde el archivo test_users.json
+// Cargar datos del usuario desde JSON y verificar permisos
 onMounted(async () => {
   try {
     const response = await axios.get(`http://localhost:3000/users/${userId.value}`);
-
     userName.value = response.data.name;
     userImage.value = response.data.profileImage;
     userRole.value = response.data.role;
 
-    // Verificar si es el usuario actual o un administrador
+    // Verificar si es el perfil del usuario actual o si el usuario actual es admin
     isCurrentUser.value = store.getters.currentUser.id === userId.value;
     isAdmin.value = store.getters.currentUser.role === 'admin';
+    console.log(store.getters.currentUser.id)
+    console.log(`${store.getters.currentUser.role}`)
   } catch (error) {
-    console.error('Error al cargar el perfil del usuario:', error);
+    console.error('Error al cargar el perfil:', error);
   }
 });
 
-// Emitir eventos para abrir ventanas emergentes con las respectivas acciones
-function openEditProfile() {
-  // Emitir evento para editar el perfil
-  console.log('Editar perfil');
-}
 
-function openPromoteUser() {
-  // Emitir evento para promover a juez
-  console.log('Promover a juez');
-}
-
-function openDemoteUser() {
-  // Emitir evento para degradar a usuario
-  console.log('Degradar a usuario');
-}
-
-function openDeleteAccount() {
-  // Emitir evento para borrar cuenta
-  console.log('Borrar cuenta');
-}
 </script>
 
 <style scoped>

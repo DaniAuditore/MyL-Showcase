@@ -149,24 +149,257 @@
   "users": [
     {
       "id": "1",
-      "name": "user name",
+      "name": "pvllv kuxal",
       "profileImage": "../assets/profile-icons/user-1.png",
       "role": "admin",
-      "posts": ["1","4"]
+      "money": 10000,
+      "posts": ["1","4"],
+      "decks": ["000","001"],
+      "cards": [
+        {
+          "ide": "001",
+          "edid": "125"
+        },
+        {
+          "ide": "002",
+          "edid": "125"
+        },
+        {
+          "ide": "003",
+          "edid": "125"
+        },
+        {
+          "ide": "004",
+          "edid": "125"
+        },
+        {
+          "ide": "005",
+          "edid": "125"
+        },
+        {
+          "ide": "006",
+          "edid": "125"
+        },
+        {
+          "ide": "007",
+          "edid": "125"
+        },
+        {
+          "ide": "008",
+          "edid": "125"
+        },
+        {
+          "ide": "009",
+          "edid": "125"
+        },
+        {
+          "ide": "010",
+          "edid": "125"
+        },
+        {
+          "ide": "011",
+          "edid": "125"
+        },
+        {
+          "ide": "012",
+          "edid": "125"
+        },
+        {
+          "ide": "013",
+          "edid": "125"
+        },
+        {
+          "ide": "014",
+          "edid": "125"
+        },
+        {
+          "ide": "015",
+          "edid": "125"
+        },
+        {
+          "ide": "016",
+          "edid": "125"
+        },
+        {
+          "ide": "017",
+          "edid": "125"
+        },
+        {
+          "ide": "018",
+          "edid": "125"
+        },
+        {
+          "ide": "019",
+          "edid": "125"
+        },
+        {
+          "ide": "020",
+          "edid": "125"
+        },
+        {
+          "ide": "021",
+          "edid": "125"
+        },
+        {
+          "ide": "022",
+          "edid": "125"
+        },
+        {
+          "ide": "023",
+          "edid": "125"
+        },
+        {
+          "ide": "024",
+          "edid": "125"
+        },
+        {
+          "ide": "025",
+          "edid": "125"
+        },
+        {
+          "ide": "026",
+          "edid": "125"
+        },
+        {
+          "ide": "027",
+          "edid": "125"
+        },
+        {
+          "ide": "028",
+          "edid": "125"
+        },
+        {
+          "ide": "029",
+          "edid": "125"
+        },
+        {
+          "ide": "030",
+          "edid": "125"
+        },
+        {
+          "ide": "031",
+          "edid": "125"
+        },
+        {
+          "ide": "032",
+          "edid": "125"
+        },
+        {
+          "ide": "033",
+          "edid": "125"
+        },
+        {
+          "ide": "034",
+          "edid": "125"
+        },
+        {
+          "ide": "035",
+          "edid": "125"
+        }
+      ]
     },
     {
       "id": "2",
-      "name": "waos",
+      "name": "rei bkn",
       "profileImage": "../assets/profile-icons/user-2.png",
       "role": "judge",
-      "posts": ["3"]
+      "money": 4000,
+      "posts": ["3"],
+      "decks": ["002"],
+      "cards": [
+        {
+          "ide": "036",
+          "edid": "125"
+        },
+        {
+          "ide": "037",
+          "edid": "125"
+        },
+        {
+          "ide": "038",
+          "edid": "125"
+        },
+        {
+          "ide": "039",
+          "edid": "125"
+        },
+        {
+          "ide": "040",
+          "edid": "125"
+        },
+        {
+          "ide": "041",
+          "edid": "125"
+        },
+        {
+          "ide": "042",
+          "edid": "125"
+        },
+        {
+          "ide": "043",
+          "edid": "125"
+        },
+        {
+          "ide": "044",
+          "edid": "125"
+        },
+        {
+          "ide": "045",
+          "edid": "125"
+        }
+      ]
     },
     {
       "id": "3",
       "name": "Carlos Diaz",
       "profileImage": null,
       "role": "user",
-      "posts": ["2","5"]
+      "money": 8000,
+      "posts": ["2","5"],
+      "decks": ["003"],
+
+      "cards": [
+        {
+          "ide": "046",
+          "edid": "125"
+        },
+        {
+          "ide": "047",
+          "edid": "125"
+        },
+        {
+          "ide": "048",
+          "edid": "125"
+        },
+        {
+          "ide": "049",
+          "edid": "125"
+        },
+        {
+          "ide": "050",
+          "edid": "125"
+        },
+        {
+          "ide": "051",
+          "edid": "125"
+        },
+        {
+          "ide": "052",
+          "edid": "125"
+        },
+        {
+          "ide": "053",
+          "edid": "125"
+        },
+        {
+          "ide": "054",
+          "edid": "125"
+        },
+        {
+          "ide": "055",
+          "edid": "125"
+        }
+      ]
     }
   ],
   "posts": [
@@ -175,35 +408,131 @@
       "title": "Post 1",
       "content": "Content 1",
       "author": "1",
-      "valoration": 5
+      "valoration": 5,
+      "cards": [
+        { "ide": "001", "edid": "125" },
+        { "ide": "048", "edid": "125" }
+      ],
+      "comments": [
+        {
+          "id": "1",
+          "content": "Comment 1",
+          "author": "2",
+          "valoration": 3
+        },
+        {
+          "id": "2",
+          "content": "Comment 2",
+          "author": "3",
+          "valoration": 4
+        },
+        {
+          "id": "3",
+          "content": "Hey muy buenas a todos, aqui vegetta777, hoy les traigo un nuevo video de minecraft, espero que les guste mucho, no olviden darle like y suscribirse al canal, nos vemos",
+          "author": "1",
+          "valoration": -25
+        }
+      ]
     },
     {
       "id": "2",
       "title": "Post 2",
       "content": "Content 2",
       "author": "2",
-      "valoration": 4
+      "valoration": 4,
+      "cards": [
+        { "ide": "002", "edid": "125" },
+        { "ide": "049", "edid": "125" }
+      ],
+      "comments": [
+        {
+          "id": "4",
+          "content": "Comment 4",
+          "author": "1",
+          "valoration": 5
+        },
+        {
+          "id": "5",
+          "content": "Comment 5",
+          "author": "3",
+          "valoration": 2
+        }
+      ]
     },
     {
       "id": "3",
       "title": "Post 3",
       "content": "Content 3",
       "author": "3",
-      "valoration": 3
+      "valoration": 3,
+      "cards": [
+        { "ide": "003", "edid": "125" },
+        { "ide": "050", "edid": "125" }
+      ],
+      "comments": [
+        {
+          "id": "6",
+          "content": "Comment 7",
+          "author": "2",
+          "valoration": 4
+        },
+        {
+          "id": "7",
+          "content": "Comment 6",
+          "author": "1",
+          "valoration": 1
+        }
+      ]
     },
     {
       "id": "4",
       "title": "Post 4",
       "content": "Content 4",
       "author": "1",
-      "valoration": 2
+      "valoration": 2,
+      "cards": [
+        { "ide": "004", "edid": "125" },
+        { "ide": "051", "edid": "125" }
+      ],
+      "comments": [
+        {
+          "id": "8",
+          "content": "Comment 8",
+          "author": "2",
+          "valoration": 3
+        },
+        {
+          "id": "9",
+          "content": "Comment 9",
+          "author": "3",
+          "valoration": 4
+        }
+      ]
     },
     {
       "id": "5",
       "title": "Post 5",
       "content": "Content 5",
       "author": "2",
-      "valoration": 1
+      "valoration": 1,
+      "cards": [
+        { "ide": "005", "edid": "125" },
+        { "ide": "052", "edid": "125" }
+      ],
+      "comments": [
+        {
+          "id": "10",
+          "content": "Comment 10",
+          "author": "1",
+          "valoration": 5
+        },
+        {
+          "id": "11",
+          "content": "Comment 11",
+          "author": "3",
+          "valoration": 2
+        }
+      ]
     }
   ],
   "glossary-sections": [
@@ -450,6 +779,203 @@
         { "id": "5", "slug": "oro", "name": "Oro" },
         { "id": "6", "slug": "monumento", "name": "Monumento" }
     ]
-}
+  },
+  "offers": [
+      {
+        "offerId": "001",
+        "userId": "1",
+        "card": {
+          "ide": "001",
+          "edid": "125"
+        },
+        "price": 500,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "002",
+        "userId": "1",
+        "card": {
+          "ide": "002",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "003",
+        "userId": "1",
+        "card": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "price": 300,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "004",
+        "userId": "2",
+        "card": {
+          "ide": "036",
+          "edid": "125"
+        },
+        "price": 700,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "005",
+        "userId": "2",
+        "card": {
+          "ide": "037",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "040",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "006",
+        "userId": "2",
+        "card": {
+          "ide": "038",
+          "edid": "125"
+        },
+        "price": 600,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "007",
+        "userId": "3",
+        "card": {
+          "ide": "046",
+          "edid": "125"
+        },
+        "price": 200,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "008",
+        "userId": "3",
+        "card": {
+          "ide": "047",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "050",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "009",
+        "userId": "3",
+        "card": {
+          "ide": "048",
+          "edid": "125"
+        },
+        "price": 350,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "001",
+        "userId": "3",
+        "card": {
+          "ide": "001",
+          "edid": "125"
+        },
+        "price": 500,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "002",
+        "userId": "3",
+        "card": {
+          "ide": "002",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "003",
+        "userId": "3",
+        "card": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "price": 300,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "004",
+        "userId": "3",
+        "card": {
+          "ide": "036",
+          "edid": "125"
+        },
+        "price": 700,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "005",
+        "userId": "3",
+        "card": {
+          "ide": "037",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "040",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "006",
+        "userId": "3",
+        "card": {
+          "ide": "038",
+          "edid": "125"
+        },
+        "price": 600,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      }
+  ]
 }
 

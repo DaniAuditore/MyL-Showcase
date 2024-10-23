@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <button>
+    <div class="delete_button">
+        <button class="button">
             Borrar
         </button>
     </div>
@@ -10,7 +10,7 @@
 </script>
 
 <style scoped>
-button {
+.button {
     width: 150px;
     height: fit-content;
 
@@ -24,7 +24,7 @@ button {
     border-radius: 30px;
     border: 5px solid var(--primary-text-color)
 }
-button:hover {
+.button:hover {
     filter: brightness(115%);
 }
 </style>

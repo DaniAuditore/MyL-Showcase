@@ -1,6 +1,8 @@
 <template>
 <div class="body">
-    <nav><SideBar/></nav>
+    <nav>
+        <SideBar/>
+    </nav>
 
     <div class="content">
         <header>
@@ -20,20 +22,35 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
 import axios from 'axios';
 
 import SideBar from '@/components/Side-bar.vue';
 import createButton from '@/components/create-button.vue';
 import postPreview from '@/components/forum/post-preview.vue';
 
+// To get owners posts
+const route = useRoute();
+const ownerId = ref(route.params.userId);
+
 const posts = ref([]);
 
 onMounted(async () => {
-    try {
-        const response = await axios.get('http://localhost:3000/posts');
-        posts.value = response.data;
+    const owner = ref({});
+    try {   // Fetching ids of posts from user
+        console.log("consiguiendo datos del id", ownerId.value);
+        const response = await axios.get(`http://localhost:3000/users/${ownerId.value}`);
+        owner.value = response.data;
     } catch (error) {
-        console.error('Error al cargar los mazos:', error);
+        console.error('Error al cargar la lista de posts del usuario:', error);
+    }
+    try {   // Fetching posts from ids
+        owner.value.posts.forEach(async element => {
+            const response = await axios.get(`http://localhost:3000/posts/${element}`);
+            posts.value.push(response.data);
+        });
+    } catch (error) {
+        console.error('Error al cargar los posts del usuario:', error);
     }
 });
 </script>

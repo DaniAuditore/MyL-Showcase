@@ -6,16 +6,12 @@
         <button @click="downVote">
             <img 
                 src="../../assets/valoration-icons/dVote.png" 
-                onmouseover="this.src='../../assets/valoration-icons/dVote-hover.png'"
-                onmouseout="this.src='../../assets/valoration-icons/dVote.png'"
                 alt="dVote"
             >
         </button>
-        <button onclick="upvote">
+        <button @click="upVote">
             <img 
                 src="../../assets/valoration-icons/uVote.png" 
-                onmouseover="this.src='../../assets/valoration-icons/uVote-hover.png'"
-                onmouseout="this.src='../../assets/valoration-icons/uVote.png'"
                 alt="uVote"
             >
         </button>
@@ -42,7 +38,7 @@ export default {
         },
         downVote() {
             console.log("downVote");
-            this.uptadeValoration(this.valoration + 1);
+            this.uptadeValoration(this.valoration - 1);
         },
     }
 }
@@ -53,8 +49,9 @@ export default {
     width: 77px;
     height: 20px;
     left: 20px;
-    top: 150px;
-    position: absolute
+    bottom: 15px;
+    position: absolute;
+    z-index: 100;
 }
 
 h1 {
@@ -66,6 +63,7 @@ h1 {
     font-family: var(--font-style);
     font-weight: 500;
     word-wrap: break-word;
+    cursor: default;
     
     color: var(--primary-border-color);
 }
@@ -95,7 +93,7 @@ img {
     height: auto;
 }
 img:hover {
-    filter: brightness(150%);
+    filter: brightness(115%);
     cursor: pointer;
 }
 </style>

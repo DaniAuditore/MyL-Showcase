@@ -149,7 +149,7 @@
   "users": [
     {
       "id": "1",
-      "name": "user name",
+      "name": "pvllv kuxal",
       "profileImage": "../assets/profile-icons/user-1.png",
       "role": "admin",
       "posts": ["1","4"],
@@ -299,7 +299,7 @@
     },
     {
       "id": "2",
-      "name": "waos",
+      "name": "rei bkn",
       "profileImage": "../assets/profile-icons/user-2.png",
       "role": "judge",
       "posts": [

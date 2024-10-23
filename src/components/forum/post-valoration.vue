@@ -9,7 +9,7 @@
                 alt="dVote"
             >
         </button>
-        <button onclick="upvote">
+        <button @click="upVote">
             <img 
                 src="../../assets/valoration-icons/uVote.png" 
                 alt="uVote"
@@ -38,7 +38,7 @@ export default {
         },
         downVote() {
             console.log("downVote");
-            this.uptadeValoration(this.valoration + 1);
+            this.uptadeValoration(this.valoration - 1);
         },
     }
 }

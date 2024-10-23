@@ -4,7 +4,19 @@
         "title": "Post 1",
         "content": "Content 1",
         "author": "1",
-        "valoration": "0",
+        "valoration": 5,
+        "cards": [
+            { "ide": "001", "edid": "125" },
+            { "ide": "048", "edid": "125" }
+        ],
+        "comments": [
+            {
+            "id": "1",
+            "content": "Comment 1",
+            "author": "2",
+            "valoration": 3
+            },
+        ]
     -->
 <div class="post">
     <profilePhoto class="pfp" :userId="this.post.author"/>
@@ -13,7 +25,7 @@
     <p>{{ post.content }}</p>
 
     <valoration 
-        :valoration="parseInt(this.post.valoration)" 
+        :valoration="parseInt(this.valoration)" 
         @update:valoration="update"
     />
 
@@ -61,7 +73,12 @@ export default {
         async jsonUpdate() {
             try {
                 await axios.put(`http://localhost:3000/posts/${this.post.id}`, {
-                    valoration: this.valoration
+                    title: this.post.title,
+                    content: this.post.content,
+                    author: this.post.author,
+                    valoration: this.valoration,
+                    cards: this.post.cards,
+                    comments: this.post.comments
                 });
             } catch (error) {
                 console.error('Error al actualizar la valoración del post:', error);

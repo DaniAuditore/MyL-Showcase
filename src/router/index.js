@@ -3,8 +3,7 @@ import HomePage from "../pages/home-page.vue"
 import ProfilePage from "../pages/Profile-page.vue"
 import GlossaryPage from "../pages/glossary-page.vue"
 import marketPage from "@/pages/market-page.vue"
-import cardSelection from "../pages/card-selection.vue"
-import makeOffer from "../pages/make-offer.vue"
+import cardSelection from "../pages/card-offer-selection.vue"
 import store from '@/store/vuex'; 
 
 const links = [
@@ -73,10 +72,10 @@ const links = [
     meta: { requiresAuth: true }, // Requiere estar autenticado
   },
   {
-    path: '/make-offer',
-    name: 'MakeOffer',
-    component: makeOffer,
-    meta: { requiresAuth: true }, // Requiere estar autenticado
+    path: '/make-offer/:cardId',
+    name: 'make-offer',
+    component: () => import('../pages/make-offer.vue'),
+    meta: { requiresAuth: true }, 
   },
 ]
 

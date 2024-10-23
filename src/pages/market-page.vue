@@ -134,6 +134,7 @@ export default {
         margin-left: 130px;
         width: calc(100% - 130px);
         max-width: 1600px;
+        min-height: 70px;
         display: flex;
         background-color: var(--secondary-background-color);
         padding: 20px;

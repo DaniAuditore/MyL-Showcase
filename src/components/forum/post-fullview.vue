@@ -1,8 +1,13 @@
 <template>
     <section class="post">
         <profilePhoto class="pfp" :userId="post.author"/>
+        <h1 class="authorName">
+            {{ authorName }}
+        </h1>
         
-        <h1>{{ post.title }}</h1>
+        <h1 class="title">
+            {{ post.title }}
+        </h1>
         <p>{{ post.content }}</p>
 
         <valoration 
@@ -19,6 +24,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import profilePhoto from '../profile-photo.vue';
 import valoration from './post-valoration.vue';
 import deleteButton from '../delete-button.vue';
@@ -35,6 +42,26 @@ export default {
             required: true
         },
     },
+    data() {
+        return {
+            authorName: 'Participante',
+            valoration: this.post.valoration,
+        };
+    },
+    mounted() {
+        this.getAuthorName();
+    },
+    methods: {
+        async getAuthorName() {
+            try {
+                const response = await axios.get(`http://localhost:3000/users/${this.post.author}`);
+                this.authorName = response.data.name;
+            } catch (error) {
+                console.error('Error fetching author name:', error);
+                this.authorName = 'Participante';
+            }
+        },
+    }
 }
 </script>
 
@@ -63,9 +90,9 @@ export default {
     top: 10px;
 }
 
-h1 {
-    left: 130px;
-    top: 5px;
+.authorName {
+    left: 140px;
+    top: 15px;
     position: absolute;
     
     color: var(--primary-border-color);
@@ -73,9 +100,25 @@ h1 {
     font-weight: 400;
     word-wrap: break-word;
 }
+
+.title {
+    width: fit-content;
+    height: fit-content;
+    left: 20px;
+    top: 110px;
+    position: absolute;
+    
+    font-size: 36px;
+    font-weight: 400;
+    word-wrap: break-word;
+    
+    color: var(--primary-border-color);
+    border: 0;
+    background-color: transparent;
+}
 p {
-    left: 130px;
-    top: 60px;
+    left: 20px;
+    top: 180px;
     position: absolute;
 
     text-align: right;

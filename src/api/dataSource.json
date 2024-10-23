@@ -295,7 +295,6 @@
           "ide": "035",
           "edid": "125"
         }
-
       ]
     },
     {
@@ -303,8 +302,12 @@
       "name": "waos",
       "profileImage": "../assets/profile-icons/user-2.png",
       "role": "judge",
-      "posts": ["3"],
-      "decks": ["002"],
+      "posts": [
+        "3"
+      ],
+      "decks": [
+        "002"
+      ],
       "cards": [
         {
           "ide": "036",
@@ -353,8 +356,13 @@
       "name": "Carlos Diaz",
       "profileImage": null,
       "role": "user",
-      "posts": ["2","5"],
-      "decks": ["003"],
+      "posts": [
+        "2",
+        "5"
+      ],
+      "decks": [
+        "003"
+      ],
       "cards": [
         {
           "ide": "046",
@@ -469,15 +477,15 @@
       "comments": [
         {
           "id": "6",
-          "content": "Comment 6",
-          "author": "1",
-          "valoration": 1
-        },
-        {
-          "id": "7",
           "content": "Comment 7",
           "author": "2",
           "valoration": 4
+        },
+        {
+          "id": "7",
+          "content": "Comment 6",
+          "author": "1",
+          "valoration": 1
         }
       ]
     },
@@ -776,6 +784,5 @@
         { "id": "5", "slug": "oro", "name": "Oro" },
         { "id": "6", "slug": "monumento", "name": "Monumento" }
     ]
+  }
 }
-}
-

@@ -9,13 +9,13 @@
             <filterButton class="filter_button"/>
         </header>
 
-        <h1>{{ ownerId }}</h1>
-        
-        <main class="cards">
-            <collectionCard v-for="card in sampleCards" :key="card.ide"
-                :card="card"
-                :edid="card.edid"
-            />
+        <main class="card_container">
+            <div class="cards">
+                <collectionCard v-for="card in sampleCards" :key="card.ide"
+                    :card="card"
+                    :edid="card.edid"
+                />
+            </div>
         </main>
     </div>
 </div>
@@ -114,24 +114,31 @@ header {
     left: 50%;
     top: 22px;
     transform: translateX(-50%);
-    
+
     background-color: var(--primary-background-color);
+}
+
+.card_container {
+    width: calc(100vw - 130px);
+    height: calc(100vh - 160px);
+    position: absolute;
+    top: 160px;
+    right: 0px;
+
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .cards {
     width: 90%;
     max-width: 1103px;
-    position: absolute;
+
+    position: relative;
     left: 50%;
-    top: 160px;
     transform: translateX(-50%);
 
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px 60px;
-
-    overflow-y: scroll visible;
-    overflow-x: visible;
-    scrollbar-width: none;
 }
 </style>

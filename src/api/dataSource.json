@@ -821,6 +821,123 @@
         "type": "sale"
       },
       {
+        "offerId": "007",
+        "userId": "1",
+        "card": {
+          "ide": "046",
+          "edid": "125"
+        },
+        "price": 200,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "008",
+        "userId": "1",
+        "card": {
+          "ide": "047",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "050",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "009",
+        "userId": "1",
+        "card": {
+          "ide": "048",
+          "edid": "125"
+        },
+        "price": 350,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "001",
+        "userId": "1",
+        "card": {
+          "ide": "001",
+          "edid": "125"
+        },
+        "price": 500,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "002",
+        "userId": "1",
+        "card": {
+          "ide": "002",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "003",
+        "userId": "1",
+        "card": {
+          "ide": "003",
+          "edid": "125"
+        },
+        "price": 300,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "004",
+        "userId": "1",
+        "card": {
+          "ide": "036",
+          "edid": "125"
+        },
+        "price": 700,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
+        "offerId": "005",
+        "userId": "1",
+        "card": {
+          "ide": "037",
+          "edid": "125"
+        },
+        "price": null,
+        "requestedCard": {
+          "ide": "040",
+          "edid": "125"
+        },
+        "status": "active",
+        "type": "trade"
+      },
+      {
+        "offerId": "006",
+        "userId": "1",
+        "card": {
+          "ide": "038",
+          "edid": "125"
+        },
+        "price": 600,
+        "requestedCard": null,
+        "status": "active",
+        "type": "sale"
+      },
+      {
         "offerId": "004",
         "userId": "2",
         "card": {

@@ -7,7 +7,7 @@
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="BUSCAR CARTAS" aria-label="Buscar cartas">
             <span class="small_icon">
-                <img src="assets/search-svgrepo-com.svg" alt="Icono de búsqueda">
+                <img src="../assets/search-svgrepo-com.svg" alt="Icono de búsqueda">
             </span>
         </div>
         <button id="filter-button" class="styled-button">FILTROS</button>

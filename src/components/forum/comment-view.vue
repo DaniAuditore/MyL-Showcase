@@ -10,7 +10,7 @@
         </p>
 
         <valoration 
-            :valoration="parseInt(this.comment.valoration)" 
+            :valoration="parseInt(this.valoration)" 
             @update:valoration="update"
         />
 
@@ -31,11 +31,17 @@ export default {
         comment: {
             type: Object,
             required: true
-        }
+        },
+        /** Post id */
+        postId: {
+            type: String,
+            required: true
+        },
     },
     data() {
         return {
             authorName: '',
+            valoration: this.comment.valoration,
         };
     },
     components: {
@@ -54,6 +60,21 @@ export default {
             } catch (error) {
                 console.error('Error fetching author name:', error);
                 this.authorName = 'Comentante';
+            }
+        },
+        update(valoration) {
+            this.valoration = valoration;
+            this.jsonUpdate();
+        },
+        async jsonUpdate() {
+            try {
+                await axios.put(`http://localhost:3000/posts/${this.postId}/comments/${this.comment.id}`, {
+                    content: this.comment.content,
+                    author: this.comment.author,
+                    valoration: this.valoration
+                });
+            } catch (error) {
+                console.error('Error al actualizar la valoración del post:', error);
             }
         },
     }

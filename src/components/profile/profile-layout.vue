@@ -37,7 +37,7 @@
 
   <div class="profile-buttons">
     <profile-button :text="`Colección`" :route="`/profile/${userId}/collection`" />
-    <profile-button text="Posts" route="/forum" />
+    <profile-button :text="'Posts'" :route="`/forum/user-posts/${userId}`" />
     <profile-button :text="'Mercado'" :route="`/market/${userId}`" />
   </div>
 </template>

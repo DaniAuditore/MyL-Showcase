@@ -35,7 +35,7 @@
   });
   </script>
   
-  <style>
+  <style scoped>
   :root {
       --primary-background-color: #2c2c2e;
       --secondary-background-color: #373739;
